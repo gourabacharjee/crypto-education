@@ -2,7 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Ticker from '../components/Ticker.astro';
 
-const base = import.meta.env.BASE_URL;
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
 
 <BaseLayout title="Home">
@@ -29,10 +29,10 @@ const base = import.meta.env.BASE_URL;
         no shilling, just the signal through the noise.
       </p>
       <div class="hero-cta fade-in-up">
-        <a href={`${base}eras/how-it-started/`} class="btn btn-primary btn-lg">
+        <a href={`${base}/eras/how-it-started/`} class="btn btn-primary btn-lg">
           🎓 Start Learning
         </a>
-        <a href={`${base}regulation/`} class="btn btn-secondary btn-lg">
+        <a href={`${base}/regulation/`} class="btn btn-secondary btn-lg">
           📋 Regulation Tracker
         </a>
       </div>
@@ -57,7 +57,7 @@ const base = import.meta.env.BASE_URL;
 
       <div class="era-grid stagger">
         <!-- Origins Card -->
-        <a href={`${base}eras/how-it-started/`} class="era-card era-card--origins">
+        <a href={`${base}/eras/how-it-started/`} class="era-card era-card--origins">
           <div class="era-card-icon" aria-hidden="true">
             <span class="era-emoji">🏛️</span>
             <div class="era-icon-glow era-icon-glow--origins"></div>
@@ -75,7 +75,7 @@ const base = import.meta.env.BASE_URL;
         </a>
 
         <!-- Present Card -->
-        <a href={`${base}eras/where-we-are/`} class="era-card era-card--present">
+        <a href={`${base}/eras/where-we-are/`} class="era-card era-card--present">
           <div class="era-card-icon" aria-hidden="true">
             <span class="era-emoji">⚡</span>
             <div class="era-icon-glow era-icon-glow--present"></div>
@@ -94,7 +94,7 @@ const base = import.meta.env.BASE_URL;
         </a>
 
         <!-- Future Card -->
-        <a href={`${base}eras/the-future/`} class="era-card era-card--future">
+        <a href={`${base}/eras/the-future/`} class="era-card era-card--future">
           <div class="era-card-icon" aria-hidden="true">
             <span class="era-emoji">🔮</span>
             <div class="era-icon-glow era-icon-glow--future"></div>
@@ -239,7 +239,7 @@ const base = import.meta.env.BASE_URL;
       </div>
 
       <div class="resource-grid stagger">
-        <a href={`${base}regulation/`} class="resource-card resource-card--regulation">
+        <a href={`${base}/regulation/`} class="resource-card resource-card--regulation">
           <div class="resource-icon" aria-hidden="true">🏛️</div>
           <h3 class="resource-title">Regulation Tracker</h3>
           <p class="resource-desc">
@@ -251,7 +251,7 @@ const base = import.meta.env.BASE_URL;
           <span class="resource-tag tag tag--yellow">Updated Regularly</span>
         </a>
 
-        <a href={`${base}resources/glossary/`} class="resource-card resource-card--glossary">
+        <a href={`${base}/resources/glossary/`} class="resource-card resource-card--glossary">
           <div class="resource-icon" aria-hidden="true">📖</div>
           <h3 class="resource-title">Crypto Glossary</h3>
           <p class="resource-desc">
@@ -262,7 +262,7 @@ const base = import.meta.env.BASE_URL;
           <span class="resource-tag tag tag--green">Comprehensive</span>
         </a>
 
-        <a href={`${base}news/`} class="resource-card resource-card--news">
+        <a href={`${base}/news/`} class="resource-card resource-card--news">
           <div class="resource-icon" aria-hidden="true">📡</div>
           <h3 class="resource-title">News Hub</h3>
           <p class="resource-desc">

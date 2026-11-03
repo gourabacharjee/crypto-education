@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 
-const base = import.meta.env.BASE_URL;
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 
 const predictions = [
   {
@@ -791,11 +791,11 @@ function getConfidenceLabel(confidence: number): string {
   <nav class="era-nav" aria-label="Era navigation">
     <div class="container">
       <div class="era-nav__inner">
-        <a href={`${base}eras/the-present`} class="era-nav__link era-nav__link--prev">
+        <a href={`${base}/eras/where-we-are/`} class="era-nav__link era-nav__link--prev">
           <span class="era-nav__direction">← Previous Era</span>
-          <span class="era-nav__label">The Present</span>
+          <span class="era-nav__label">Era 2: The Present</span>
         </a>
-        <a href={`${base}regulation`} class="era-nav__link era-nav__link--cta">
+        <a href={`${base}/regulation/`} class="era-nav__link era-nav__link--cta">
           <span class="era-nav__direction">Deep Dive →</span>
           <span class="era-nav__label">Regulation Tracker</span>
         </a>

@@ -1,6 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-const base = import.meta.env.BASE_URL;
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
 
 <BaseLayout
@@ -812,7 +812,7 @@ const base = import.meta.env.BASE_URL;
           <!-- No previous era -->
         </div>
         <div class="era-nav__next">
-          <a href={`${base}eras/where-we-are/`} class="era-nav__link era-nav__link--next">
+          <a href={`${base}/eras/where-we-are/`} class="era-nav__link era-nav__link--next">
             <span class="era-nav__direction">Next Era →</span>
             <span class="era-nav__title">Era 2: Where We Are Now</span>
           </a>

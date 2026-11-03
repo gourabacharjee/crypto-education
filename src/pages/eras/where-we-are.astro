@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 
-const base = import.meta.env.BASE_URL;
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
 
 <BaseLayout
@@ -531,13 +531,13 @@ const base = import.meta.env.BASE_URL;
   <!-- ============ ERA NAVIGATION ============ -->
   <nav class="era-nav" aria-label="Era navigation">
     <div class="container">
-      <a href={`${base}eras/origins`} class="era-nav__link era-nav__link--prev">
+      <a href={`${base}/eras/how-it-started/`} class="era-nav__link era-nav__link--prev">
         <span class="era-nav__direction">← Previous Era</span>
-        <span class="era-nav__title">Origins: The Cypherpunk Dream (Pre-2017)</span>
+        <span class="era-nav__title">Era 1: How It Started (2008–2016)</span>
       </a>
-      <a href={`${base}eras/future`} class="era-nav__link era-nav__link--next">
+      <a href={`${base}/eras/the-future/`} class="era-nav__link era-nav__link--next">
         <span class="era-nav__direction">Next Era →</span>
-        <span class="era-nav__title">The Future: Where Crypto Goes from Here</span>
+        <span class="era-nav__title">Era 3: The Future (2025+)</span>
       </a>
     </div>
   </nav>

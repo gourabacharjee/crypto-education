@@ -1,6 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-const base = import.meta.env.BASE_URL;
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
 
 <BaseLayout title="Crypto News Hub — Signal, Not Noise">
@@ -138,31 +138,31 @@ const base = import.meta.env.BASE_URL;
       <p class="archive-intro">Catch up on previous weeks. Every digest remains relevant — the context compounds over time.</p>
       <ul class="archive-list">
         <li class="archive-item">
-          <a href={`${base}news/digest-2025-10-20`}>
+          <a href="#featured-digest">
             <span class="archive-date">Oct 20, 2025</span>
             <span class="archive-title">Stablecoin Legislation Advances in Senate; Tether Publishes Full Attestation</span>
           </a>
         </li>
         <li class="archive-item">
-          <a href={`${base}news/digest-2025-10-13`}>
+          <a href="#featured-digest">
             <span class="archive-date">Oct 13, 2025</span>
             <span class="archive-title">Solana Breakpoint Recap; Visa Expands USDC Settlement to 5 New Markets</span>
           </a>
         </li>
         <li class="archive-item">
-          <a href={`${base}news/digest-2025-10-06`}>
+          <a href="#featured-digest">
             <span class="archive-date">Oct 6, 2025</span>
             <span class="archive-title">Bitcoin Dominance Hits 58%; DeFi TVL Rebounds Past $90B</span>
           </a>
         </li>
         <li class="archive-item">
-          <a href={`${base}news/digest-2025-09-29`}>
+          <a href="#featured-digest">
             <span class="archive-date">Sep 29, 2025</span>
             <span class="archive-title">Hong Kong Launches Retail Crypto Trading Framework; MiCA Takes Effect in EU</span>
           </a>
         </li>
         <li class="archive-item">
-          <a href={`${base}news/digest-2025-09-22`}>
+          <a href="#featured-digest">
             <span class="archive-date">Sep 22, 2025</span>
             <span class="archive-title">Fed Cuts Rates 25bps; Bitcoin Crosses $70K for First Time Since March</span>
           </a>
