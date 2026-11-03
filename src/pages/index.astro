@@ -1,0 +1,999 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Ticker from '../components/Ticker.astro';
+
+const base = import.meta.env.BASE_URL;
+---
+
+<BaseLayout title="Home">
+  <Ticker />
+
+  <!-- ═══════════════ HERO ═══════════════ -->
+  <section class="hero" aria-labelledby="hero-heading">
+    <div class="hero-bg" aria-hidden="true">
+      <div class="hero-orb hero-orb--1"></div>
+      <div class="hero-orb hero-orb--2"></div>
+      <div class="hero-orb hero-orb--3"></div>
+      <div class="hero-grid" aria-hidden="true"></div>
+    </div>
+
+    <div class="container hero-content">
+      <span class="hero-badge fade-in-up">📡 Live from the blockchain frontier</span>
+      <h1 id="hero-heading" class="hero-title fade-in-up">
+        20 Years of Crypto:<br />
+        <span class="hero-gradient-text">From Cypherpunks to Mainstream Finance</span>
+      </h1>
+      <p class="hero-subtitle fade-in-up">
+        I've been building, breaking, and teaching cryptocurrency since before most people
+        knew Bitcoin existed. This site distills two decades of hard-won lessons — no hype,
+        no shilling, just the signal through the noise.
+      </p>
+      <div class="hero-cta fade-in-up">
+        <a href={`${base}eras/how-it-started/`} class="btn btn-primary btn-lg">
+          🎓 Start Learning
+        </a>
+        <a href={`${base}regulation/`} class="btn btn-secondary btn-lg">
+          📋 Regulation Tracker
+        </a>
+      </div>
+      <p class="hero-trust fade-in-up">
+        <span class="hero-trust-dot"></span>
+        Covering crypto since 2006 &middot; No sponsored content &middot; Open-source & free forever
+      </p>
+    </div>
+  </section>
+
+  <!-- ═══════════════ ERA NAVIGATION ═══════════════ -->
+  <section class="section eras" aria-labelledby="eras-heading">
+    <div class="container">
+      <div class="section-header">
+        <h2 id="eras-heading">Explore the Eras of Crypto</h2>
+        <p class="section-lead">
+          Cryptocurrency didn't appear out of thin air. It grew from decades of academic research,
+          failed experiments, and a 2008 financial crisis that shattered public trust in institutions.
+          Understand where we came from to see where we're going.
+        </p>
+      </div>
+
+      <div class="era-grid stagger">
+        <!-- Origins Card -->
+        <a href={`${base}eras/how-it-started/`} class="era-card era-card--origins">
+          <div class="era-card-icon" aria-hidden="true">
+            <span class="era-emoji">🏛️</span>
+            <div class="era-icon-glow era-icon-glow--origins"></div>
+          </div>
+          <div class="era-card-epoch">2008 – 2016</div>
+          <h3 class="era-card-title">The Origins</h3>
+          <p class="era-card-desc">
+            From Satoshi Nakamoto's whitepaper to the first exchange hacks, the wild early days
+            that established the fundamentals. Mt. Gox, the Silk Road, the first halving, and
+            Ethereum's genesis — the era that proved crypto wasn't a passing fad.
+          </p>
+          <span class="era-card-link">
+            Explore Origins <span aria-hidden="true">→</span>
+          </span>
+        </a>
+
+        <!-- Present Card -->
+        <a href={`${base}eras/where-we-are/`} class="era-card era-card--present">
+          <div class="era-card-icon" aria-hidden="true">
+            <span class="era-emoji">⚡</span>
+            <div class="era-icon-glow era-icon-glow--present"></div>
+          </div>
+          <div class="era-card-epoch">2017 – Now</div>
+          <h3 class="era-card-title">The Present</h3>
+          <p class="era-card-desc">
+            The ICO mania, DeFi Summer, NFT explosion, and institutional adoption.
+            Bitcoin ETFs, stablecoin regulation, and the merge to proof-of-stake.
+            This is the era where crypto collided with Wall Street — and neither
+            side came out unchanged.
+          </p>
+          <span class="era-card-link">
+            Explore Present <span aria-hidden="true">→</span>
+          </span>
+        </a>
+
+        <!-- Future Card -->
+        <a href={`${base}eras/the-future/`} class="era-card era-card--future">
+          <div class="era-card-icon" aria-hidden="true">
+            <span class="era-emoji">🔮</span>
+            <div class="era-icon-glow era-icon-glow--future"></div>
+          </div>
+          <div class="era-card-epoch">2025+</div>
+          <h3 class="era-card-title">The Future</h3>
+          <p class="era-card-desc">
+            CBDCs, account abstraction, zero-knowledge proofs going mainstream,
+            and AI-crypto convergence. What the next decade likely holds based on
+            current trajectories — and what could derail it all. Informed speculation
+            from two decades in the trenches.
+          </p>
+          <span class="era-card-link">
+            Explore Future <span aria-hidden="true">→</span>
+          </span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ WHY THIS SITE ═══════════════ -->
+  <section class="section section--alt manifesto" aria-labelledby="manifesto-heading">
+    <div class="container">
+      <div class="manifesto-layout">
+        <div class="manifesto-text">
+          <h2 id="manifesto-heading">Why This Site Exists</h2>
+          <p class="manifesto-lead">
+            Most crypto education falls into two camps: breathless hype from people trying to sell
+            you something, or dismissive skepticism from people who never bothered to read the
+            whitepaper. Neither serves you.
+          </p>
+
+          <div class="manifesto-points">
+            <div class="manifesto-point">
+              <div class="manifesto-point-icon" aria-hidden="true">🧪</div>
+              <div>
+                <h3>Battle-Tested Knowledge</h3>
+                <p>
+                  I've lived through every crash, every bubble, every "Bitcoin is dead" headline
+                  since 2006. I watched Mt. Gox collapse in real time, deployed contracts during
+                  DeFi Summer, and held through drawdowns that would make most institutional
+                  traders weep. Theory is cheap — experience costs money.
+                </p>
+              </div>
+            </div>
+
+            <div class="manifesto-point">
+              <div class="manifesto-point-icon" aria-hidden="true">🚫</div>
+              <div>
+                <h3>Zero Hype, Zero Shilling</h3>
+                <p>
+                  No affiliate links. No sponsored reviews. No "this altcoin will 100x" nonsense.
+                  When I'm uncertain — and I often am — I say so explicitly. Crypto moves too fast
+                  for anyone to be certain about everything, and anyone claiming otherwise is selling
+                  something.
+                </p>
+              </div>
+            </div>
+
+            <div class="manifesto-point">
+              <div class="manifesto-point-icon" aria-hidden="true">📚</div>
+              <div>
+                <h3>Academic Rigor, Practical Focus</h3>
+                <p>
+                  Every claim is sourced. Every historical event includes dates and context.
+                  But this isn't an ivory tower — I focus on what matters for builders, investors,
+                  and curious minds who want to understand how this technology actually works,
+                  not just parrot talking points.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <aside class="manifesto-callout">
+          <div class="callout callout--misconception">
+            <div class="callout-title">
+              <span aria-hidden="true">⚠️</span> Common Misconception
+            </div>
+            <p>
+              "You need to be a programmer to understand crypto." Absolutely not.
+              Cryptography uses math, but <em>understanding</em> cryptocurrency is about
+              economics, game theory, and incentive design. This site is written for
+              curious humans, not compiler authors.
+            </p>
+          </div>
+
+          <div class="callout callout--teaching">
+            <div class="callout-title">
+              <span aria-hidden="true">💡</span> Teaching Moment
+            </div>
+            <p>
+              The word "cryptocurrency" itself is somewhat misleading. Most tokens
+              aren't currencies in the traditional sense — they're more like programmable
+              property rights. Understanding this distinction early will save you from
+              countless misunderstandings down the road.
+            </p>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ QUICK STATS ═══════════════ -->
+  <section class="section stats" aria-labelledby="stats-heading">
+    <div class="container">
+      <h2 id="stats-heading" class="sr-only">Site Statistics</h2>
+      <div class="stats-grid stagger">
+        <div class="stat-card">
+          <div class="stat-number" data-target="20" aria-label="20 plus years">20+</div>
+          <div class="stat-label">Years in Crypto</div>
+          <div class="stat-detail">Since the pre-Bitcoin cypherpunk era</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number" data-target="3" aria-label="3 eras covered">3</div>
+          <div class="stat-label">Eras Covered</div>
+          <div class="stat-detail">Origins, present landscape, and future outlook</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number" data-target="50" aria-label="50 plus topics">50+</div>
+          <div class="stat-label">Topics Deep-Dived</div>
+          <div class="stat-detail">From hash functions to regulatory frameworks</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number" data-target="0" aria-label="Zero sponsored content">0</div>
+          <div class="stat-label">Sponsored Articles</div>
+          <div class="stat-detail">Independent forever — no ads, no sponsors</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ FEATURED RESOURCES ═══════════════ -->
+  <section class="section section--alt resources" aria-labelledby="resources-heading">
+    <div class="container">
+      <div class="section-header">
+        <h2 id="resources-heading">Essential Resources</h2>
+        <p class="section-lead">
+          Tools and references built to be actually useful — not SEO filler.
+          Each resource is maintained and updated as the space evolves.
+        </p>
+      </div>
+
+      <div class="resource-grid stagger">
+        <a href={`${base}regulation/`} class="resource-card resource-card--regulation">
+          <div class="resource-icon" aria-hidden="true">🏛️</div>
+          <h3 class="resource-title">Regulation Tracker</h3>
+          <p class="resource-desc">
+            Live tracking of cryptocurrency regulation across major jurisdictions.
+            Every rule, every ruling, every proposed bill — organized by country and
+            updated as legislation evolves. Because regulatory risk is the one risk
+            most crypto investors chronically underestimate.
+          </p>
+          <span class="resource-tag tag tag--yellow">Updated Regularly</span>
+        </a>
+
+        <a href={`${base}resources/glossary/`} class="resource-card resource-card--glossary">
+          <div class="resource-icon" aria-hidden="true">📖</div>
+          <h3 class="resource-title">Crypto Glossary</h3>
+          <p class="resource-desc">
+            Over 200 terms explained in plain language, with historical context
+            for why each concept matters. From "51% attack" to "zero-knowledge proof"
+            — the jargon decoder ring I wish I'd had in 2010.
+          </p>
+          <span class="resource-tag tag tag--green">Comprehensive</span>
+        </a>
+
+        <a href={`${base}news/`} class="resource-card resource-card--news">
+          <div class="resource-icon" aria-hidden="true">📡</div>
+          <h3 class="resource-title">News Hub</h3>
+          <p class="resource-desc">
+            Curated crypto news with analysis and context that aggregators don't
+            provide. I separate the signal from the noise so you don't have to
+            doomscroll Crypto Twitter at 3 AM wondering if that rumor is real.
+          </p>
+          <span class="resource-tag tag tag--blue">Curated Daily</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ NEWSLETTER CTA ═══════════════ -->
+  <section class="section newsletter" aria-labelledby="newsletter-heading">
+    <div class="container">
+      <div class="newsletter-card">
+        <div class="newsletter-content">
+          <div class="newsletter-icon" aria-hidden="true">📬</div>
+          <h2 id="newsletter-heading">Stay Sharp, Not Shilled</h2>
+          <p class="newsletter-desc">
+            A weekly digest of what actually matters in crypto — market shifts, regulatory
+            changes, protocol upgrades, and the occasional historical deep-dive. Written
+            by a veteran, not a marketing department. Unsubscribe anytime.
+          </p>
+
+          <form
+            class="newsletter-form"
+            action="https://buttondown.com/api/emails/embed-subscribe/cryptoed"
+            method="post"
+            target="_blank"
+          >
+            <div class="newsletter-input-group">
+              <label for="newsletter-email" class="sr-only">Email address</label>
+              <input
+                type="email"
+                id="newsletter-email"
+                name="email"
+                placeholder="satoshi@protonmail.com"
+                required
+                aria-describedby="newsletter-privacy"
+              />
+              <button type="submit" class="btn btn-primary btn-lg">
+                Subscribe
+              </button>
+            </div>
+            <p id="newsletter-privacy" class="newsletter-privacy">
+              🔒 No spam. No data selling. Delivered via <a href="https://buttondown.com" target="_blank" rel="noopener noreferrer">Buttondown</a>.
+              Typically one email per week.
+            </p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  /* ═══════════════════════════════════════════
+     HERO SECTION
+     ═══════════════════════════════════════════ */
+  .hero {
+    position: relative;
+    padding: 6rem 0 5rem;
+    overflow: hidden;
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background: linear-gradient(
+      160deg,
+      var(--bg-primary) 0%,
+      #0a1628 30%,
+      #0f1f3d 60%,
+      #0a0f1a 100%
+    );
+  }
+
+  .hero-grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(88, 166, 255, 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(88, 166, 255, 0.03) 1px, transparent 1px);
+    background-size: 60px 60px;
+    mask-image: radial-gradient(ellipse 80% 70% at 50% 40%, black 30%, transparent 100%);
+    -webkit-mask-image: radial-gradient(ellipse 80% 70% at 50% 40%, black 30%, transparent 100%);
+  }
+
+  .hero-orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.35;
+    animation: orbFloat 12s ease-in-out infinite;
+  }
+
+  .hero-orb--1 {
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, #58a6ff 0%, transparent 70%);
+    top: -10%;
+    right: -5%;
+    animation-delay: 0s;
+  }
+
+  .hero-orb--2 {
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, #d2a8ff 0%, transparent 70%);
+    bottom: -15%;
+    left: -5%;
+    animation-delay: -4s;
+  }
+
+  .hero-orb--3 {
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, #3fb950 0%, transparent 70%);
+    top: 40%;
+    left: 40%;
+    opacity: 0.15;
+    animation-delay: -8s;
+  }
+
+  @keyframes orbFloat {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    33% { transform: translate(20px, -30px) scale(1.05); }
+    66% { transform: translate(-15px, 20px) scale(0.95); }
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 800px;
+  }
+
+  .hero-badge {
+    display: inline-block;
+    padding: 0.4rem 1rem;
+    background: rgba(88, 166, 255, 0.1);
+    border: 1px solid rgba(88, 166, 255, 0.25);
+    border-radius: 999px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--accent-primary);
+    margin-bottom: 1.5rem;
+    letter-spacing: 0.02em;
+  }
+
+  .hero-title {
+    font-size: clamp(2.25rem, 6vw, 3.75rem);
+    font-weight: 800;
+    line-height: 1.15;
+    margin-bottom: 1.5rem;
+    letter-spacing: -0.02em;
+  }
+
+  .hero-gradient-text {
+    background: linear-gradient(135deg, #58a6ff, #d2a8ff, #3fb950);
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradientShift 8s ease infinite;
+  }
+
+  @keyframes gradientShift {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+  }
+
+  .hero-subtitle {
+    font-size: clamp(1.05rem, 2.5vw, 1.25rem);
+    color: var(--text-secondary);
+    line-height: 1.75;
+    margin-bottom: 2rem;
+    max-width: 680px;
+  }
+
+  .hero-cta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  .btn-lg {
+    padding: 0.8rem 1.75rem;
+    font-size: 1.05rem;
+  }
+
+  .hero-trust {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.8125rem;
+    color: var(--text-tertiary);
+    margin-bottom: 0;
+  }
+
+  .hero-trust-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--accent-secondary);
+    display: inline-block;
+    animation: pulse 2s ease-in-out infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(63, 185, 80, 0.4); }
+    50% { opacity: 0.7; box-shadow: 0 0 0 6px rgba(63, 185, 80, 0); }
+  }
+
+  /* ═══════════════════════════════════════════
+     ERA CARDS
+     ═══════════════════════════════════════════ */
+  .section-header {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 3rem;
+  }
+
+  .section-lead {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    line-height: 1.75;
+  }
+
+  .era-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .era-card {
+    display: flex;
+    flex-direction: column;
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: var(--radius-xl);
+    padding: 2rem;
+    text-decoration: none;
+    color: inherit;
+    transition: transform var(--transition-base), box-shadow var(--transition-base), border-color var(--transition-base);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .era-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+    opacity: 0;
+    transition: opacity var(--transition-base);
+  }
+
+  .era-card--origins::before { background: linear-gradient(90deg, #f0883e, #d29922); }
+  .era-card--present::before { background: linear-gradient(90deg, #58a6ff, #3fb950); }
+  .era-card--future::before { background: linear-gradient(90deg, #d2a8ff, #f778ba); }
+
+  .era-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+    text-decoration: none;
+  }
+
+  .era-card:hover::before {
+    opacity: 1;
+  }
+
+  .era-card:focus-visible {
+    outline: 2px solid var(--accent-primary);
+    outline-offset: 2px;
+  }
+
+  .era-card-icon {
+    position: relative;
+    width: 56px;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+  }
+
+  .era-emoji {
+    font-size: 2rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  .era-icon-glow {
+    position: absolute;
+    inset: -4px;
+    border-radius: 50%;
+    filter: blur(12px);
+    opacity: 0.3;
+  }
+
+  .era-icon-glow--origins { background: #d29922; }
+  .era-icon-glow--present { background: #58a6ff; }
+  .era-icon-glow--future { background: #d2a8ff; }
+
+  .era-card-epoch {
+    font-family: var(--font-mono);
+    font-size: 0.8125rem;
+    color: var(--text-tertiary);
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+  }
+
+  .era-card-title {
+    font-size: 1.375rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .era-card-desc {
+    font-size: 0.9375rem;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    flex-grow: 1;
+  }
+
+  .era-card-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-weight: 600;
+    font-size: 0.9375rem;
+    color: var(--accent-primary);
+    margin-top: 1.25rem;
+    transition: gap var(--transition-fast);
+  }
+
+  .era-card:hover .era-card-link {
+    gap: 0.65rem;
+  }
+
+  /* ═══════════════════════════════════════════
+     MANIFESTO / WHY THIS SITE
+     ═══════════════════════════════════════════ */
+  .manifesto-layout {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    align-items: start;
+  }
+
+  @media (min-width: 900px) {
+    .manifesto-layout {
+      grid-template-columns: 1.4fr 1fr;
+      gap: 4rem;
+    }
+  }
+
+  .manifesto-lead {
+    font-size: 1.15rem;
+    line-height: 1.8;
+    color: var(--text-secondary);
+    margin-bottom: 2rem;
+  }
+
+  .manifesto-points {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .manifesto-point {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+
+  .manifesto-point-icon {
+    font-size: 1.5rem;
+    flex-shrink: 0;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--bg-tertiary);
+    border-radius: var(--radius-md);
+  }
+
+  .manifesto-point h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.35rem;
+  }
+
+  .manifesto-point p {
+    font-size: 0.9375rem;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    margin-bottom: 0;
+  }
+
+  .manifesto-callout {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .manifesto-callout .callout p {
+    font-size: 0.9375rem;
+    line-height: 1.7;
+    margin-bottom: 0;
+  }
+
+  /* ═══════════════════════════════════════════
+     STATS
+     ═══════════════════════════════════════════ */
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+
+  @media (min-width: 768px) {
+    .stats-grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  .stat-card {
+    text-align: center;
+    padding: 2rem 1rem;
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: var(--radius-lg);
+    transition: border-color var(--transition-base);
+  }
+
+  .stat-card:hover {
+    border-color: var(--accent-primary);
+  }
+
+  .stat-number {
+    font-size: clamp(2.5rem, 5vw, 3.5rem);
+    font-weight: 800;
+    line-height: 1;
+    margin-bottom: 0.5rem;
+    background: linear-gradient(135deg, var(--accent-primary), var(--accent-tertiary));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .stat-label {
+    font-weight: 700;
+    font-size: 1rem;
+    color: var(--text-primary);
+    margin-bottom: 0.35rem;
+  }
+
+  .stat-detail {
+    font-size: 0.8125rem;
+    color: var(--text-tertiary);
+    line-height: 1.5;
+  }
+
+  /* ═══════════════════════════════════════════
+     FEATURED RESOURCES
+     ═══════════════════════════════════════════ */
+  .resource-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .resource-card {
+    display: flex;
+    flex-direction: column;
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: var(--radius-xl);
+    padding: 2rem;
+    text-decoration: none;
+    color: inherit;
+    transition: transform var(--transition-base), box-shadow var(--transition-base), border-color var(--transition-base);
+  }
+
+  .resource-card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-md);
+    border-color: var(--accent-primary);
+    text-decoration: none;
+  }
+
+  .resource-card:focus-visible {
+    outline: 2px solid var(--accent-primary);
+    outline-offset: 2px;
+  }
+
+  .resource-icon {
+    font-size: 2.25rem;
+    margin-bottom: 1rem;
+  }
+
+  .resource-title {
+    font-size: 1.25rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .resource-desc {
+    font-size: 0.9375rem;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    flex-grow: 1;
+    margin-bottom: 1.25rem;
+  }
+
+  .resource-tag {
+    align-self: flex-start;
+  }
+
+  /* ═══════════════════════════════════════════
+     NEWSLETTER
+     ═══════════════════════════════════════════ */
+  .newsletter {
+    padding-bottom: 5rem;
+  }
+
+  .newsletter-card {
+    background: linear-gradient(135deg, var(--bg-secondary), var(--bg-tertiary));
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-xl);
+    padding: 3rem 2rem;
+    text-align: center;
+    max-width: 680px;
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .newsletter-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--accent-primary), var(--accent-tertiary), var(--accent-secondary));
+  }
+
+  .newsletter-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .newsletter-card h2 {
+    font-size: clamp(1.5rem, 3.5vw, 2rem);
+    margin-bottom: 1rem;
+  }
+
+  .newsletter-desc {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    line-height: 1.75;
+    margin-bottom: 2rem;
+    max-width: 540px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .newsletter-form {
+    max-width: 480px;
+    margin: 0 auto;
+  }
+
+  .newsletter-input-group {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .newsletter-input-group input {
+    flex: 1;
+    min-width: 0;
+    background: var(--bg-primary);
+  }
+
+  .newsletter-input-group .btn {
+    flex-shrink: 0;
+    white-space: nowrap;
+  }
+
+  .newsletter-privacy {
+    font-size: 0.8125rem;
+    color: var(--text-tertiary);
+    margin-bottom: 0;
+  }
+
+  .newsletter-privacy a {
+    color: var(--text-secondary);
+    text-decoration: underline;
+  }
+
+  /* ═══════════════════════════════════════════
+     RESPONSIVE
+     ═══════════════════════════════════════════ */
+  @media (max-width: 640px) {
+    .hero {
+      padding: 4rem 0 3rem;
+      min-height: auto;
+    }
+
+    .hero-title {
+      font-size: 2rem;
+    }
+
+    .hero-cta {
+      flex-direction: column;
+    }
+
+    .hero-cta .btn {
+      width: 100%;
+      justify-content: center;
+    }
+
+    .hero-trust {
+      flex-wrap: wrap;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .era-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .resource-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .stats-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+    }
+
+    .stat-card {
+      padding: 1.5rem 0.75rem;
+    }
+
+    .newsletter-card {
+      padding: 2rem 1.25rem;
+    }
+
+    .newsletter-input-group {
+      flex-direction: column;
+    }
+
+    .newsletter-input-group .btn {
+      width: 100%;
+      justify-content: center;
+    }
+  }
+
+  /* ═══════════════════════════════════════════
+     PRINT
+     ═══════════════════════════════════════════ */
+  @media print {
+    .hero {
+      min-height: auto;
+      padding: 2rem 0;
+    }
+
+    .hero-bg {
+      display: none;
+    }
+
+    .hero-gradient-text {
+      -webkit-text-fill-color: initial;
+      background: none;
+      color: inherit;
+    }
+
+    .hero-badge,
+    .hero-trust,
+    .hero-cta,
+    .newsletter {
+      display: none;
+    }
+
+    .stat-number {
+      -webkit-text-fill-color: initial;
+      background: none;
+      color: inherit;
+    }
+
+    .era-card,
+    .resource-card,
+    .stat-card {
+      break-inside: avoid;
+    }
+  }
+
+  /* ═══════════════════════════════════════════
+     REDUCED MOTION
+     ═══════════════════════════════════════════ */
+  @media (prefers-reduced-motion: reduce) {
+    .hero-orb {
+      animation: none;
+    }
+
+    .hero-gradient-text {
+      animation: none;
+    }
+
+    .hero-trust-dot {
+      animation: none;
+    }
+
+    .era-card:hover {
+      transform: none;
+    }
+
+    .resource-card:hover {
+      transform: none;
+    }
+  }
+</style>

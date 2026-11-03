@@ -1,0 +1,138 @@
+---
+// Ticker.astro — Live crypto market ticker (top 10 by market cap)
+// Uses CoinGecko free API, falls back to static data if blocked
+---
+
+<div class="ticker" role="marquee" aria-label="Live cryptocurrency prices">
+  <div class="ticker-track" id="ticker-track">
+    <span class="ticker-loading">Loading market data...</span>
+  </div>
+</div>
+
+<style>
+  .ticker {
+    background: var(--bg-secondary);
+    border-bottom: 1px solid var(--border-color);
+    overflow: hidden;
+    padding: 0.5rem 0;
+    font-size: 0.8125rem;
+    font-family: var(--font-mono);
+  }
+
+  .ticker-track {
+    display: flex;
+    gap: 2rem;
+    white-space: nowrap;
+    animation: scroll 40s linear infinite;
+    width: max-content;
+  }
+
+  .ticker-track:hover {
+    animation-play-state: paused;
+  }
+
+  .ticker-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--text-secondary);
+  }
+
+  .ticker-symbol {
+    font-weight: 700;
+    color: var(--text-primary);
+  }
+
+  .ticker-price {
+    color: var(--text-primary);
+  }
+
+  .ticker-change {
+    font-weight: 600;
+  }
+
+  .ticker-change.up {
+    color: var(--accent-secondary);
+  }
+
+  .ticker-change.down {
+    color: var(--danger-border);
+  }
+
+  .ticker-loading {
+    color: var(--text-tertiary);
+    padding: 0 1rem;
+  }
+
+  @keyframes scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  @media print {
+    .ticker { display: none; }
+  }
+</style>
+
+<script>
+  const fallbackData = [
+    { symbol: 'BTC', name: 'Bitcoin', price: 97250, change: 2.4 },
+    { symbol: 'ETH', name: 'Ethereum', price: 3680, change: 1.8 },
+    { symbol: 'BNB', name: 'BNB', price: 635, change: -0.5 },
+    { symbol: 'SOL', name: 'Solana', price: 178, change: 4.2 },
+    { symbol: 'XRP', name: 'XRP', price: 0.63, change: 1.1 },
+    { symbol: 'ADA', name: 'Cardano', price: 0.58, change: -1.2 },
+    { symbol: 'AVAX', name: 'Avalanche', price: 42.5, change: 3.1 },
+    { symbol: 'DOT', name: 'Polkadot', price: 8.2, change: -0.8 },
+    { symbol: 'MATIC', name: 'Polygon', price: 1.12, change: 2.7 },
+    { symbol: 'LINK', name: 'Chainlink', price: 18.6, change: 1.5 },
+  ];
+
+  function renderTicker(data) {
+    const track = document.getElementById('ticker-track');
+    if (!track) return;
+
+    const items = data.map(coin => {
+      const changeClass = coin.change >= 0 ? 'up' : 'down';
+      const changePrefix = coin.change >= 0 ? '+' : '';
+      const priceStr = coin.price >= 1
+        ? `\$${coin.price.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`
+        : `\$${coin.price.toFixed(4)}`;
+      return `<span class="ticker-item">
+        <span class="ticker-symbol">${coin.symbol}</span>
+        <span class="ticker-price">${priceStr}</span>
+        <span class="ticker-change ${changeClass}">${changePrefix}${coin.change.toFixed(1)}%</span>
+      </span>`;
+    }).join('');
+
+    // Duplicate for seamless loop
+    track.innerHTML = items + items;
+  }
+
+  async function fetchPrices() {
+    try {
+      const res = await fetch(
+        'https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=10&page=1&sparkline=false&price_change_percentage=24h',
+        { signal: AbortSignal.timeout(5000) }
+      );
+      if (!res.ok) throw new Error('API error');
+      const coins = await res.json();
+      return coins.map(c => ({
+        symbol: c.symbol.toUpperCase(),
+        name: c.name,
+        price: c.current_price,
+        change: c.price_change_percentage_24h || 0,
+      }));
+    } catch {
+      return null;
+    }
+  }
+
+  async function init() {
+    const live = await fetchPrices();
+    renderTicker(live || fallbackData);
+  }
+
+  init();
+</script>
+

@@ -1,0 +1,1423 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+const base = import.meta.env.BASE_URL;
+---
+
+<BaseLayout
+  title="Era 1: How It Started (2008–2016)"
+  description="The origins of cryptocurrency — from the Cypherpunk movement and pre-Bitcoin experiments through the birth of Bitcoin, early adoption stories, and the altcoin explosion that followed."
+>
+
+  <!-- ============================== HERO ============================== -->
+  <section class="hero" aria-labelledby="hero-heading">
+    <div class="container">
+      <span class="hero__era-badge">Era 1 of 4</span>
+      <h1 id="hero-heading">How It All Started: The Origins of Cryptocurrency&nbsp;(2008–2016)</h1>
+      <p class="hero__subtitle">
+        Before Bitcoin, there were decades of failed experiments, brilliant cryptographers, and stubborn idealists
+        who refused to accept that money had to be controlled by governments. This is the story of how a pseudonymous
+        coder finally cracked the puzzle — and why everything that came after was built on the shoulders of those
+        who tried first.
+      </p>
+
+      <!-- Timeline Bar -->
+      <nav class="timeline-bar" aria-label="Key years in Era 1">
+        <ol class="timeline-bar__list">
+          <li class="timeline-bar__item">
+            <a href="#cypherpunks" class="timeline-bar__link">
+              <span class="timeline-bar__year">1989–2004</span>
+              <span class="timeline-bar__label">Cypherpunks</span>
+            </a>
+          </li>
+          <li class="timeline-bar__item timeline-bar__item--highlight">
+            <a href="#whitepaper" class="timeline-bar__link">
+              <span class="timeline-bar__year">2008</span>
+              <span class="timeline-bar__label">Whitepaper</span>
+            </a>
+          </li>
+          <li class="timeline-bar__item">
+            <a href="#genesis" class="timeline-bar__link">
+              <span class="timeline-bar__year">2009</span>
+              <span class="timeline-bar__label">Genesis Block</span>
+            </a>
+          </li>
+          <li class="timeline-bar__item">
+            <a href="#early-adoption" class="timeline-bar__link">
+              <span class="timeline-bar__year">2010–2013</span>
+              <span class="timeline-bar__label">Early Adoption</span>
+            </a>
+          </li>
+          <li class="timeline-bar__item">
+            <a href="#altcoins" class="timeline-bar__link">
+              <span class="timeline-bar__year">2011–2015</span>
+              <span class="timeline-bar__label">Altcoins</span>
+            </a>
+          </li>
+          <li class="timeline-bar__item">
+            <a href="#dao-hack" class="timeline-bar__link">
+              <span class="timeline-bar__year">2016</span>
+              <span class="timeline-bar__label">The DAO</span>
+            </a>
+          </li>
+        </ol>
+      </nav>
+    </div>
+  </section>
+
+  <!-- =================== SECTION 1: CYPHERPUNK MOVEMENT =================== -->
+  <section class="era-section" id="cypherpunks" aria-labelledby="cypherpunks-heading">
+    <div class="container">
+      <div class="timeline-section">
+        <div class="timeline-track" aria-hidden="true">
+          <span class="timeline-track__dot"></span>
+          <span class="timeline-track__line"></span>
+        </div>
+        <div class="timeline-content">
+          <span class="era-section__date">1989 – 2004</span>
+          <h2 id="cypherpunks-heading">The Cypherpunk Movement &amp; Pre-Bitcoin Attempts</h2>
+          <p class="era-section__intro">
+            Bitcoin didn't appear in a vacuum. For nearly two decades before Satoshi Nakamoto published the
+            whitepaper, a loose network of cryptographers, libertarian hackers, and computer scientists had
+            been trying to build digital cash. They all wrestled with the same fundamental question: <strong>how
+            do you create money that no single entity controls?</strong>
+          </p>
+          <p>
+            Here's the thing most people get wrong about crypto history — they start with Bitcoin. But if you
+            truly want to understand <em>why</em> Bitcoin works, you need to understand why everything before
+            it failed. Each failure taught the next builder what to avoid.
+          </p>
+
+          <!-- DigiCash -->
+          <article class="milestone-card">
+            <div class="milestone-card__header">
+              <span class="milestone-card__year">1989</span>
+              <h3 class="milestone-card__title">David Chaum's DigiCash</h3>
+            </div>
+            <p>
+              David Chaum, a UC Berkeley cryptographer, launched DigiCash — the first serious attempt at
+              creating anonymous digital cash. His system used a cryptographic technique called "blind
+              signatures," which let users prove they had money without revealing their identity to the
+              bank processing the transaction. Think of it like signing a check inside a sealed carbon-copy
+              envelope — the bank stamps it without seeing what's inside.
+            </p>
+            <p>
+              DigiCash was genuinely ahead of its time. Chaum had deals on the table with major banks
+              including ING and Deutsche Bank. But he was reportedly difficult to negotiate with, and
+              ultimately turned down a deal with Microsoft that could have integrated DigiCash into every
+              copy of Windows 95. The company filed for bankruptcy in 1998.
+            </p>
+            <p>
+              <strong>Why it failed:</strong> Centralized — DigiCash Inc. was the single point of failure. When the
+              company went under, the currency died with it. This is the cardinal lesson that echoed through
+              every subsequent attempt.
+            </p>
+          </article>
+
+          <!-- e-gold -->
+          <article class="milestone-card">
+            <div class="milestone-card__header">
+              <span class="milestone-card__year">1996</span>
+              <h3 class="milestone-card__title">e-gold</h3>
+            </div>
+            <p>
+              Douglas Jackson, a Florida oncologist with no formal background in finance, launched e-gold — a
+              digital currency backed by real gold stored in vaults in London and Dubai. At its peak in 2006,
+              e-gold processed over $2 billion worth of transactions annually and had more than 5 million
+              accounts. It was, by any measure, the first successful digital currency.
+            </p>
+            <p>
+              The problem? Because e-gold didn't require identity verification, it became a magnet for money
+              launderers, carders (stolen credit card traders), and Ponzi scheme operators. In 2007, the U.S.
+              Department of Justice indicted Jackson and his partners for operating an unlicensed money
+              transmitting business and facilitating money laundering.
+            </p>
+            <p>
+              <strong>Why it failed:</strong> Centralized company, centralized gold reserves, and ultimately
+              centralized legal liability. The government shut down the servers, and everyone's money became
+              inaccessible. If a government can seize your servers and freeze your vaults, you haven't really
+              invented independent money.
+            </p>
+          </article>
+
+          <div class="callout callout--teaching">
+            <p class="callout-title">🎓 Teaching Moment</p>
+            <p>
+              The e-gold story is one I come back to every year when teaching new students. It perfectly
+              illustrates the difference between "digital money" and "decentralized money." E-gold was
+              digital — you could send it over the internet. But it was not decentralized — one company
+              controlled everything. When regulators came knocking, there was a door to knock on. Bitcoin's
+              fundamental design insight was: <strong>eliminate the door entirely.</strong>
+            </p>
+          </div>
+
+          <!-- Hashcash -->
+          <article class="milestone-card">
+            <div class="milestone-card__header">
+              <span class="milestone-card__year">1997</span>
+              <h3 class="milestone-card__title">Adam Back's Hashcash</h3>
+            </div>
+            <p>
+              Adam Back, a British cryptographer, invented Hashcash as an anti-spam measure. The idea was
+              elegant: to send an email, your computer had to solve a small computational puzzle first. This
+              "proof of work" took a fraction of a second for a normal user sending a few emails, but made
+              mass-spamming prohibitively expensive because a spammer sending millions of emails would need
+              massive computing power.
+            </p>
+            <p>
+              Hashcash wasn't a currency, but it introduced the concept that would become the backbone of
+              Bitcoin: <strong>proof of work</strong>. The idea that computational effort could serve as a scarce,
+              unforgeable resource was revolutionary. Satoshi Nakamoto directly cited Hashcash in the Bitcoin
+              whitepaper and adapted its proof-of-work mechanism as the consensus algorithm for mining.
+            </p>
+            <p>
+              <strong>Legacy:</strong> Adam Back went on to co-found Blockstream, one of the most influential
+              Bitcoin development companies. He is, to this day, one of the few people some speculate
+              could be Satoshi Nakamoto — though Back denies it.
+            </p>
+          </article>
+
+          <!-- b-money and Bit Gold -->
+          <article class="milestone-card">
+            <div class="milestone-card__header">
+              <span class="milestone-card__year">1998</span>
+              <h3 class="milestone-card__title">Wei Dai's b-money &amp; Nick Szabo's Bit Gold</h3>
+            </div>
+            <p>
+              In 1998, two proposals appeared almost simultaneously that came remarkably close to inventing
+              Bitcoin a decade early.
+            </p>
+            <p>
+              <strong>Wei Dai's b-money</strong> proposed a system where participants would maintain their own
+              ledgers of account balances and use proof of work to create money. It described both a fully
+              decentralized version (where every participant tracks every transaction) and a more practical
+              version with designated servers — eerily foreshadowing both Bitcoin's full-node model and
+              later light-client approaches.
+            </p>
+            <p>
+              <strong>Nick Szabo's Bit Gold</strong> went even further. Szabo proposed that proof-of-work puzzles
+              could be chained together, with each solution timestamped and dependent on the previous one.
+              He described a decentralized property registry to track ownership. Sound familiar? It should —
+              this is essentially a blockchain, described seven years before the word existed.
+            </p>
+            <p>
+              <strong>Why they remained theoretical:</strong> Neither b-money nor Bit Gold solved the "Byzantine
+              Generals Problem" — how do you get a distributed network to agree on a single version of truth
+              when some participants might be dishonest or offline? Both proposals acknowledged this problem
+              but didn't provide a complete, implementable solution. That gap is exactly what Satoshi filled.
+            </p>
+          </article>
+
+          <div class="callout callout--misconception">
+            <p class="callout-title">❌ Common Misconception</p>
+            <p>
+              <strong>"Satoshi Nakamoto invented everything from scratch."</strong> This is flatly wrong. Satoshi
+              explicitly cited Hashcash, b-money, and earlier timestamping work in the whitepaper. The genius
+              of Bitcoin wasn't inventing new cryptographic primitives — it was combining existing ideas
+              (proof of work, hash chains, peer-to-peer networks, public-key cryptography) into a system that
+              actually worked. Satoshi was an extraordinary systems integrator, not necessarily a cryptographic
+              inventor. The references section of the whitepaper tells you exactly who came before.
+            </p>
+          </div>
+
+          <!-- Summary box -->
+          <div class="summary-box">
+            <h3>Why They All Failed — The Common Thread</h3>
+            <ul>
+              <li><strong>DigiCash:</strong> Single company controlled the system; company goes bankrupt, money disappears</li>
+              <li><strong>e-gold:</strong> Centralized reserves could be seized; no KYC attracted criminal use and regulatory action</li>
+              <li><strong>Hashcash:</strong> Proof of concept only — proved work could be a resource, but wasn't designed as currency</li>
+              <li><strong>b-money &amp; Bit Gold:</strong> Conceptually brilliant but never solved decentralized consensus in practice</li>
+            </ul>
+            <p>
+              Every pre-Bitcoin project had at least one of these fatal flaws: a central point of control that
+              could be shut down, a consensus mechanism that didn't work at scale, or it simply stayed on paper.
+              Bitcoin's breakthrough was finding a practical answer to all of these simultaneously.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =================== SECTION 2: BITCOIN WHITEPAPER =================== -->
+  <section class="era-section era-section--alt" id="whitepaper" aria-labelledby="whitepaper-heading">
+    <div class="container">
+      <div class="timeline-section">
+        <div class="timeline-track" aria-hidden="true">
+          <span class="timeline-track__dot timeline-track__dot--highlight"></span>
+          <span class="timeline-track__line"></span>
+        </div>
+        <div class="timeline-content">
+          <span class="era-section__date">October 31, 2008</span>
+          <h2 id="whitepaper-heading">The Bitcoin Whitepaper</h2>
+          <p class="era-section__intro">
+            On Halloween 2008 — while the world was reeling from the collapse of Lehman Brothers and the
+            worst financial crisis since the Great Depression — a pseudonymous figure calling themselves
+            <strong>Satoshi Nakamoto</strong> posted a nine-page document to the Cryptography Mailing List.
+            The subject line read: <em>"Bitcoin: A Peer-to-Peer Electronic Cash System."</em>
+          </p>
+          <p>
+            That nine-page paper is, in my opinion, one of the most consequential documents of the 21st
+            century. Not because of its length or complexity — it's actually remarkably readable — but
+            because it solved a problem that computer scientists had been stuck on for decades: how to
+            create digital scarcity without a central authority.
+          </p>
+
+          <div class="whitepaper-breakdown">
+            <h3>The Key Innovations, Explained Simply</h3>
+
+            <div class="innovation-card">
+              <div class="innovation-card__icon" aria-hidden="true">📒</div>
+              <div class="innovation-card__body">
+                <h4>The Decentralized Ledger (Blockchain)</h4>
+                <p>
+                  <strong>The analogy:</strong> Imagine a town where there's no bank, but every resident
+                  keeps an identical copy of a giant notebook that records every transaction ever made.
+                  When Alice pays Bob, she announces it to the whole town, and everyone writes it down.
+                  If someone tries to cheat by altering their copy, it won't match everyone else's, and
+                  the town ignores the forged version. That's a blockchain — a shared, append-only record
+                  that no single person controls.
+                </p>
+              </div>
+            </div>
+
+            <div class="innovation-card">
+              <div class="innovation-card__icon" aria-hidden="true">⛏️</div>
+              <div class="innovation-card__body">
+                <h4>Proof of Work (Mining)</h4>
+                <p>
+                  <strong>The analogy:</strong> Someone has to decide which transactions get written into
+                  the next page of that notebook, and when. Satoshi's answer: make them compete. Imagine
+                  the townspeople racing to solve a jigsaw puzzle. The first person to finish gets to write
+                  the next page and earns a reward (new coins). The puzzle is hard to solve but easy for
+                  everyone else to verify — you can instantly see a finished jigsaw is correct. This is
+                  mining, and it's how Bitcoin decides who adds the next block without needing a central
+                  authority to choose.
+                </p>
+              </div>
+            </div>
+
+            <div class="innovation-card">
+              <div class="innovation-card__icon" aria-hidden="true">🔄</div>
+              <div class="innovation-card__body">
+                <h4>The Double-Spend Solution</h4>
+                <p>
+                  <strong>The problem:</strong> Digital files can be copied. If I email you a photo, I still
+                  have the photo. So how do you prevent someone from spending the same digital coin twice?
+                  Before Bitcoin, the only answer was to have a central server track balances (like a bank).
+                </p>
+                <p>
+                  <strong>Satoshi's solution:</strong> By combining the blockchain (everyone sees every
+                  transaction) with proof of work (transactions are locked in by computational effort),
+                  it becomes practically impossible to spend the same coin twice. You'd have to redo all
+                  the computational work faster than the entire rest of the network — which, as the
+                  network grows, becomes astronomically unlikely.
+                </p>
+              </div>
+            </div>
+
+            <div class="innovation-card">
+              <div class="innovation-card__icon" aria-hidden="true">🔢</div>
+              <div class="innovation-card__body">
+                <h4>The 21 Million Cap</h4>
+                <p>
+                  Satoshi hard-coded a maximum supply of 21 million bitcoins into the protocol. New coins
+                  are created as mining rewards, but that reward halves approximately every four years
+                  (every 210,000 blocks). It started at 50 BTC per block in 2009, dropped to 25 in 2012,
+                  12.5 in 2016, 6.25 in 2020, and 3.125 in 2024. The last bitcoin will be mined around
+                  the year 2140.
+                </p>
+                <p>
+                  This fixed supply is what gives Bitcoin its "digital gold" narrative. Unlike dollars or
+                  euros, no government or central bank can decide to print more. The monetary policy is
+                  set in code, transparent, and unchangeable.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="callout callout--teaching">
+            <p class="callout-title">🎓 Teaching Moment</p>
+            <p>
+              I always tell students: the Bitcoin whitepaper is only nine pages. I've graded undergraduate
+              papers longer than that. If you're serious about understanding crypto, read it. You don't
+              need a PhD — Satoshi wrote it to be understood. The hardest concept (the proof-of-work
+              consensus mechanism) is explained in about two paragraphs. You can find it at
+              <strong>bitcoin.org/bitcoin.pdf</strong>. Reading the original source will teach you more than
+              a hundred Medium articles.
+            </p>
+          </div>
+
+          <!-- Genesis Block -->
+          <article class="milestone-card milestone-card--featured" id="genesis">
+            <div class="milestone-card__header">
+              <span class="milestone-card__year">Jan 3, 2009</span>
+              <h3 class="milestone-card__title">The Genesis Block</h3>
+            </div>
+            <p>
+              At 18:15:05 UTC on January 3, 2009, Satoshi Nakamoto mined the first-ever Bitcoin block —
+              Block 0, known as the Genesis Block. Embedded in its coinbase transaction was a message that
+              has become one of the most iconic texts in cryptocurrency history:
+            </p>
+            <blockquote class="genesis-quote">
+              "The Times 03/Jan/2009 Chancellor on brink of second bailout for banks"
+            </blockquote>
+            <p>
+              This was the headline from the front page of <em>The Times</em> of London that day. Whether
+              Satoshi included it as a timestamp proof (to show the block wasn't pre-mined before that date)
+              or as a political statement about why Bitcoin was needed — or both — has been debated endlessly.
+              I think it was clearly both. It simultaneously served a technical verification purpose and
+              made a pointed commentary on the failures of the existing financial system.
+            </p>
+            <p>
+              The Genesis Block had a quirk: its 50 BTC reward is unspendable due to a peculiarity in
+              the code (the transaction isn't in the spendable transaction database). Whether this was
+              intentional or a minor oversight by Satoshi has never been confirmed. Those 50 bitcoins
+              sit in their address to this day, untouched and untouchable.
+            </p>
+          </article>
+
+          <div class="callout callout--misconception">
+            <p class="callout-title">❌ Common Misconception</p>
+            <p>
+              <strong>"We know nothing about Satoshi Nakamoto."</strong> We actually know quite a lot from
+              the forensic trail. Satoshi posted on forums (bitcointalk.org), exchanged private emails with
+              developers like Hal Finney and Gavin Andresen, and wrote code in a specific style. From
+              timestamp analysis, Satoshi likely lived in a GMT-timezone and slept roughly British hours.
+              The writing style is fluent English with occasional British spellings ("colour," "favour").
+              What we don't know is their legal identity — and after over 15 years, it seems Satoshi wants
+              it that way.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =================== SECTION 3: EARLY ADOPTION =================== -->
+  <section class="era-section" id="early-adoption" aria-labelledby="adoption-heading">
+    <div class="container">
+      <div class="timeline-section">
+        <div class="timeline-track" aria-hidden="true">
+          <span class="timeline-track__dot"></span>
+          <span class="timeline-track__line"></span>
+        </div>
+        <div class="timeline-content">
+          <span class="era-section__date">2009 – 2014</span>
+          <h2 id="adoption-heading">Early Adoption Stories</h2>
+          <p class="era-section__intro">
+            A protocol is just theory until people actually use it. The early years of Bitcoin were defined
+            by a handful of true believers, one legendary pizza order, a dark marketplace that proved
+            digital cash actually worked, and a catastrophic exchange hack that taught the entire ecosystem
+            an expensive lesson about trust.
+          </p>
+
+          <!-- Hal Finney -->
+          <article class="milestone-card">
+            <div class="milestone-card__header">
+              <span class="milestone-card__year">Jan 12, 2009</span>
+              <h3 class="milestone-card__title">Hal Finney — The First Bitcoin Transaction</h3>
+            </div>
+            <p>
+              Nine days after the Genesis Block, cryptographer <strong>Hal Finney</strong> received 10 BTC from Satoshi
+              Nakamoto in what is considered the first-ever person-to-person Bitcoin transaction (Block 170).
+              Finney was a legendary figure in the cypherpunk community — he had worked at PGP Corporation,
+              created the first reusable proof-of-work system (RPOW) in 2004, and was one of the first people
+              to engage with Satoshi's proposal on the Cryptography Mailing List.
+            </p>
+            <p>
+              On January 11, 2009 — the day before his historic transaction — Finney posted on Twitter:
+              <em>"Running bitcoin."</em> Those two words are now considered one of the most historically
+              significant tweets in technology history.
+            </p>
+            <p>
+              Tragically, Finney was diagnosed with ALS (Lou Gehrig's disease) in 2009 and passed away on
+              August 28, 2014. He was cryopreserved by the Alcor Life Extension Foundation. His bitcoins
+              remain in cold storage. Finney is another individual who has been suggested as a possible
+              Satoshi (he lived just blocks from a man named Dorian Satoshi Nakamoto in Temple City,
+              California), but the evidence is circumstantial at best.
+            </p>
+          </article>
+
+          <!-- Pizza Day -->
+          <article class="milestone-card milestone-card--featured">
+            <div class="milestone-card__header">
+              <span class="milestone-card__year">May 22, 2010</span>
+              <h3 class="milestone-card__title">The Bitcoin Pizza — 10,000 BTC for Two Pies</h3>
+            </div>
+            <p>
+              On May 22, 2010, a programmer named <strong>Laszlo Hanyecz</strong> posted on the BitcoinTalk
+              forum offering 10,000 BTC to anyone who would order him two large pizzas. At the time, Bitcoin
+              had no established exchange rate, and those 10,000 BTC were worth roughly $41. A user named
+              "jercos" (Jeremy Sturdivant) took him up on the offer and ordered two Papa John's pizzas
+              delivered to Hanyecz's home in Jacksonville, Florida.
+            </p>
+            <p>
+              This event is now celebrated annually as <strong>"Bitcoin Pizza Day"</strong> on May 22nd. At
+              Bitcoin's all-time high near $69,000 in November 2021, those 10,000 BTC would have been worth
+              approximately <strong>$690 million</strong>. It's the most expensive pizza purchase in history
+              by an almost absurd margin.
+            </p>
+            <p>
+              But here's the nuance that the memes miss: Hanyecz doesn't regret it. As he later explained,
+              someone needed to establish that Bitcoin could be exchanged for real goods. Without people like
+              Laszlo willing to actually <em>spend</em> Bitcoin, it would have remained a curiosity on a
+              mailing list. This transaction proved that BTC had real economic utility. Someone had to go first.
+            </p>
+          </article>
+
+          <div class="callout callout--teaching">
+            <p class="callout-title">🎓 Teaching Moment</p>
+            <p>
+              Students always laugh at Laszlo, but I ask them this: if nobody ever spends a currency, is it
+              actually a currency? A "money" that everyone hoards and nobody uses is just a collectible.
+              The pizza transaction was economically rational at the time — 10,000 tokens with no established
+              value for two real pizzas was arguably a great deal for Laszlo. History is always 20/20, and the
+              fact that Bitcoin eventually became worth thousands per coin doesn't make his decision wrong in
+              context. <strong>Every new technology needs early adopters willing to use it before it's cool.</strong>
+            </p>
+          </div>
+
+          <!-- Silk Road -->
+          <article class="milestone-card">
+            <div class="milestone-card__header">
+              <span class="milestone-card__year">2011 – 2013</span>
+              <h3 class="milestone-card__title">Silk Road — The Dark Market That Proved Bitcoin Worked</h3>
+            </div>
+            <p>
+              In February 2011, <strong>Ross Ulbricht</strong>, operating under the pseudonym "Dread Pirate
+              Roberts," launched the Silk Road — an anonymous online marketplace accessible only through the
+              Tor network. It used Bitcoin as its exclusive currency. While the Silk Road sold everything from
+              books to art, it was overwhelmingly known for facilitating the sale of illegal drugs.
+            </p>
+            <p>
+              Here's the uncomfortable truth that the crypto industry doesn't always like to acknowledge: Silk
+              Road was, for a period, the single most important driver of Bitcoin demand. It provided Bitcoin
+              with its first real-world use case where BTC wasn't just a novelty — it was <em>necessary</em>.
+              You couldn't buy products on Silk Road with credit cards or PayPal. Bitcoin was the only option,
+              and that exclusivity drove adoption among a niche but economically active user base.
+            </p>
+            <p>
+              The FBI shut down Silk Road in October 2013 and arrested Ulbricht, who was later convicted on
+              charges including conspiracy to traffic narcotics, money laundering, and running a continuing
+              criminal enterprise. He was sentenced to life in prison without parole — a sentence many in the
+              crypto community have argued was disproportionately severe.
+            </p>
+            <p>
+              At the time of the seizure, the FBI confiscated approximately 144,000 BTC from Silk Road wallets.
+              The U.S. government later auctioned off these bitcoins in batches — venture capitalist Tim Draper
+              famously purchased nearly 30,000 BTC in one such auction in 2014.
+            </p>
+          </article>
+
+          <div class="callout callout--teaching">
+            <p class="callout-title">🎓 Teaching Moment</p>
+            <p>
+              The Silk Road story teaches a crucial lesson about technology neutrality. The internet itself was
+              once condemned because it enabled access to illegal content. Email was criticized because it
+              enabled fraud. Bitcoin is a tool — and like all tools, it can be used for both legitimate and
+              illegitimate purposes. Today, blockchain analytics firms like Chainalysis can actually trace Bitcoin
+              transactions far more effectively than cash, which is why Bitcoin has largely fallen out of favor
+              with sophisticated criminals who now prefer privacy coins or simply old-fashioned $100 bills.
+              <strong>Bitcoin's blockchain is a permanent, public record — it's actually terrible for crime.</strong>
+            </p>
+          </div>
+
+          <!-- Mt. Gox -->
+          <article class="milestone-card milestone-card--danger">
+            <div class="milestone-card__header">
+              <span class="milestone-card__year">Feb 2014</span>
+              <h3 class="milestone-card__title">Mt. Gox — The Catastrophic Exchange Collapse</h3>
+            </div>
+            <p>
+              Mt. Gox (short for "Magic: The Gathering Online eXchange" — yes, really — it started as a
+              trading card exchange) was the world's largest Bitcoin exchange from 2011 to 2014, handling
+              over 70% of all Bitcoin transactions at its peak.
+            </p>
+            <p>
+              In February 2014, Mt. Gox suddenly halted all withdrawals, went offline, and filed for bankruptcy.
+              CEO Mark Karpelès revealed that approximately <strong>850,000 BTC</strong> — worth around
+              $450 million at the time — had been stolen through a hack that had apparently been draining the
+              exchange for years without detection. About 200,000 BTC were later found in old wallets, reducing
+              the loss to approximately 650,000 BTC, but the damage was devastating.
+            </p>
+            <p>
+              Hundreds of thousands of users lost their funds. The Bitcoin price, which had risen from around $13
+              to over $1,100 in 2013, crashed below $400. Many mainstream commentators wrote Bitcoin's obituary.
+              The Mt. Gox bankruptcy proceedings dragged on for over a decade, with creditors finally beginning
+              to receive partial repayments in 2024.
+            </p>
+            <p>
+              The hack exploited a vulnerability related to "transaction malleability" — a subtle flaw in how
+              Bitcoin transaction IDs were calculated that allowed attackers to alter a transaction's ID after
+              it was broadcast but before it was confirmed. This made it possible to trick the exchange into
+              thinking withdrawals had failed and resending them. The fix for transaction malleability was
+              eventually incorporated into Bitcoin through the Segregated Witness (SegWit) upgrade in 2017.
+            </p>
+          </article>
+
+          <div class="callout callout--teaching">
+            <p class="callout-title">🎓 Teaching Moment</p>
+            <p>
+              Mt. Gox gave us the mantra that every Bitcoin veteran knows by heart: <strong>"Not your keys,
+              not your coins."</strong> When you leave cryptocurrency on an exchange, you don't actually hold
+              it — the exchange does. You have an IOU. If the exchange is hacked, goes bankrupt, or simply
+              decides to freeze your account, you have no recourse. This lesson was reinforced in 2022 when
+              FTX collapsed. Self-custody (holding your own private keys in a hardware wallet) is the only way
+              to truly own your cryptocurrency. It's less convenient, but Mt. Gox showed that convenience
+              comes with existential risk.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =================== SECTION 4: ALTCOIN EXPLOSION =================== -->
+  <section class="era-section era-section--alt" id="altcoins" aria-labelledby="altcoins-heading">
+    <div class="container">
+      <div class="timeline-section">
+        <div class="timeline-track" aria-hidden="true">
+          <span class="timeline-track__dot"></span>
+          <span class="timeline-track__line"></span>
+        </div>
+        <div class="timeline-content">
+          <span class="era-section__date">2011 – 2016</span>
+          <h2 id="altcoins-heading">The Altcoin Explosion</h2>
+          <p class="era-section__intro">
+            Once Satoshi proved that decentralized digital money was possible, the obvious next question was:
+            can we build something better? Or at least <em>different?</em> Between 2011 and 2016, hundreds
+            of alternative cryptocurrencies (altcoins) launched, each claiming to improve on Bitcoin in some
+            way. Most were worthless clones. A few genuinely changed the industry.
+          </p>
+
+          <!-- Namecoin -->
+          <article class="milestone-card">
+            <div class="milestone-card__header">
+              <span class="milestone-card__year">Apr 2011</span>
+              <h3 class="milestone-card__title">Namecoin — The First Altcoin</h3>
+            </div>
+            <p>
+              Namecoin holds the distinction of being the first-ever alternative cryptocurrency, launched in
+              April 2011 as a fork of Bitcoin's code. But it wasn't just a copy — Namecoin had a genuinely
+              novel purpose. It aimed to create a decentralized domain name system (DNS) that couldn't be
+              censored by governments or ICANN. Domains ending in <code>.bit</code> were registered directly
+              on the Namecoin blockchain.
+            </p>
+            <p>
+              The project demonstrated that blockchain technology could be used for more than just money —
+              it could store and transfer arbitrary data, like domain name registrations. While Namecoin
+              itself never achieved widespread adoption (the <code>.bit</code> domains aren't recognized
+              by standard browsers), its concept influenced everything from Ethereum's naming service (ENS)
+              to Handshake and Unstoppable Domains.
+            </p>
+          </article>
+
+          <!-- Litecoin -->
+          <article class="milestone-card">
+            <div class="milestone-card__header">
+              <span class="milestone-card__year">Oct 2011</span>
+              <h3 class="milestone-card__title">Litecoin — "Silver to Bitcoin's Gold"</h3>
+            </div>
+            <p>
+              Charlie Lee, a former Google engineer, launched Litecoin in October 2011 with a clear pitch:
+              it was Bitcoin, but faster and lighter. Litecoin used a different mining algorithm (Scrypt
+              instead of SHA-256), produced blocks every 2.5 minutes instead of Bitcoin's 10, and had a
+              maximum supply of 84 million coins (4x Bitcoin's cap).
+            </p>
+            <p>
+              Lee famously positioned Litecoin as the "silver to Bitcoin's gold" — a complement, not a
+              competitor. It was meant for smaller, everyday transactions where Bitcoin's slower confirmation
+              times and higher fees were impractical. Litecoin also served as a testing ground for Bitcoin
+              improvements — it adopted SegWit before Bitcoin did, demonstrating the upgrade's viability
+              at scale.
+            </p>
+            <p>
+              Litecoin remains one of the longest-surviving altcoins, which in cryptocurrency is itself an
+              achievement. The vast majority of altcoins launched in this era are dead.
+            </p>
+          </article>
+
+          <!-- Ripple/XRP -->
+          <article class="milestone-card">
+            <div class="milestone-card__header">
+              <span class="milestone-card__year">2012</span>
+              <h3 class="milestone-card__title">Ripple / XRP — The Bank-Friendly Heresy</h3>
+            </div>
+            <p>
+              If Bitcoin was born from cypherpunk ideology — distrust of banks, rejection of central control —
+              then Ripple was its philosophical opposite. Founded by Chris Larsen and Jed McCaleb, Ripple
+              Labs created XRP and the RippleNet protocol specifically to serve banks and financial
+              institutions.
+            </p>
+            <p>
+              Rather than replacing the banking system, Ripple aimed to make cross-border bank transfers
+              faster and cheaper. Traditional international wire transfers via SWIFT can take 3–5 business
+              days and cost $25–50. Ripple's protocol promised settlement in 3–5 <em>seconds</em> at a
+              fraction of a penny.
+            </p>
+            <p>
+              The crypto purist community never fully accepted XRP. It was pre-mined (all 100 billion XRP
+              were created at launch, with Ripple Labs retaining roughly 60% in escrow), it didn't use
+              proof of work, and it was controlled by a corporation. In December 2020, the SEC sued Ripple
+              Labs alleging that XRP was an unregistered security — a case that became a landmark battle
+              in crypto regulation and was substantially resolved in Ripple's favor regarding secondary
+              market sales in 2023.
+            </p>
+          </article>
+
+          <div class="callout callout--misconception">
+            <p class="callout-title">❌ Common Misconception</p>
+            <p>
+              <strong>"All cryptocurrencies are trying to replace government money."</strong> Not even close.
+              Ripple/XRP was designed to help banks move money faster. Namecoin was about domain names.
+              Ethereum (coming next) was about programmable contracts. The cryptocurrency ecosystem is far
+              more diverse than "internet money." Different projects have wildly different goals, designs,
+              and philosophies. Evaluating every crypto project by whether it's "better money than Bitcoin"
+              misses the point for the vast majority of them.
+            </p>
+          </div>
+
+          <!-- Ethereum -->
+          <article class="milestone-card milestone-card--featured">
+            <div class="milestone-card__header">
+              <span class="milestone-card__year">Jul 30, 2015</span>
+              <h3 class="milestone-card__title">Ethereum — The Smart Contracts Revolution</h3>
+            </div>
+            <p>
+              In late 2013, a 19-year-old Russian-Canadian programmer named <strong>Vitalik Buterin</strong>
+              published a whitepaper proposing a blockchain that could do more than just track money. Bitcoin's
+              scripting language was deliberately limited — Satoshi designed it that way for security. Buterin
+              argued that a blockchain with a Turing-complete programming language could serve as a "world
+              computer" — a decentralized platform where anyone could deploy applications that run exactly as
+              programmed, without any possibility of censorship, downtime, or third-party interference.
+            </p>
+            <p>
+              After a wildly successful crowdsale in mid-2014 that raised approximately 31,500 BTC (around
+              $18 million at the time), Ethereum launched its mainnet on July 30, 2015. The name "Ethereum"
+              was inspired by the concept of the "luminiferous ether" — a hypothetical medium that
+              19th-century physicists believed permeated all of space.
+            </p>
+            <p>
+              <strong>The key innovation was the smart contract.</strong> A smart contract is a program that
+              lives on the blockchain and automatically executes when predefined conditions are met. Think of
+              it as a vending machine made of code: you insert the right input (coins + selection), and the
+              machine <em>must</em> give you the output (your snack). No human is needed to "approve" the
+              transaction. No one can override it. The code is the final authority.
+            </p>
+            <p>
+              This unlocked entirely new categories of application: decentralized exchanges, lending platforms,
+              NFTs, DAOs (decentralized autonomous organizations), and eventually the entire DeFi (decentralized
+              finance) ecosystem. Ethereum didn't just add a feature to cryptocurrency — it expanded what
+              blockchain technology could fundamentally be used for.
+            </p>
+          </article>
+
+          <!-- The DAO -->
+          <article class="milestone-card milestone-card--danger" id="dao-hack">
+            <div class="milestone-card__header">
+              <span class="milestone-card__year">Jun 2016</span>
+              <h3 class="milestone-card__title">The DAO Hack — $60 Million and a Fork in the Road</h3>
+            </div>
+            <p>
+              Less than a year after Ethereum's launch came its first existential crisis. In April 2016, a
+              project called "The DAO" (Decentralized Autonomous Organization) launched on Ethereum — essentially
+              a crowdfunded venture capital fund controlled entirely by smart contract code. Token holders could
+              vote on which projects to fund. It raised a staggering 12.7 million ETH (approximately $150 million
+              at the time), making it the largest crowdfund in history at that point.
+            </p>
+            <p>
+              On June 17, 2016, an attacker exploited a vulnerability in The DAO's smart contract code — a
+              "reentrancy bug" that allowed them to repeatedly withdraw funds before the contract updated its
+              balance. Over several hours, the attacker drained approximately 3.6 million ETH (~$60 million)
+              into a child contract they controlled.
+            </p>
+            <p>
+              The Ethereum community faced an agonizing choice: do nothing and let the attacker keep the money
+              (preserving the principle that "code is law" and the blockchain is immutable), or roll back the
+              transaction by forking the blockchain (saving the money but setting a precedent that the community
+              could override smart contract outcomes when they didn't like the result).
+            </p>
+            <p>
+              After heated debate, the community voted to hard fork. On July 20, 2016, Ethereum split into two
+              chains: <strong>Ethereum (ETH)</strong>, the forked version where The DAO hack was reversed, and
+              <strong>Ethereum Classic (ETC)</strong>, the original chain where the hack stood. Most of the
+              community, developers, and the Ethereum Foundation followed the forked chain (ETH), which is what
+              people today simply call "Ethereum."
+            </p>
+          </article>
+
+          <div class="callout callout--teaching">
+            <p class="callout-title">🎓 What I Wish I Knew Then</p>
+            <p>
+              The DAO hack is the case study I teach every single year because it raises questions that still
+              have no clean answers. If "code is law" on a blockchain, does that mean an exploit is just
+              "using the code as written" rather than theft? If the community can vote to reverse transactions,
+              how is that different from a bank reversing a fraudulent charge? And if Ethereum can fork once
+              to reverse a hack, why can't it fork again for any reason?
+            </p>
+            <p>
+              In practice, Ethereum has never done another rollback fork. The DAO was a unique situation — the
+              funds were locked in a time-delay contract, the amount was existentially large (nearly 15% of all
+              ETH at the time), and the ecosystem was young enough that near-unanimous agreement was possible.
+              <strong>But the precedent exists, and that's philosophically uncomfortable.</strong>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =================== ERA SUMMARY =================== -->
+  <section class="era-section" id="era-summary" aria-labelledby="summary-heading">
+    <div class="container">
+      <div class="era-summary-box">
+        <h2 id="summary-heading">Era 1 in Perspective</h2>
+        <p>
+          From 2008 to 2016, cryptocurrency went from a nine-page whitepaper posted to a mailing list
+          to a multi-billion-dollar ecosystem with hundreds of projects, thousands of developers, and
+          millions of users. Bitcoin proved that decentralized money was possible. Ethereum proved that
+          decentralized <em>computing</em> was possible. And a series of spectacular failures — Mt. Gox,
+          Silk Road, The DAO — taught the ecosystem painful but essential lessons about security, custody,
+          and the tension between idealism and pragmatism.
+        </p>
+        <p>
+          But by the end of 2016, crypto was still largely a niche pursuit. Most people had heard of Bitcoin
+          but dismissed it as fake internet money or a tool for criminals. The real mainstream moment — the
+          2017 ICO mania, the institutional adoption, the regulatory battles — was still ahead.
+        </p>
+        <div class="era-summary-stats">
+          <div class="era-stat">
+            <span class="era-stat__value">$0 → $16B</span>
+            <span class="era-stat__label">Total crypto market cap growth (2009–2016)</span>
+          </div>
+          <div class="era-stat">
+            <span class="era-stat__value">1 → 700+</span>
+            <span class="era-stat__label">Cryptocurrencies by end of 2016</span>
+          </div>
+          <div class="era-stat">
+            <span class="era-stat__value">$0 → $960</span>
+            <span class="era-stat__label">Bitcoin price journey (2009–end of 2016)</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =================== ERA NAVIGATION =================== -->
+  <nav class="era-nav" aria-label="Era navigation">
+    <div class="container">
+      <div class="era-nav__inner">
+        <div class="era-nav__prev">
+          <!-- No previous era -->
+        </div>
+        <div class="era-nav__next">
+          <a href={`${base}eras/where-we-are/`} class="era-nav__link era-nav__link--next">
+            <span class="era-nav__direction">Next Era →</span>
+            <span class="era-nav__title">Era 2: Where We Are Now</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+</BaseLayout>
+
+<style>
+  /* ============================================
+     ERA 1: HOW IT STARTED — PAGE STYLES
+     ============================================ */
+
+  /* ---------- Hero ---------- */
+  .hero {
+    padding: 5rem 0 3rem;
+    background:
+      linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-primary) 60%);
+    border-bottom: 1px solid var(--border-color);
+  }
+
+  .hero__era-badge {
+    display: inline-block;
+    padding: 0.3em 0.9em;
+    font-size: 0.8125rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--accent-primary);
+    border: 1px solid var(--accent-primary);
+    border-radius: 999px;
+    margin-bottom: 1.25rem;
+  }
+
+  .hero h1 {
+    max-width: 800px;
+    margin-bottom: 1rem;
+  }
+
+  .hero__subtitle {
+    max-width: 720px;
+    font-size: 1.125rem;
+    line-height: 1.8;
+    color: var(--text-secondary);
+    margin-bottom: 2.5rem;
+  }
+
+  /* ---------- Timeline Bar (Hero) ---------- */
+  .timeline-bar {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 0.5rem;
+  }
+
+  .timeline-bar__list {
+    display: flex;
+    list-style: none;
+    gap: 0;
+    min-width: max-content;
+    position: relative;
+  }
+
+  .timeline-bar__list::before {
+    content: '';
+    position: absolute;
+    top: 0.65rem;
+    left: 1rem;
+    right: 1rem;
+    height: 2px;
+    background: var(--border-color);
+    z-index: 0;
+  }
+
+  .timeline-bar__item {
+    position: relative;
+    z-index: 1;
+    flex: 1;
+    min-width: 100px;
+    text-align: center;
+  }
+
+  .timeline-bar__link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    padding: 0 0.5rem;
+  }
+
+  .timeline-bar__link:hover {
+    text-decoration: none;
+  }
+
+  .timeline-bar__link::before {
+    content: '';
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--bg-tertiary);
+    border: 2px solid var(--border-color);
+    margin-bottom: 0.5rem;
+    transition: all var(--transition-fast);
+  }
+
+  .timeline-bar__link:hover::before {
+    border-color: var(--accent-primary);
+    background: var(--accent-primary);
+    box-shadow: 0 0 8px rgba(88, 166, 255, 0.4);
+  }
+
+  .timeline-bar__item--highlight .timeline-bar__link::before {
+    background: var(--accent-primary);
+    border-color: var(--accent-primary);
+    box-shadow: 0 0 10px rgba(88, 166, 255, 0.3);
+  }
+
+  .timeline-bar__year {
+    font-family: var(--font-mono);
+    font-size: 0.8125rem;
+    font-weight: 700;
+    color: var(--text-primary);
+  }
+
+  .timeline-bar__label {
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    margin-top: 0.15rem;
+  }
+
+  /* ---------- Era Sections ---------- */
+  .era-section {
+    padding: 4rem 0;
+  }
+
+  .era-section--alt {
+    background: var(--bg-secondary);
+  }
+
+  .era-section__date {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 0.875rem;
+    font-weight: 700;
+    color: var(--accent-primary);
+    padding: 0.25em 0.75em;
+    background: var(--info-bg);
+    border: 1px solid var(--info-border);
+    border-radius: var(--radius-sm);
+    margin-bottom: 1rem;
+  }
+
+  .era-section__intro {
+    font-size: 1.1rem;
+    line-height: 1.85;
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
+  }
+
+  /* ---------- Timeline Track (Vertical) ---------- */
+  .timeline-section {
+    display: flex;
+    gap: 2rem;
+  }
+
+  .timeline-track {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-shrink: 0;
+    width: 20px;
+    padding-top: 0.5rem;
+  }
+
+  .timeline-track__dot {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: var(--accent-primary);
+    border: 3px solid var(--bg-primary);
+    box-shadow: 0 0 0 2px var(--accent-primary);
+    flex-shrink: 0;
+  }
+
+  .timeline-track__dot--highlight {
+    width: 18px;
+    height: 18px;
+    background: var(--accent-secondary);
+    box-shadow: 0 0 0 2px var(--accent-secondary), 0 0 12px rgba(63, 185, 80, 0.4);
+  }
+
+  .era-section--alt .timeline-track__dot {
+    border-color: var(--bg-secondary);
+  }
+
+  .timeline-track__line {
+    width: 2px;
+    flex-grow: 1;
+    background: linear-gradient(to bottom, var(--accent-primary) 0%, var(--border-color) 100%);
+    margin-top: 0.5rem;
+  }
+
+  .timeline-content {
+    flex: 1;
+    min-width: 0;
+  }
+
+  /* ---------- Milestone Cards ---------- */
+  .milestone-card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: var(--radius-lg);
+    padding: 1.75rem;
+    margin: 1.5rem 0;
+    transition: border-color var(--transition-base);
+  }
+
+  .milestone-card:hover {
+    border-color: var(--accent-primary);
+  }
+
+  .milestone-card--featured {
+    border-left: 4px solid var(--accent-primary);
+  }
+
+  .milestone-card--danger {
+    border-left: 4px solid var(--danger-border);
+  }
+
+  .milestone-card__header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .milestone-card__year {
+    font-family: var(--font-mono);
+    font-size: 0.8125rem;
+    font-weight: 700;
+    padding: 0.2em 0.6em;
+    background: var(--bg-tertiary);
+    border-radius: var(--radius-sm);
+    color: var(--accent-primary);
+    white-space: nowrap;
+  }
+
+  .milestone-card__title {
+    font-size: 1.25rem;
+    margin-bottom: 0;
+  }
+
+  .milestone-card p {
+    margin-bottom: 0.75rem;
+  }
+
+  .milestone-card p:last-child {
+    margin-bottom: 0;
+  }
+
+  /* ---------- Whitepaper Breakdown ---------- */
+  .whitepaper-breakdown {
+    margin-top: 2rem;
+  }
+
+  .whitepaper-breakdown h3 {
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--border-color);
+  }
+
+  .innovation-card {
+    display: flex;
+    gap: 1.25rem;
+    padding: 1.5rem;
+    background: var(--bg-primary);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    margin-bottom: 1rem;
+  }
+
+  .era-section--alt .innovation-card {
+    background: var(--bg-tertiary);
+  }
+
+  .innovation-card__icon {
+    font-size: 1.75rem;
+    flex-shrink: 0;
+    width: 2.5rem;
+    text-align: center;
+    padding-top: 0.15rem;
+  }
+
+  .innovation-card__body {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .innovation-card__body h4 {
+    margin-bottom: 0.5rem;
+    color: var(--accent-primary);
+  }
+
+  .innovation-card__body p {
+    margin-bottom: 0.75rem;
+  }
+
+  .innovation-card__body p:last-child {
+    margin-bottom: 0;
+  }
+
+  /* ---------- Genesis Block Quote ---------- */
+  .genesis-quote {
+    font-family: var(--font-mono);
+    font-size: 1rem;
+    line-height: 1.6;
+    padding: 1.25rem 1.5rem;
+    margin: 1.25rem 0;
+    background: var(--bg-primary);
+    border-left: 4px solid var(--accent-secondary);
+    border-radius: 0 var(--radius-md) var(--radius-md) 0;
+    color: var(--accent-secondary);
+    font-style: italic;
+  }
+
+  .era-section--alt .genesis-quote {
+    background: var(--bg-tertiary);
+  }
+
+  /* ---------- Summary Box ---------- */
+  .summary-box {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    padding: 2rem;
+    margin-top: 2rem;
+  }
+
+  .summary-box h3 {
+    margin-bottom: 1rem;
+  }
+
+  .summary-box ul {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 1rem;
+  }
+
+  .summary-box li {
+    padding: 0.5rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+    color: var(--text-secondary);
+  }
+
+  .summary-box li::before {
+    content: '✗';
+    position: absolute;
+    left: 0;
+    color: var(--danger-border);
+    font-weight: 700;
+  }
+
+  .summary-box li strong {
+    color: var(--text-primary);
+  }
+
+  /* ---------- Era Summary ---------- */
+  .era-summary-box {
+    background:
+      linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-tertiary) 100%);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-xl);
+    padding: 3rem;
+  }
+
+  .era-summary-box h2 {
+    margin-bottom: 1.25rem;
+  }
+
+  .era-summary-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
+
+  .era-stat {
+    display: flex;
+    flex-direction: column;
+    padding: 1.25rem;
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: var(--radius-md);
+    text-align: center;
+  }
+
+  .era-stat__value {
+    font-family: var(--font-mono);
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--accent-primary);
+    margin-bottom: 0.35rem;
+  }
+
+  .era-stat__label {
+    font-size: 0.8125rem;
+    color: var(--text-secondary);
+    line-height: 1.5;
+  }
+
+  /* ---------- Era Navigation ---------- */
+  .era-nav {
+    padding: 2rem 0;
+    border-top: 1px solid var(--border-color);
+    background: var(--bg-secondary);
+  }
+
+  .era-nav__inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .era-nav__link {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    padding: 1rem 1.5rem;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    transition: all var(--transition-base);
+    max-width: 320px;
+  }
+
+  .era-nav__link:hover {
+    border-color: var(--accent-primary);
+    background: var(--bg-tertiary);
+    text-decoration: none;
+  }
+
+  .era-nav__link--next {
+    text-align: right;
+    margin-left: auto;
+  }
+
+  .era-nav__direction {
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: var(--accent-primary);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .era-nav__title {
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-top: 0.25rem;
+  }
+
+  /* ---------- Callout Overrides (scoped) ---------- */
+  .callout {
+    border-left: 4px solid var(--callout-border);
+    background: var(--callout-bg);
+    padding: 1.25rem 1.5rem;
+    border-radius: 0 var(--radius-md) var(--radius-md) 0;
+    margin: 1.5rem 0;
+  }
+
+  .callout p:last-child {
+    margin-bottom: 0;
+  }
+
+  .callout--teaching {
+    border-left-color: var(--accent-secondary);
+    background: var(--success-bg);
+  }
+
+  .callout--teaching .callout-title {
+    color: var(--accent-secondary);
+  }
+
+  .callout--misconception {
+    border-left-color: var(--danger-border);
+    background: var(--danger-bg);
+  }
+
+  .callout--misconception .callout-title {
+    color: var(--danger-border);
+  }
+
+  .callout-title {
+    font-weight: 700;
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 768px) {
+    .hero {
+      padding: 3rem 0 2rem;
+    }
+
+    .timeline-section {
+      gap: 1rem;
+    }
+
+    .timeline-track {
+      width: 14px;
+    }
+
+    .timeline-track__dot {
+      width: 10px;
+      height: 10px;
+    }
+
+    .timeline-track__dot--highlight {
+      width: 14px;
+      height: 14px;
+    }
+
+    .milestone-card {
+      padding: 1.25rem;
+    }
+
+    .innovation-card {
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .innovation-card__icon {
+      width: auto;
+      text-align: left;
+    }
+
+    .era-summary-box {
+      padding: 1.5rem;
+    }
+
+    .era-summary-stats {
+      grid-template-columns: 1fr;
+    }
+
+    .milestone-card__header {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.5rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .timeline-track {
+      display: none;
+    }
+
+    .timeline-section {
+      display: block;
+    }
+
+    .timeline-bar__list {
+      gap: 0.25rem;
+    }
+
+    .timeline-bar__label {
+      font-size: 0.6875rem;
+    }
+  }
+
+  /* ---------- Print ---------- */
+  @media print {
+    .hero {
+      background: none;
+      padding: 2rem 0 1rem;
+    }
+
+    .timeline-bar,
+    .era-nav,
+    .timeline-track {
+      display: none;
+    }
+
+    .timeline-section {
+      display: block;
+    }
+
+    .milestone-card,
+    .innovation-card,
+    .callout,
+    .summary-box,
+    .era-summary-box {
+      break-inside: avoid;
+      border: 1px solid #ccc;
+      box-shadow: none;
+    }
+
+    .era-section--alt {
+      background: none;
+    }
+  }
+</style>

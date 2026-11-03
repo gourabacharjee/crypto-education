@@ -1,0 +1,165 @@
+---
+// Footer.astro
+const base = import.meta.env.BASE_URL;
+const year = new Date().getFullYear();
+---
+
+<footer class="site-footer" role="contentinfo">
+  <div class="footer-inner container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href={`${base}/`} class="footer-logo">
+          <span class="logo-icon">₿</span>
+          <span>CryptoEd<span style="color:var(--accent-primary)">.</span></span>
+        </a>
+        <p class="footer-tagline">20 years of crypto knowledge, distilled for the next generation of builders and thinkers.</p>
+      </div>
+
+      <div class="footer-links">
+        <h4>Learn</h4>
+        <ul>
+          <li><a href={`${base}/eras/how-it-started/`}>Origins (2008–2016)</a></li>
+          <li><a href={`${base}/eras/where-we-are/`}>Present (2017–Now)</a></li>
+          <li><a href={`${base}/eras/the-future/`}>Future (2025+)</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-links">
+        <h4>Explore</h4>
+        <ul>
+          <li><a href={`${base}/regulation/`}>Regulation Tracker</a></li>
+          <li><a href={`${base}/news/`}>News Hub</a></li>
+          <li><a href={`${base}/resources/`}>Resources</a></li>
+          <li><a href={`${base}/resources/glossary/`}>Glossary</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-links">
+        <h4>Connect</h4>
+        <ul>
+          <li><a href="https://github.com" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+          <li><a href={`${base}/rss.xml`}>RSS Feed</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>
+        &copy; {year} CryptoEd. Code licensed under
+        <a href="https://opensource.org/licenses/MIT" target="_blank" rel="noopener noreferrer">MIT</a>.
+        Content licensed under
+        <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener noreferrer">CC BY 4.0</a>.
+      </p>
+      <p class="footer-disclaimer">
+        Educational content only. Not financial advice. Always do your own research.
+      </p>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    background: var(--bg-secondary);
+    border-top: 1px solid var(--border-color);
+    padding: 3rem 0 1.5rem;
+    margin-top: 4rem;
+  }
+
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  .footer-logo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 800;
+    font-size: 1.25rem;
+    color: var(--text-primary);
+    text-decoration: none;
+    margin-bottom: 0.75rem;
+  }
+
+  .footer-logo:hover { text-decoration: none; }
+
+  .footer-logo .logo-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    background: linear-gradient(135deg, var(--accent-primary), var(--accent-tertiary));
+    border-radius: var(--radius-sm);
+    font-size: 1rem;
+    color: #fff;
+  }
+
+  .footer-tagline {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    line-height: 1.6;
+    max-width: 300px;
+  }
+
+  .footer-links h4 {
+    font-size: 0.8125rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--text-secondary);
+    margin-bottom: 0.75rem;
+  }
+
+  .footer-links ul {
+    list-style: none;
+  }
+
+  .footer-links li {
+    margin-bottom: 0.5rem;
+  }
+
+  .footer-links a {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    transition: color var(--transition-fast);
+  }
+
+  .footer-links a:hover {
+    color: var(--accent-primary);
+  }
+
+  .footer-bottom {
+    border-top: 1px solid var(--border-color);
+    padding-top: 1.5rem;
+    text-align: center;
+  }
+
+  .footer-bottom p {
+    font-size: 0.8125rem;
+    color: var(--text-tertiary);
+    margin-bottom: 0.25rem;
+  }
+
+  .footer-disclaimer {
+    font-style: italic;
+  }
+
+  @media (max-width: 768px) {
+    .footer-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .footer-brand {
+      grid-column: 1 / -1;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .footer-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+

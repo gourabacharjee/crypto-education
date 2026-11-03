@@ -1,0 +1,73 @@
+---
+// 404.astro — Custom 404 page
+import BaseLayout from '../layouts/BaseLayout.astro';
+const base = import.meta.env.BASE_URL;
+---
+
+<BaseLayout title="Page Not Found" description="The page you're looking for doesn't exist.">
+  <section class="error-page">
+    <div class="container">
+      <div class="error-content">
+        <span class="error-code">404</span>
+        <h1>Page Not Found</h1>
+        <p>The page you're looking for has either been moved, deleted, or never existed — much like many altcoins from 2017.</p>
+
+        <div class="callout callout--teaching">
+          <p class="callout-title">🎓 Teaching Moment</p>
+          <p>In crypto, DYOR (Do Your Own Research) applies to URLs too. Always verify you're on the right site before connecting a wallet or entering sensitive information.</p>
+        </div>
+
+        <div class="error-actions">
+          <a href={`${base}/`} class="btn btn-primary">← Back to Home</a>
+          <a href={`${base}/resources/glossary/`} class="btn btn-secondary">Browse Glossary</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .error-page {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: calc(100vh - var(--header-height) - 200px);
+    text-align: center;
+    padding: 2rem 0;
+  }
+
+  .error-content {
+    max-width: 600px;
+  }
+
+  .error-code {
+    display: block;
+    font-size: clamp(4rem, 15vw, 8rem);
+    font-weight: 800;
+    background: linear-gradient(135deg, var(--accent-primary), var(--accent-tertiary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1;
+    margin-bottom: 1rem;
+  }
+
+  h1 {
+    margin-bottom: 1rem;
+  }
+
+  p {
+    font-size: 1.125rem;
+    max-width: 500px;
+    margin: 0 auto 2rem;
+  }
+
+  .error-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 2rem;
+  }
+</style>
+

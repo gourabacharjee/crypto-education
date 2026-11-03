@@ -1,0 +1,600 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+const base = import.meta.env.BASE_URL;
+---
+
+<BaseLayout title="Crypto News Hub — Signal, Not Noise">
+  <section class="news-hero">
+    <div class="container">
+      <h1>Crypto News Hub</h1>
+      <p class="hero-tagline">Signal, Not Noise</p>
+      <p class="hero-subtitle">
+        Every week, we cut through the hype cycle and deliver curated analysis of the developments that actually matter.
+        No price predictions. No shilling. Just context, history, and practical implications for students and builders.
+      </p>
+    </div>
+  </section>
+
+  <section class="filter-section">
+    <div class="container">
+      <div class="filter-tabs" role="tablist" aria-label="Filter news by category">
+        <button class="filter-btn active" data-category="all" role="tab" aria-selected="true">All</button>
+        <button class="filter-btn" data-category="regulation" role="tab" aria-selected="false">Regulation</button>
+        <button class="filter-btn" data-category="protocol" role="tab" aria-selected="false">Protocol Upgrades</button>
+        <button class="filter-btn" data-category="institutional" role="tab" aria-selected="false">Institutional Moves</button>
+        <button class="filter-btn" data-category="hacks" role="tab" aria-selected="false">Hacks / Exploits</button>
+        <button class="filter-btn" data-category="macro" role="tab" aria-selected="false">Macro</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="digest-section">
+    <div class="container">
+      <div class="digest-header">
+        <span class="digest-badge">Latest Weekly Digest</span>
+        <h2>Week of October 27, 2025: Markets Rally on ETF Flows</h2>
+        <p class="digest-meta">Published October 31, 2025 · 8 min read</p>
+      </div>
+
+      <div class="news-grid" id="news-grid">
+
+        <!-- Regulation -->
+        <article class="news-card" data-category="regulation">
+          <div class="card-header">
+            <span class="category-tag tag-regulation">Regulation</span>
+            <time datetime="2025-10-29">Oct 29, 2025</time>
+          </div>
+          <h3>SEC Finalizes Custody Rules for Digital Assets</h3>
+          <p class="card-summary">
+            The Securities and Exchange Commission voted 3–2 to adopt Staff Accounting Bulletin 122, formally replacing the controversial SAB 121 guidance from 2022. The new rule allows banks and qualified custodians to hold crypto assets on behalf of clients without recording them as liabilities on their own balance sheets — a change the industry has lobbied for since early 2023. Commissioner Hester Peirce, long a vocal advocate, called it "three years overdue."
+          </p>
+          <div class="student-callout">
+            <span class="callout-label">📎 Why This Matters for Students</span>
+            <p>
+              Custody rules may sound like dry accounting policy, but they're the plumbing that determines whether institutional money can flow into crypto. Under SAB 121, banks were effectively penalized for holding digital assets, because each dollar of crypto custody created a matching liability that consumed regulatory capital. The new rule removes that friction. If you're studying how traditional finance and crypto intersect, watch for announcements from major banks like BNY Mellon and State Street — they've been waiting for exactly this green light to expand their digital asset custody services. More institutional custody means deeper liquidity, tighter spreads, and a more mature market structure.
+            </p>
+          </div>
+        </article>
+
+        <!-- Institutional -->
+        <article class="news-card" data-category="institutional">
+          <div class="card-header">
+            <span class="category-tag tag-institutional">Institutional</span>
+            <time datetime="2025-10-28">Oct 28, 2025</time>
+          </div>
+          <h3>BlackRock Bitcoin ETF Surpasses $50B AUM</h3>
+          <p class="card-summary">
+            BlackRock's iShares Bitcoin Trust (IBIT) crossed the $50 billion assets-under-management milestone this week, making it one of the fastest ETFs in history to reach that threshold — just 10 months after its January 2024 launch. Daily inflows averaged $274 million over the past two weeks, driven by renewed institutional appetite following the Federal Reserve's September rate cuts. IBIT now holds approximately 2.4% of Bitcoin's total circulating supply.
+          </p>
+          <div class="student-callout">
+            <span class="callout-label">📎 Why This Matters for Students</span>
+            <p>
+              The speed of IBIT's growth is historically unprecedented in the ETF world. For context, the largest gold ETF (GLD) took over two years to reach $50B after its 2004 launch. This matters because ETFs create a regulated, familiar on-ramp for pension funds, endowments, and registered investment advisors who are legally or practically unable to hold Bitcoin directly. Every share of IBIT is backed by actual Bitcoin held in Coinbase Custody, meaning ETF inflows directly reduce the available supply on exchanges. When you see "ETF flows" discussed in market analysis, this is the mechanism: more shares created → more BTC bought and locked away → supply pressure on spot markets.
+            </p>
+          </div>
+        </article>
+
+        <!-- Protocol -->
+        <article class="news-card" data-category="protocol">
+          <div class="card-header">
+            <span class="category-tag tag-protocol">Protocol</span>
+            <time datetime="2025-10-30">Oct 30, 2025</time>
+          </div>
+          <h3>Ethereum Pectra Upgrade Activates on Mainnet</h3>
+          <p class="card-summary">
+            Ethereum's Pectra upgrade — a combined Prague (execution layer) and Electra (consensus layer) hard fork — activated at slot 10,420,000 on October 30. The upgrade bundles 11 EIPs, headlined by EIP-7702 (account abstraction via delegation), EIP-7251 (raising the validator effective balance cap from 32 ETH to 2,048 ETH), and EIP-7691 (doubling blob throughput for Layer 2 rollups). All major clients updated smoothly, with no missed slots during the transition.
+          </p>
+          <div class="student-callout">
+            <span class="callout-label">📎 Why This Matters for Students</span>
+            <p>
+              Three things to unpack here. First, EIP-7702 is a significant step toward account abstraction — the idea that your Ethereum account can behave more like a smart contract, enabling features like gas sponsorship, batch transactions, and social recovery. This directly improves user experience without requiring everyone to migrate to new smart contract wallets. Second, EIP-7251 lets large stakers consolidate validators, reducing network overhead (fewer validator messages to propagate). Third, doubling blob capacity means Layer 2 rollups like Arbitrum and Optimism can post more data to Ethereum for less cost. If you're building on or studying L2s, this is the upgrade that makes sub-cent transaction fees sustainable at scale.
+            </p>
+          </div>
+        </article>
+
+        <!-- Hacks -->
+        <article class="news-card" data-category="hacks">
+          <div class="card-header">
+            <span class="category-tag tag-hacks">Hacks / Exploits</span>
+            <time datetime="2025-10-27">Oct 27, 2025</time>
+          </div>
+          <h3>Cross-Chain Bridge Exploit Drains $12M from DeFi Protocol</h3>
+          <p class="card-summary">
+            An attacker exploited a signature verification flaw in OmniSwap's cross-chain bridge contract, draining approximately $12 million in USDC and wrapped ETH across Ethereum, Arbitrum, and BNB Chain. The vulnerability stemmed from a missing nonce check in the bridge's message relay system, allowing the attacker to replay a valid withdrawal proof across multiple chains. The OmniSwap team paused the bridge within 40 minutes and is working with on-chain analytics firm Chainalysis to trace the funds.
+          </p>
+          <div class="student-callout">
+            <span class="callout-label">📎 Why This Matters for Students</span>
+            <p>
+              Cross-chain bridges remain the most attacked category in DeFi — accounting for over $2.8 billion in losses since 2021 (Ronin, Wormhole, Nomad, and others). The pattern is consistent: bridges must verify messages between chains that can't natively communicate, and that verification logic is extremely difficult to get right. A missing nonce check is a textbook replay attack — the same valid message gets accepted multiple times. If you're studying smart contract security, bridges are the case study that demonstrates why "code is law" cuts both ways: the code did exactly what it was programmed to do, including the bug. This is why formal verification, multiple audits, and conservative upgrade patterns matter so much for bridge infrastructure.
+            </p>
+          </div>
+        </article>
+
+        <!-- Macro -->
+        <article class="news-card" data-category="macro">
+          <div class="card-header">
+            <span class="category-tag tag-macro">Macro</span>
+            <time datetime="2025-10-29">Oct 29, 2025</time>
+          </div>
+          <h3>Federal Reserve Holds Rates; Crypto Markets React</h3>
+          <p class="card-summary">
+            The Federal Open Market Committee held the federal funds rate at 4.00–4.25% at its October meeting, in line with market expectations. Chair Powell's post-meeting press conference struck a cautiously dovish tone, noting that "the balance of risks has shifted" and that "incoming data on inflation have been encouraging." Bitcoin rose 4.2% in the 24 hours following the announcement, briefly touching $73,400. The CME FedWatch tool now prices a 78% probability of a 25-basis-point cut in December.
+          </p>
+          <div class="student-callout">
+            <span class="callout-label">📎 Why This Matters for Students</span>
+            <p>
+              Crypto doesn't exist in a vacuum. Since 2020, Bitcoin's correlation with risk assets (tech stocks, growth equities) has increased significantly. When the Fed signals lower rates ahead, it reduces the "opportunity cost" of holding non-yielding assets like Bitcoin — if your savings account pays less, the argument for allocating to alternative stores of value gets stronger. Watch the real (inflation-adjusted) interest rate, not just the nominal rate. A 4% fed funds rate with 2.1% inflation is a very different environment than a 4% rate with 4% inflation. Understanding this macro framework will help you interpret why crypto markets move on seemingly unrelated Federal Reserve announcements.
+            </p>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="archive-section">
+    <div class="container">
+      <h2>📁 Digest Archive</h2>
+      <p class="archive-intro">Catch up on previous weeks. Every digest remains relevant — the context compounds over time.</p>
+      <ul class="archive-list">
+        <li class="archive-item">
+          <a href={`${base}news/digest-2025-10-20`}>
+            <span class="archive-date">Oct 20, 2025</span>
+            <span class="archive-title">Stablecoin Legislation Advances in Senate; Tether Publishes Full Attestation</span>
+          </a>
+        </li>
+        <li class="archive-item">
+          <a href={`${base}news/digest-2025-10-13`}>
+            <span class="archive-date">Oct 13, 2025</span>
+            <span class="archive-title">Solana Breakpoint Recap; Visa Expands USDC Settlement to 5 New Markets</span>
+          </a>
+        </li>
+        <li class="archive-item">
+          <a href={`${base}news/digest-2025-10-06`}>
+            <span class="archive-date">Oct 6, 2025</span>
+            <span class="archive-title">Bitcoin Dominance Hits 58%; DeFi TVL Rebounds Past $90B</span>
+          </a>
+        </li>
+        <li class="archive-item">
+          <a href={`${base}news/digest-2025-09-29`}>
+            <span class="archive-date">Sep 29, 2025</span>
+            <span class="archive-title">Hong Kong Launches Retail Crypto Trading Framework; MiCA Takes Effect in EU</span>
+          </a>
+        </li>
+        <li class="archive-item">
+          <a href={`${base}news/digest-2025-09-22`}>
+            <span class="archive-date">Sep 22, 2025</span>
+            <span class="archive-title">Fed Cuts Rates 25bps; Bitcoin Crosses $70K for First Time Since March</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="subscribe-section">
+    <div class="container">
+      <div class="subscribe-card">
+        <h2>📬 Get the Weekly Digest in Your Inbox</h2>
+        <p>
+          Join 4,000+ students and builders who start their week with our curated analysis.
+          No spam. No affiliate links. Unsubscribe anytime.
+        </p>
+        <form class="subscribe-form" onsubmit="event.preventDefault(); document.getElementById('subscribe-msg').textContent = 'Thanks! Check your inbox to confirm your subscription.'; document.getElementById('subscribe-msg').style.display = 'block';">
+          <div class="form-row">
+            <label for="sub-email" class="sr-only">Email address</label>
+            <input type="email" id="sub-email" placeholder="you@example.com" required aria-label="Email address" />
+            <button type="submit" class="subscribe-btn">Subscribe</button>
+          </div>
+          <p id="subscribe-msg" class="subscribe-success" style="display:none;"></p>
+        </form>
+        <p class="subscribe-note">Read by analysts at Coinbase, a][ Capital, and the Ethereum Foundation (or so they tell us).</p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const buttons = document.querySelectorAll('.filter-btn');
+    const cards = document.querySelectorAll('.news-card');
+
+    buttons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        // Update active state
+        buttons.forEach(b => {
+          b.classList.remove('active');
+          b.setAttribute('aria-selected', 'false');
+        });
+        btn.classList.add('active');
+        btn.setAttribute('aria-selected', 'true');
+
+        const category = btn.getAttribute('data-category');
+
+        cards.forEach(card => {
+          if (category === 'all' || card.getAttribute('data-category') === category) {
+            card.style.display = '';
+            card.style.animation = 'fadeIn 0.3s ease';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      });
+    });
+  });
+</script>
+
+<style>
+  /* Hero */
+  .news-hero {
+    background: var(--bg-secondary);
+    border-bottom: 1px solid var(--border-color);
+    padding: 3.5rem 1.5rem 2.5rem;
+    text-align: center;
+  }
+  .news-hero h1 {
+    font-size: 2.4rem;
+    color: var(--text-primary);
+    margin: 0 0 0.25rem;
+  }
+  .hero-tagline {
+    font-size: 1.3rem;
+    color: var(--accent-primary);
+    font-weight: 600;
+    margin: 0 0 1rem;
+    letter-spacing: 0.04em;
+  }
+  .hero-subtitle {
+    max-width: 680px;
+    margin: 0 auto;
+    color: var(--text-secondary);
+    font-size: 1.05rem;
+    line-height: 1.7;
+  }
+
+  /* Container */
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  /* Filter Tabs */
+  .filter-section {
+    padding: 1.5rem 0;
+    background: var(--bg-primary);
+    border-bottom: 1px solid var(--border-color);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+  }
+  .filter-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    justify-content: center;
+  }
+  .filter-btn {
+    padding: 0.45rem 1.1rem;
+    border-radius: 999px;
+    border: 1px solid var(--border-color);
+    background: var(--bg-tertiary);
+    color: var(--text-secondary);
+    font-size: 0.88rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  .filter-btn:hover {
+    border-color: var(--accent-primary);
+    color: var(--accent-primary);
+  }
+  .filter-btn.active {
+    background: var(--accent-primary);
+    color: #fff;
+    border-color: var(--accent-primary);
+  }
+
+  /* Digest Section */
+  .digest-section {
+    padding: 2.5rem 0 3rem;
+  }
+  .digest-header {
+    margin-bottom: 2rem;
+  }
+  .digest-badge {
+    display: inline-block;
+    background: var(--accent-primary);
+    color: #fff;
+    padding: 0.25rem 0.85rem;
+    border-radius: 999px;
+    font-size: 0.78rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: 0.75rem;
+  }
+  .digest-header h2 {
+    font-size: 1.65rem;
+    color: var(--text-primary);
+    margin: 0.5rem 0 0.4rem;
+  }
+  .digest-meta {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+  }
+
+  /* News Grid */
+  .news-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 1.75rem;
+  }
+
+  /* News Card */
+  .news-card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 10px;
+    padding: 1.75rem;
+    transition: box-shadow 0.2s ease;
+  }
+  .news-card:hover {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  }
+  .card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 0.75rem;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  .card-header time {
+    font-size: 0.82rem;
+    color: var(--text-secondary);
+  }
+
+  /* Category Tags */
+  .category-tag {
+    display: inline-block;
+    padding: 0.2rem 0.7rem;
+    border-radius: 999px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+  .tag-regulation {
+    background: #e8f0fe;
+    color: #1a56db;
+  }
+  .tag-institutional {
+    background: #fef3e2;
+    color: #b45309;
+  }
+  .tag-protocol {
+    background: #e6f9ed;
+    color: #16794a;
+  }
+  .tag-hacks {
+    background: #fee2e2;
+    color: #c53030;
+  }
+  .tag-macro {
+    background: #f3e8ff;
+    color: #7c3aed;
+  }
+
+  .news-card h3 {
+    font-size: 1.25rem;
+    color: var(--text-primary);
+    margin: 0 0 0.75rem;
+    line-height: 1.4;
+  }
+  .card-summary {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    line-height: 1.7;
+    margin: 0 0 1.25rem;
+  }
+
+  /* Student Callout */
+  .student-callout {
+    background: var(--callout-bg, #f0f7ff);
+    border: 1px solid var(--callout-border, #b6d4fe);
+    border-left: 4px solid var(--accent-primary, #3b82f6);
+    border-radius: 6px;
+    padding: 1rem 1.25rem;
+  }
+  .callout-label {
+    font-weight: 700;
+    font-size: 0.85rem;
+    color: var(--accent-primary);
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+  .student-callout p {
+    margin: 0;
+    font-size: 0.92rem;
+    line-height: 1.7;
+    color: var(--text-secondary);
+  }
+
+  /* Archive */
+  .archive-section {
+    padding: 2.5rem 0;
+    background: var(--bg-secondary);
+    border-top: 1px solid var(--border-color);
+  }
+  .archive-section h2 {
+    font-size: 1.5rem;
+    color: var(--text-primary);
+    margin: 0 0 0.5rem;
+  }
+  .archive-intro {
+    color: var(--text-secondary);
+    margin: 0 0 1.5rem;
+    font-size: 0.95rem;
+  }
+  .archive-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .archive-item {
+    border-bottom: 1px solid var(--border-color);
+  }
+  .archive-item:last-child {
+    border-bottom: none;
+  }
+  .archive-item a {
+    display: flex;
+    align-items: baseline;
+    gap: 1.25rem;
+    padding: 0.9rem 0.5rem;
+    text-decoration: none;
+    transition: background 0.15s ease;
+    border-radius: 6px;
+    flex-wrap: wrap;
+  }
+  .archive-item a:hover {
+    background: var(--bg-tertiary);
+  }
+  .archive-date {
+    font-size: 0.82rem;
+    color: var(--text-secondary);
+    font-weight: 600;
+    white-space: nowrap;
+    min-width: 95px;
+  }
+  .archive-title {
+    color: var(--accent-primary);
+    font-weight: 500;
+    font-size: 0.95rem;
+  }
+
+  /* Subscribe */
+  .subscribe-section {
+    padding: 3rem 0;
+  }
+  .subscribe-card {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 2.5rem;
+    text-align: center;
+  }
+  .subscribe-card h2 {
+    font-size: 1.5rem;
+    color: var(--text-primary);
+    margin: 0 0 0.75rem;
+  }
+  .subscribe-card > p {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    max-width: 520px;
+    margin: 0 auto 1.5rem;
+  }
+  .subscribe-form {
+    max-width: 480px;
+    margin: 0 auto;
+  }
+  .form-row {
+    display: flex;
+    gap: 0.5rem;
+  }
+  .form-row input {
+    flex: 1;
+    padding: 0.7rem 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    font-size: 0.95rem;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+  }
+  .form-row input:focus {
+    outline: 2px solid var(--accent-primary);
+    outline-offset: 1px;
+  }
+  .subscribe-btn {
+    padding: 0.7rem 1.5rem;
+    background: var(--accent-primary);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: opacity 0.2s;
+    white-space: nowrap;
+  }
+  .subscribe-btn:hover {
+    opacity: 0.9;
+  }
+  .subscribe-success {
+    color: var(--accent-primary);
+    font-weight: 600;
+    margin-top: 0.75rem;
+    font-size: 0.92rem;
+  }
+  .subscribe-note {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    margin-top: 1rem;
+    font-style: italic;
+  }
+
+  /* Utility */
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Responsive */
+  @media (max-width: 600px) {
+    .news-hero h1 {
+      font-size: 1.75rem;
+    }
+    .hero-tagline {
+      font-size: 1.1rem;
+    }
+    .news-card {
+      padding: 1.25rem;
+    }
+    .form-row {
+      flex-direction: column;
+    }
+    .subscribe-card {
+      padding: 1.75rem 1.25rem;
+    }
+    .archive-item a {
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+  }
+
+  @media print {
+    .filter-section,
+    .subscribe-section {
+      display: none;
+    }
+    .news-card {
+      break-inside: avoid;
+      box-shadow: none;
+      border: 1px solid #ccc;
+    }
+  }
+</style>

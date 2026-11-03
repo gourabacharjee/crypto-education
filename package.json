@@ -1,0 +1,16 @@
+{
+  "name": "crypto-education",
+  "type": "module",
+  "version": "1.0.0",
+  "description": "Comprehensive cryptocurrency educational website — 20 years of crypto knowledge",
+  "license": "MIT",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "astro": "^5.8.0"
+  }
+}

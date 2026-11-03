@@ -1,0 +1,1300 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const base = import.meta.env.BASE_URL;
+
+const predictions = [
+  {
+    prediction: 'Bitcoin above $250K',
+    timeframe: '2025–2030',
+    confidence: 60,
+    notes: 'Driven by ETF inflows, halving supply shock, and sovereign accumulation. The demand side has structurally changed.',
+  },
+  {
+    prediction: 'Major central bank holds Bitcoin on balance sheet',
+    timeframe: '2025–2028',
+    confidence: 45,
+    notes: 'Switzerland or Singapore most likely first movers. Political risk makes this harder than it sounds.',
+  },
+  {
+    prediction: 'Ethereum scaling solves mainstream UX',
+    timeframe: '2025–2027',
+    confidence: 75,
+    notes: 'L2s + account abstraction + EIP-7702 are converging. Users won\'t know they\'re on a blockchain.',
+  },
+  {
+    prediction: 'DeFi surpasses $1T in total value locked',
+    timeframe: '2026–2030',
+    confidence: 50,
+    notes: 'Requires tokenized real-world assets (RWAs) to flow on-chain at scale. Regulation is the bottleneck.',
+  },
+  {
+    prediction: 'Post-quantum crypto migration begins in earnest',
+    timeframe: '2027–2032',
+    confidence: 85,
+    notes: 'NIST standards are finalized. The question isn\'t "if" but "how painful." Bitcoin\'s migration will be the most contentious.',
+  },
+  {
+    prediction: 'AI agents manage >$10B autonomously',
+    timeframe: '2026–2029',
+    confidence: 55,
+    notes: 'Agents already execute trades and manage yield. The leap to $10B AUM is about trust frameworks, not technology.',
+  },
+  {
+    prediction: 'At least 10 nations adopt Bitcoin as legal tender',
+    timeframe: '2028–2035',
+    confidence: 30,
+    notes: 'El Salvador remains an outlier. Most nations will prefer stablecoins or CBDCs over surrendering monetary sovereignty.',
+  },
+  {
+    prediction: 'Privacy coins face coordinated global ban attempts',
+    timeframe: '2025–2028',
+    confidence: 70,
+    notes: 'FATF travel rule enforcement is tightening. Privacy will shift to L2s and ZK proofs rather than dedicated privacy chains.',
+  },
+  {
+    prediction: 'Tokenized US Treasuries exceed $50B on-chain',
+    timeframe: '2025–2027',
+    confidence: 80,
+    notes: 'BlackRock, Franklin Templeton, and Ondo are already here. This is the boring revolution that actually matters.',
+  },
+  {
+    prediction: 'A major stablecoin depegs and triggers regulatory response',
+    timeframe: '2025–2028',
+    confidence: 40,
+    notes: 'Not USDC or USDT — more likely an algorithmic or under-collateralized newcomer. History rhymes with Terra.',
+  },
+];
+
+function getConfidenceClass(confidence: number): string {
+  if (confidence >= 70) return 'confidence--high';
+  if (confidence >= 45) return 'confidence--medium';
+  return 'confidence--low';
+}
+
+function getConfidenceLabel(confidence: number): string {
+  if (confidence >= 70) return 'High';
+  if (confidence >= 45) return 'Medium';
+  return 'Low';
+}
+---
+
+<BaseLayout
+  title="Era 3: The Future (2025+)"
+  description="Where cryptocurrency goes next — from quantum resistance to AI agents, regulatory clarity to nation-state adoption. An honest look at what's coming."
+>
+  <!-- ==================== HERO ==================== -->
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="container">
+      <div class="hero__inner">
+        <span class="hero__era-tag">Era 3 · 2025 and Beyond</span>
+        <h1 id="hero-title" class="hero__title">
+          The Future: Where Crypto Goes Next
+        </h1>
+        <p class="hero__subtitle">
+          After two decades of building, breaking, and rebuilding, cryptocurrency stands at an inflection point.
+          The technology works. The institutions have arrived. The question is no longer <em>"will crypto survive?"</em>
+          but <em>"what shape will it take?"</em>
+        </p>
+        <p class="hero__caveat">
+          A note of honesty: anyone claiming to know the future of this space with certainty is either selling you something or delusional.
+          What I can offer is a framework — probabilities, not prophecies. Two decades of watching this space have taught me
+          that the most impactful developments are almost always the ones nobody predicted.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== REGULATORY ENDGAME ==================== -->
+  <section class="section" aria-labelledby="regulation-heading">
+    <div class="container content-width">
+      <h2 id="regulation-heading">Regulatory Endgame: Clarity vs. Capture</h2>
+
+      <p>
+        The single biggest variable in crypto's future isn't technological — it's regulatory. After years of
+        "regulation by enforcement" (particularly in the United States), the world is finally moving toward
+        comprehensive legislative frameworks. But legislation is not inherently good. The devil, as always, lives in the details.
+      </p>
+
+      <h3>The Case for Clear Regulation</h3>
+      <p>
+        Let me be blunt about something many in the crypto community don't want to hear: clear regulation is
+        <strong>overwhelmingly positive</strong> for the long-term health of this industry. Here's why:
+      </p>
+      <ul>
+        <li>
+          <strong>Consumer protection:</strong> The average person who lost money in the FTX collapse, the Terra/Luna implosion,
+          or any of dozens of rug-pulls deserved better. "Code is law" is a philosophy, not a consumer protection framework.
+          Real people lost real life savings.
+        </li>
+        <li>
+          <strong>Institutional confidence:</strong> Pension funds, sovereign wealth funds, and university endowments can't deploy
+          capital into assets that exist in a legal gray zone. The Bitcoin ETF approvals of January 2024 proved this — within
+          months, billions poured in because institutional compliance teams could finally say "yes."
+        </li>
+        <li>
+          <strong>Innovation legitimacy:</strong> Builders want to build, not play legal roulette. Clear rules let teams focus on
+          technology rather than jurisdiction-shopping.
+        </li>
+      </ul>
+
+      <h3>The Risk of Regulatory Capture</h3>
+      <p>
+        Here's the other side that the regulation-enthusiasts don't want to hear: <strong>regulation can be weaponized</strong>.
+        Regulatory capture — where incumbent players write the rules to exclude newcomers — is not a theoretical risk.
+        It's a pattern as old as regulation itself.
+      </p>
+      <ul>
+        <li>
+          Large exchanges can afford compliance teams of 500+ lawyers. A two-person DeFi team in a garage cannot.
+          Rules designed for Goldman Sachs will kill innovation in the cradle.
+        </li>
+        <li>
+          Traditional financial institutions lobbying for crypto regulation often push for rules that conveniently require
+          bank-like infrastructure — infrastructure they already have and startups don't.
+        </li>
+        <li>
+          The revolving door between agencies like the SEC and major financial firms is well-documented and should concern everyone.
+        </li>
+      </ul>
+
+      <div class="callout callout--teaching">
+        <p class="callout-title">🎓 Teaching Moment</p>
+        <p>
+          The term "regulatory capture" was coined by economist George Stigler in 1971. His insight was that regulated industries
+          often end up controlling their regulators because they have concentrated interests and resources, while the public's interest
+          is diffuse. This pattern has played out in telecommunications, banking, pharmaceuticals, and now — potentially — crypto.
+          Watch for it.
+        </p>
+      </div>
+
+      <h3>The US Landscape: FIT21 and Stablecoin Legislation</h3>
+      <p>
+        The United States, despite being home to more crypto developers and users than any other nation, has been the most
+        chaotic regulatory environment. Two pieces of legislation define the current battleground:
+      </p>
+      <ul>
+        <li>
+          <strong>FIT21 (Financial Innovation and Technology for the 21st Century Act):</strong> This bill attempts to resolve
+          the SEC vs. CFTC jurisdictional war by creating clear criteria for when a digital asset is a security versus a commodity.
+          The core test: if a blockchain network is "sufficiently decentralized," its token is a commodity regulated by the CFTC.
+          If not, the SEC retains authority. The debate over what "sufficiently decentralized" means could define the industry for decades.
+        </li>
+        <li>
+          <strong>Stablecoin legislation:</strong> There's bipartisan agreement that stablecoins need a framework — the debate is
+          whether non-bank issuers (like Circle or Tether) should be allowed to continue operating, or whether stablecoin issuance
+          should require a bank charter. This isn't an academic question: over $150 billion in stablecoins facilitate more daily
+          settlement volume than most traditional payment networks.
+        </li>
+      </ul>
+
+      <h3>The EU: MiCA Implementation</h3>
+      <p>
+        The European Union took a fundamentally different approach with MiCA (Markets in Crypto-Assets Regulation), passing comprehensive
+        legislation that took effect in stages through 2024–2025. MiCA creates three categories: e-money tokens (stablecoins pegged to
+        a single fiat currency), asset-referenced tokens (stablecoins pegged to baskets), and utility tokens. The framework requires
+        white papers, reserve audits for stablecoin issuers, and authorization for crypto-asset service providers.
+      </p>
+      <p>
+        The early results are mixed. MiCA provides the regulatory clarity that the US lacks, attracting some firms to set up European
+        operations. But critics argue the compliance burden is tilted toward large incumbents, and the framework struggles to categorize
+        DeFi protocols that don't have a traditional corporate issuer.
+      </p>
+
+      <h3>Global Coordination: Arbitrage or Harmonization?</h3>
+      <p>
+        The trillion-dollar question is whether the world converges on compatible regulatory frameworks or fractures into
+        competing jurisdictions. Right now, we're seeing both:
+      </p>
+      <ul>
+        <li>
+          <strong>Arbitrage:</strong> Hong Kong, Dubai, and Singapore are competing to attract crypto firms with favorable
+          regulations. When the US cracked down in 2023, companies migrated. This puts pressure on restrictive jurisdictions
+          to moderate — or risk losing an entire industry.
+        </li>
+        <li>
+          <strong>Harmonization attempts:</strong> The FATF's travel rule, IOSCO's crypto recommendations, and the FSB's
+          framework for global stablecoin regulation represent attempts at coordination. But crypto moves faster than international
+          bodies, and enforcement varies wildly between jurisdictions.
+        </li>
+      </ul>
+      <p>
+        My honest assessment: we'll get a messy middle ground. Major economies will converge on broad principles (KYC for centralized
+        services, reserve requirements for stablecoins) while diverging on DeFi, privacy, and token classification. The era of total
+        regulatory arbitrage is ending, but true harmonization is still a decade away.
+      </p>
+    </div>
+  </section>
+
+  <!-- ==================== AI + CRYPTO ==================== -->
+  <section class="section section--alt" aria-labelledby="ai-crypto-heading">
+    <div class="container content-width">
+      <h2 id="ai-crypto-heading">AI + Crypto Convergence</h2>
+
+      <p>
+        If I had to bet on the single most transformative intersection in technology over the next decade, it would be
+        artificial intelligence and cryptocurrency. Not because of the hype — I've lived through enough hype cycles to be
+        permanently skeptical — but because these two technologies solve each other's fundamental problems.
+      </p>
+      <p>
+        AI needs decentralized compute, verifiable data provenance, and micropayment rails. Crypto needs intelligent
+        automation, better user experiences, and real-world utility beyond speculation. The marriage is logical.
+        Whether it's healthy is another question entirely.
+      </p>
+
+      <h3>Decentralized Compute Networks</h3>
+      <p>
+        Training and running AI models requires extraordinary amounts of GPU compute. Today, that compute is concentrated
+        in the hands of a few companies — primarily NVIDIA (hardware), and AWS, Google Cloud, and Microsoft Azure (cloud).
+        This concentration creates both bottleneck risks and power asymmetries.
+      </p>
+      <p>
+        Decentralized compute networks aim to create permissionless marketplaces where anyone with GPU capacity can rent it out:
+      </p>
+      <ul>
+        <li>
+          <strong>Render Network:</strong> Originally built for distributed GPU rendering (film, 3D graphics), Render has
+          expanded into AI inference workloads. Their network connects idle GPU capacity from individuals and small data centers
+          to users who need it, using the RNDR token for payment and coordination.
+        </li>
+        <li>
+          <strong>Akash Network:</strong> A decentralized cloud computing marketplace built on Cosmos. Akash positions itself
+          as the "Airbnb of cloud compute" — providers list unused server capacity, and users deploy workloads at prices significantly
+          below major cloud providers. Their focus has shifted heavily toward AI/ML workloads.
+        </li>
+        <li>
+          <strong>io.net:</strong> Aggregates GPU capacity from data centers, crypto miners, and consumer hardware into a unified
+          network optimized for AI model training and inference. Their thesis: the world has millions of underutilized GPUs, and
+          a coordination layer can unlock them.
+        </li>
+      </ul>
+
+      <div class="callout callout--teaching">
+        <p class="callout-title">🎓 Teaching Moment</p>
+        <p>
+          The real challenge for decentralized compute isn't technology — it's reliability and latency. Training a large language model
+          requires thousands of GPUs working in tight synchronization for weeks. If one node goes offline, it can disrupt the entire job.
+          Centralized data centers solve this with redundancy and physical proximity. Decentralized networks are better suited (for now)
+          to inference workloads and smaller training jobs where node failure is less catastrophic. Don't believe anyone who tells you
+          decentralized training of frontier models is production-ready today. It's getting there, but we're not there yet.
+        </p>
+      </div>
+
+      <h3>AI Agent Economies</h3>
+      <p>
+        This is where things get genuinely strange — and genuinely important. An AI agent is an autonomous program that can perceive
+        its environment, make decisions, and take actions to achieve goals. When you give an AI agent a crypto wallet, you give it
+        the ability to autonomously transact value.
+      </p>
+      <p>
+        Think about what that means: software that can pay for its own compute, hire other agents to perform subtasks, negotiate prices,
+        and manage portfolios — all without human intervention. We're already seeing early versions:
+      </p>
+      <ul>
+        <li>AI agents that monitor DeFi protocols and automatically rebalance yield strategies across chains</li>
+        <li>Autonomous trading agents that execute complex multi-step strategies based on on-chain and off-chain data</li>
+        <li>Service agents that perform tasks (data analysis, content creation, code audits) and accept crypto payment</li>
+        <li>Infrastructure agents that bid on and provision compute resources from decentralized networks</li>
+      </ul>
+      <p>
+        Crypto is uniquely suited to agent economies because it provides programmable, permissionless payment rails. An AI agent can't
+        open a bank account — but it can generate a wallet address in milliseconds. Smart contracts provide the trust framework:
+        escrow, conditional payments, and dispute resolution without requiring a human intermediary.
+      </p>
+
+      <h3>Data Marketplaces and Provenance</h3>
+      <p>
+        AI models are only as good as their training data, and the question of data ownership, licensing, and provenance is becoming
+        one of the most contentious issues in technology. Projects like <strong>Ocean Protocol</strong> are building decentralized
+        data marketplaces where data owners can monetize their datasets while maintaining control over access and usage rights.
+      </p>
+      <p>
+        Blockchain provides an immutable audit trail: who contributed data, when, under what license terms, and who used it. This is
+        critical for addressing the wave of lawsuits from content creators (artists, writers, musicians) whose work was used to train
+        AI models without consent or compensation.
+      </p>
+
+      <h3>The Risks: What Keeps Me Up at Night</h3>
+      <div class="callout callout--warning">
+        <p class="callout-title">⚠️ What Could Go Wrong</p>
+        <p>
+          <strong>Deepfakes + crypto = fraud at scale.</strong> AI-generated voices and video are already being used for social engineering
+          attacks. Combine this with irreversible crypto transactions, and you get a threat landscape that's genuinely terrifying. A deepfake
+          of a CEO authorizing a wire transfer is bad enough with traditional banking safeguards — it's catastrophic with instant, irreversible
+          crypto settlement.
+        </p>
+      </div>
+      <div class="callout callout--warning">
+        <p class="callout-title">⚠️ What Could Go Wrong</p>
+        <p>
+          <strong>Autonomous trading and flash crashes.</strong> AI agents trading against other AI agents, executing millions of
+          transactions per second, with no human in the loop — this is not science fiction, it's already happening. The 2010 Flash Crash
+          in traditional markets was caused by algorithmic trading. Now imagine that in 24/7 crypto markets with less liquidity, fewer
+          circuit breakers, and agents that can spin up and execute strategies faster than any human can monitor.
+        </p>
+      </div>
+      <div class="callout callout--warning">
+        <p class="callout-title">⚠️ What Could Go Wrong</p>
+        <p>
+          <strong>Concentration of power, not decentralization.</strong> The irony of AI + crypto is that while crypto promises
+          decentralization, AI development is radically centralizing. Training frontier models costs hundreds of millions of dollars
+          and requires expertise concentrated in a handful of labs. If decentralized compute networks just become cheaper AWS alternatives
+          for the same big players, we've decentralized the infrastructure but not the power.
+        </p>
+      </div>
+
+      <h3>Why This Intersection Matters More Than Most People Think</h3>
+      <p>
+        Here's the framework I use: every major technology wave creates new coordination problems that the next wave solves. The internet
+        enabled global communication but created information verification problems. Social media enabled mass participation but created
+        trust problems. AI enables superhuman intelligence but creates accountability, ownership, and payment problems.
+      </p>
+      <p>
+        Crypto — specifically, programmable money, verifiable identity, and transparent audit trails — solves several of AI's core
+        problems. Not all of them, and not perfectly, but well enough that the convergence is inevitable. The question is whether it
+        happens in a way that distributes power or concentrates it further.
+      </p>
+    </div>
+  </section>
+
+  <!-- ==================== TECHNICAL FRONTIERS ==================== -->
+  <section class="section" aria-labelledby="tech-heading">
+    <div class="container content-width">
+      <h2 id="tech-heading">Technical Frontiers</h2>
+
+      <p>
+        The underlying technology of cryptocurrency is evolving faster than at any point since Ethereum introduced smart contracts
+        in 2015. Five technical frontiers will define the next era.
+      </p>
+
+      <h3>Quantum Resistance: The Slow-Motion Emergency</h3>
+      <p>
+        Every public-key cryptographic system used in cryptocurrency today — ECDSA (Bitcoin, Ethereum), EdDSA (Solana, Cardano),
+        RSA — is theoretically breakable by a sufficiently powerful quantum computer running Shor's algorithm. This isn't
+        controversial; it's mathematics.
+      </p>
+      <p>
+        The good news: "sufficiently powerful" is doing a lot of heavy lifting in that sentence. Breaking Bitcoin's 256-bit elliptic
+        curve cryptography would require a quantum computer with roughly 2,500 error-corrected logical qubits. As of 2025, the most
+        advanced quantum computers have around 1,000–1,500 <em>physical</em> qubits, and the error-correction overhead to create
+        logical qubits is enormous. Most experts estimate we're 10–20 years from a cryptographically relevant quantum computer.
+      </p>
+      <p>
+        The bad news: "harvest now, decrypt later" attacks are already happening. State actors can record encrypted communications
+        and blockchain transactions today, wait for quantum computers to mature, and then decrypt them retroactively. For financial
+        transactions that matter for decades (property records, long-term bonds), this is a real and present concern.
+      </p>
+      <p>
+        NIST (the U.S. National Institute of Standards and Technology) finalized its first set of post-quantum cryptographic standards
+        in 2024: CRYSTALS-Kyber for key encapsulation and CRYSTALS-Dilithium for digital signatures. The crypto industry's migration
+        will be complex, contentious, and absolutely necessary.
+      </p>
+
+      <div class="callout callout--teaching">
+        <p class="callout-title">🎓 Teaching Moment</p>
+        <p>
+          Bitcoin's quantum vulnerability is often overstated. Addresses that have never been spent from only expose a hashed public key
+          (protected by SHA-256 and RIPEMD-160, which are quantum-resistant). The vulnerability exists when you <em>spend</em> from an
+          address, briefly exposing the raw public key. A quantum attacker would need to derive the private key from the public key in the
+          window between transaction broadcast and confirmation. That said, Satoshi's coins (which used early pay-to-public-key format) are
+          more vulnerable, and any migration plan will need to address those legacy addresses.
+        </p>
+      </div>
+
+      <h3>ZK-Everything: Privacy and Scalability by Default</h3>
+      <p>
+        Zero-knowledge proofs — cryptographic techniques that let you prove something is true without revealing the underlying data —
+        have gone from academic curiosity to the most important innovation in blockchain scaling and privacy. The "ZK-everything" thesis
+        is that within five years, ZK proofs will be embedded in nearly every layer of the crypto stack:
+      </p>
+      <ul>
+        <li>
+          <strong>zkEVMs (Zero-Knowledge Ethereum Virtual Machines):</strong> Projects like zkSync, Polygon zkEVM, Scroll, and Linea
+          run Ethereum-compatible smart contracts on Layer 2 rollups, using ZK proofs to inherit Ethereum's security while processing
+          transactions orders of magnitude faster and cheaper. The holy grail is a "Type 1" zkEVM that is byte-code equivalent to
+          Ethereum — meaning any existing smart contract can run on it without modification.
+        </li>
+        <li>
+          <strong>zkVMs (Zero-Knowledge Virtual Machines):</strong> Going beyond EVM compatibility, projects like RISC Zero and
+          SP1 (Succinct) are building general-purpose zkVMs that can prove the correct execution of arbitrary programs. This means any
+          computation — not just blockchain transactions — can be verified without re-execution.
+        </li>
+        <li>
+          <strong>Privacy by default:</strong> Today, most blockchain transactions are pseudonymous but fully transparent. ZK proofs
+          enable "selective disclosure" — you can prove you have sufficient funds, are over 18, or are a resident of a particular
+          jurisdiction without revealing your identity, balance, or address. This resolves the tension between regulatory compliance
+          (KYC/AML) and user privacy.
+        </li>
+      </ul>
+
+      <h3>Account Abstraction: The UX Revolution</h3>
+      <p>
+        If crypto has an original sin, it's user experience. Seed phrases, gas fees, transaction signing, chain switching — every one
+        of these concepts is a barrier that keeps normal humans away from the technology. Account abstraction (formalized in ERC-4337 and
+        expanded by EIP-7702) is the most important UX improvement in crypto's history.
+      </p>
+      <p>
+        The core idea: instead of every account being a simple keypair (externally owned account, or EOA), accounts become smart contracts
+        with programmable logic. This enables:
+      </p>
+      <ul>
+        <li><strong>Social recovery:</strong> Lost your key? Designated guardians (friends, family, a hardware wallet) can help you recover access. No more seed phrases on paper.</li>
+        <li><strong>Gas abstraction:</strong> Applications pay gas fees on behalf of users, or users pay gas in any token (not just the chain's native token). Users never need to think about gas.</li>
+        <li><strong>Session keys:</strong> Grant temporary permissions to a dApp (like "allow this game to make moves on my behalf for the next hour") without exposing your main private key.</li>
+        <li><strong>Spending limits and multisig:</strong> Set daily spending limits, require multiple approvals for large transactions, or create sophisticated access control policies — like a programmable bank account.</li>
+        <li><strong>Batched transactions:</strong> Approve and execute multiple operations in a single click, rather than signing each one individually.</li>
+      </ul>
+      <p>
+        The end state: using a crypto wallet should feel like using Apple Pay. The cryptography is still there, but it's invisible.
+        We're not there yet, but ERC-4337 has moved from "interesting proposal" to "actively deployed" across major L2s, and the
+        improvement in onboarding metrics is dramatic.
+      </p>
+
+      <h3>Cross-Chain Interoperability</h3>
+      <p>
+        The multi-chain future is already here — there are hundreds of active blockchains, each with their own assets, applications,
+        and user communities. The problem: moving assets and information between chains is still clunky, risky, and expensive.
+        Cross-chain bridges have been the site of some of crypto's largest hacks (Ronin Bridge: $625M, Wormhole: $320M, Nomad: $190M).
+      </p>
+      <p>
+        The next generation of interoperability protocols is taking different approaches:
+      </p>
+      <ul>
+        <li>
+          <strong>LayerZero:</strong> An omnichain messaging protocol that enables smart contracts on different chains to communicate
+          directly. Rather than locking assets in a bridge, LayerZero sends verified messages between chains, enabling native asset
+          transfers (OFT standard) and cross-chain function calls.
+        </li>
+        <li>
+          <strong>Wormhole:</strong> Originally a Solana–Ethereum bridge, Wormhole has evolved into a generic cross-chain messaging
+          platform with a guardian network that validates messages. The 2022 hack led to a complete security overhaul.
+        </li>
+        <li>
+          <strong>IBC (Inter-Blockchain Communication):</strong> The Cosmos ecosystem's native interoperability standard, IBC is
+          arguably the most battle-tested cross-chain protocol. It uses light client verification — each chain runs a light client
+          of the other chain and independently verifies state transitions. No trusted intermediaries required.
+        </li>
+      </ul>
+
+      <div class="callout callout--teaching">
+        <p class="callout-title">🎓 Teaching Moment</p>
+        <p>
+          Cross-chain security exists on a trust spectrum. At one end: fully trustless verification (like IBC's light clients or ZK
+          bridge proofs) where the math guarantees correctness. At the other end: trusted validator sets (multisigs, guardian networks)
+          where you're relying on the honesty and security of a small group. Most bridges today are closer to the trusted end.
+          When evaluating a bridge, always ask: "What exactly am I trusting, and what happens if that trust is violated?"
+        </p>
+      </div>
+
+      <h3>Modular Blockchains: Unbundling the Stack</h3>
+      <p>
+        Monolithic blockchains (Bitcoin, Ethereum L1, Solana) handle everything: execution, consensus, data availability, and settlement
+        on a single chain. The modular thesis, pioneered by Celestia, argues this is inefficient — each function should be optimized independently.
+      </p>
+      <ul>
+        <li><strong>Execution:</strong> Where smart contracts actually run. L2 rollups (Arbitrum, Optimism, zkSync) handle this.</li>
+        <li><strong>Settlement:</strong> Where disputes are resolved and finality is guaranteed. Ethereum L1 serves this role for its rollup ecosystem.</li>
+        <li><strong>Data availability:</strong> Where transaction data is stored so anyone can verify correctness. This is the bottleneck Celestia (and EigenDA, Avail) address — providing cheap, abundant data availability separate from execution.</li>
+        <li><strong>Consensus:</strong> How the network agrees on the order and validity of transactions.</li>
+      </ul>
+      <p>
+        The modular approach enables "sovereign rollups" — chains that post data to Celestia for availability but maintain their own
+        consensus and settlement rules. The tradeoff: more flexibility and lower costs, but increased complexity and potential
+        fragmentation of security guarantees.
+      </p>
+    </div>
+  </section>
+
+  <!-- ==================== NATION-STATE ADOPTION ==================== -->
+  <section class="section section--alt" aria-labelledby="nation-state-heading">
+    <div class="container content-width">
+      <h2 id="nation-state-heading">Nation-State Adoption Scenarios</h2>
+
+      <p>
+        Perhaps nothing signals crypto's maturation more than the fact that nation-states — the entities with the most to lose from
+        decentralized money — are actively incorporating it into their strategic planning. This isn't fringe anymore. It's foreign policy.
+      </p>
+
+      <h3>El Salvador's Bitcoin Experiment: Lessons Learned</h3>
+      <p>
+        On September 7, 2021, El Salvador became the first country in the world to adopt Bitcoin as legal tender under President
+        Nayib Bukele's Bitcoin Law. The government launched the Chivo wallet, offered $30 in Bitcoin to every citizen who downloaded
+        it, and began purchasing Bitcoin for the national treasury.
+      </p>
+      <p>
+        The results, several years in, are genuinely mixed — and that's the honest assessment:
+      </p>
+      <ul>
+        <li>
+          <strong>What worked:</strong> El Salvador attracted significant international attention, crypto tourism, and some tech
+          investment. Bitcoin bond proposals (the "Volcano Bonds") attempted to create innovative sovereign debt instruments. The
+          government's Bitcoin holdings eventually moved into profit after the 2024 bull market.
+        </li>
+        <li>
+          <strong>What didn't:</strong> Domestic adoption plateaued. Most Salvadorans who downloaded the Chivo wallet spent the $30
+          bonus and stopped using it. Merchants largely reverted to dollars. The IMF applied sustained pressure, eventually securing
+          an agreement that softened the legal tender mandate. Technical infrastructure remained unreliable.
+        </li>
+        <li>
+          <strong>The real lesson:</strong> You can make Bitcoin legal tender by law, but you can't make people use it by decree.
+          Adoption requires genuine utility advantages over existing systems, not mandates. El Salvador proved Bitcoin is viable at
+          the sovereign level but also proved that top-down adoption without bottom-up demand has limits.
+        </li>
+      </ul>
+
+      <h3>The US Strategic Bitcoin Reserve Debate</h3>
+      <p>
+        The concept of a US Strategic Bitcoin Reserve — analogous to the Strategic Petroleum Reserve — moved from fringe talking
+        point to serious policy discussion between 2024 and 2025. Several proposals emerged:
+      </p>
+      <ul>
+        <li>Retaining Bitcoin seized through law enforcement (the US already holds significant amounts from Silk Road and other seizures) rather than auctioning it off</li>
+        <li>Active accumulation — the government purchasing Bitcoin on the open market as a reserve asset</li>
+        <li>A "digital Fort Knox" — holding Bitcoin alongside gold as part of the national reserve portfolio</li>
+      </ul>
+      <p>
+        The debate reveals a fundamental tension: if the US government holds Bitcoin, it simultaneously legitimizes it and creates a
+        vector for control. And if the US starts buying, every other major nation faces game-theoretic pressure to do the same — a
+        sovereign FOMO cascade.
+      </p>
+
+      <div class="callout callout--teaching">
+        <p class="callout-title">🎓 Teaching Moment</p>
+        <p>
+          Game theory is essential to understanding nation-state Bitcoin adoption. If one major economy starts accumulating Bitcoin
+          and the price subsequently rises, every other nation that didn't accumulate looks foolish (or worse, strategically
+          disadvantaged). This creates a Nash equilibrium problem: even nations that are skeptical of Bitcoin may be forced to
+          acquire it as a defensive measure. This is the same dynamic that drove central banks to accumulate gold for centuries —
+          it doesn't matter if you think gold is "just a rock" if everyone else treats it as money.
+        </p>
+      </div>
+
+      <h3>Three Scenarios for the Future of Money</h3>
+
+      <div class="scenarios-grid">
+        <article class="scenario-card">
+          <div class="scenario-card__header scenario-card__header--btc">
+            <span class="scenario-card__icon" aria-hidden="true">₿</span>
+            <h4 class="scenario-card__title">Bitcoin as Global Reserve Asset</h4>
+          </div>
+          <div class="scenario-card__body">
+            <p>
+              Bitcoin achieves "digital gold" status and is held by central banks as a reserve asset alongside gold, USD, and
+              government bonds. Bitcoin doesn't replace fiat currencies but serves as a neutral, non-sovereign store of value
+              in a world where trust between nations is declining.
+            </p>
+            <p><strong>Probability:</strong> Moderate. Requires continued institutional adoption, no catastrophic technical failure, and gradually normalizing sovereign attitudes.</p>
+          </div>
+        </article>
+
+        <article class="scenario-card">
+          <div class="scenario-card__header scenario-card__header--cbdc">
+            <span class="scenario-card__icon" aria-hidden="true">🏛️</span>
+            <h4 class="scenario-card__title">CBDC-Dominated World</h4>
+          </div>
+          <div class="scenario-card__body">
+            <p>
+              Central Bank Digital Currencies become the primary form of digital money. China's digital yuan, the digital euro, and
+              others succeed, giving governments unprecedented visibility into (and control over) money flows. Crypto exists but is
+              marginalized as a speculative sideshow. Privacy advocates' worst nightmare.
+            </p>
+            <p><strong>Probability:</strong> Moderate-low. Technical CBDC pilots have been underwhelming, and public resistance to government-surveilled money is growing. But never underestimate a government's desire for financial control.</p>
+          </div>
+        </article>
+
+        <article class="scenario-card">
+          <div class="scenario-card__header scenario-card__header--stable">
+            <span class="scenario-card__icon" aria-hidden="true">💵</span>
+            <h4 class="scenario-card__title">Stablecoin Dominance</h4>
+          </div>
+          <div class="scenario-card__body">
+            <p>
+              Dollar-pegged stablecoins (USDC, USDT, and regulated newcomers) become the world's de facto digital payment layer.
+              The US dollar actually strengthens its global dominance through crypto rails, as emerging market citizens dollarize
+              their savings via stablecoins rather than their local currencies. The "crypto dollar" extends American monetary
+              hegemony further than any policy could.
+            </p>
+            <p><strong>Probability:</strong> High. This is already happening at scale. USDT is the most traded crypto asset by volume, and stablecoin adoption in Argentina, Turkey, Nigeria, and other high-inflation economies is organic and growing rapidly.</p>
+          </div>
+        </article>
+      </div>
+
+      <h3>Developing Nations and Financial Inclusion</h3>
+      <p>
+        The most impactful crypto adoption isn't happening in Silicon Valley — it's happening in Lagos, Buenos Aires, Manila, and
+        Dhaka. In countries with unstable currencies, unreliable banking systems, and large unbanked populations, crypto provides
+        genuinely life-changing utility:
+      </p>
+      <ul>
+        <li>
+          <strong>Remittances:</strong> Global remittance flows exceed $650 billion annually, with traditional providers charging
+          6–10% fees. Stablecoin transfers cost cents and settle in minutes, not days. For a Filipino worker in Dubai sending money
+          home, the difference is hundreds of dollars a year.
+        </li>
+        <li>
+          <strong>Inflation hedging:</strong> When your currency loses 50%+ of its value in a year (as happened in Argentina, Turkey,
+          Lebanon, and Nigeria in recent years), stablecoins aren't a speculative bet — they're a survival strategy.
+        </li>
+        <li>
+          <strong>Access to global financial services:</strong> DeFi lending, savings, and insurance products are available to anyone
+          with a smartphone and internet connection. No bank account, credit score, or identification documents required.
+        </li>
+      </ul>
+
+      <h3>Geopolitical Implications: Dollar vs. Yuan vs. Bitcoin</h3>
+      <p>
+        The global monetary order is shifting, and crypto is both a cause and a symptom. The US dollar has been the world's reserve
+        currency since the 1944 Bretton Woods agreement, but its dominance is being challenged from multiple directions:
+      </p>
+      <ul>
+        <li>China's push for yuan internationalization (including the digital yuan for cross-border settlement)</li>
+        <li>BRICS nations exploring alternative settlement systems to avoid dollar-dependent SWIFT</li>
+        <li>Bitcoin as a "neutral" settlement layer that no single nation controls</li>
+        <li>Stablecoins paradoxically reinforcing dollar dominance by making dollar-denominated assets accessible globally</li>
+      </ul>
+      <p>
+        The irony is thick: the technology that cypherpunks built to escape government money may end up being the greatest
+        instrument of US dollar supremacy the world has ever seen. When a farmer in rural Nigeria saves in USDC, that's dollar demand
+        that the US Treasury never had to create or defend.
+      </p>
+    </div>
+  </section>
+
+  <!-- ==================== WHAT COULD GO WRONG ==================== -->
+  <section class="section" aria-labelledby="risks-heading">
+    <div class="container content-width">
+      <h2 id="risks-heading">What Could Go Wrong: The Honest Risk Assessment</h2>
+      <p>
+        A responsible look at the future requires staring directly at the things that could derail the entire thesis. I've been in this
+        space long enough to know that the biggest risks are usually the ones nobody's talking about — but these are the ones I can see:
+      </p>
+
+      <div class="callout callout--warning">
+        <p class="callout-title">⚠️ What Could Go Wrong</p>
+        <p>
+          <strong>A quantum computing breakthrough arrives faster than expected.</strong> If a nation-state develops cryptographically
+          relevant quantum computing capability before the ecosystem migrates to post-quantum cryptography, billions of dollars in assets
+          secured by current cryptographic schemes could be vulnerable. The "harvest now, decrypt later" attack means the clock is already
+          ticking on sensitive transactions made today.
+        </p>
+      </div>
+
+      <div class="callout callout--warning">
+        <p class="callout-title">⚠️ What Could Go Wrong</p>
+        <p>
+          <strong>A coordinated global regulatory crackdown.</strong> If the G20 nations simultaneously classify most tokens as securities,
+          ban self-custody wallets, or require identity verification for all on-chain transactions, the decentralized ethos of crypto could
+          be reduced to a permissioned system that looks a lot like traditional finance with extra steps.
+        </p>
+      </div>
+
+      <div class="callout callout--warning">
+        <p class="callout-title">⚠️ What Could Go Wrong</p>
+        <p>
+          <strong>A critical smart contract vulnerability in core infrastructure.</strong> The DeFi ecosystem is a tower of composable
+          protocols, each depending on others. A vulnerability in a foundational piece — a major L2's bridge contract, a widely-used
+          oracle system, or a core lending protocol — could cascade through the entire ecosystem in hours. We've seen echoes of this
+          with every major exploit, but a truly systemic one hasn't happened yet. Yet.
+        </p>
+      </div>
+
+      <div class="callout callout--warning">
+        <p class="callout-title">⚠️ What Could Go Wrong</p>
+        <p>
+          <strong>Public trust erosion from repeated fraud.</strong> The FTX collapse destroyed trust among millions of people.
+          If the next cycle produces another major fraud — especially one involving regulated entities — the political will to "protect
+          consumers" by effectively banning crypto for retail investors could be overwhelming. Trust is a non-renewable resource.
+        </p>
+      </div>
+
+      <div class="callout callout--warning">
+        <p class="callout-title">⚠️ What Could Go Wrong</p>
+        <p>
+          <strong>The "good enough" scenario.</strong> Perhaps the most insidious risk: traditional finance adopts just enough blockchain
+          technology to capture the efficiency gains (faster settlement, tokenized assets, programmable payments) while maintaining all the
+          existing power structures. Crypto gets absorbed rather than adopted, and the revolutionary potential is neutralized by incumbents
+          who co-opt the technology without its values.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== PREDICTIONS TABLE ==================== -->
+  <section class="section section--alt" aria-labelledby="predictions-heading">
+    <div class="container">
+      <h2 id="predictions-heading">Teacher's Prediction Framework</h2>
+      <p class="content-width">
+        After 20 years in this space, I've learned that predictions are useful not because they're right, but because they force you to
+        make your assumptions explicit. Here are mine — with confidence levels that reflect genuine uncertainty, not false precision.
+      </p>
+
+      <div class="predictions-table-wrapper">
+        <table class="predictions-table" aria-label="Cryptocurrency predictions with confidence levels">
+          <thead>
+            <tr>
+              <th scope="col">Prediction</th>
+              <th scope="col">Timeframe</th>
+              <th scope="col">Confidence</th>
+              <th scope="col">Notes</th>
+            </tr>
+          </thead>
+          <tbody>
+            {predictions.map((p) => (
+              <tr>
+                <td class="predictions-table__prediction">{p.prediction}</td>
+                <td class="predictions-table__timeframe">{p.timeframe}</td>
+                <td>
+                  <div class="confidence-wrapper">
+                    <div class="confidence-bar">
+                      <div
+                        class={`confidence-bar__fill ${getConfidenceClass(p.confidence)}`}
+                        style={`width: ${p.confidence}%`}
+                        role="progressbar"
+                        aria-valuenow={p.confidence}
+                        aria-valuemin={0}
+                        aria-valuemax={100}
+                        aria-label={`${p.confidence}% confidence`}
+                      />
+                    </div>
+                    <span class={`confidence-label ${getConfidenceClass(p.confidence)}`}>
+                      {p.confidence}% <span class="confidence-label__text">({getConfidenceLabel(p.confidence)})</span>
+                    </span>
+                  </div>
+                </td>
+                <td class="predictions-table__notes">{p.notes}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      <div class="predictions-disclaimer content-width">
+        <p>
+          <strong>A note on intellectual honesty:</strong> I publish these predictions knowing I'll be wrong about many of them.
+          That's the point. Crypto is a complex adaptive system — it's influenced by technology, regulation, geopolitics, human psychology,
+          and pure chance. Anyone who claims 90%+ confidence on multi-year predictions in this space is either lying or hasn't been paying attention.
+        </p>
+        <p>
+          I'll revisit these predictions annually and update them publicly. The goal isn't to be right — it's to be <em>calibrated</em>.
+          If my "60% confident" predictions come true about 60% of the time, I'm doing well. If my "30% confident" predictions come true
+          80% of the time, my model is broken and I need to update my assumptions.
+        </p>
+        <p>
+          Use this framework for your own thinking. Write down your predictions, assign probabilities, and hold yourself accountable.
+          It's the best antidote to narrative bias and herd mentality I've found.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== ERA NAVIGATION ==================== -->
+  <nav class="era-nav" aria-label="Era navigation">
+    <div class="container">
+      <div class="era-nav__inner">
+        <a href={`${base}eras/the-present`} class="era-nav__link era-nav__link--prev">
+          <span class="era-nav__direction">← Previous Era</span>
+          <span class="era-nav__label">The Present</span>
+        </a>
+        <a href={`${base}regulation`} class="era-nav__link era-nav__link--cta">
+          <span class="era-nav__direction">Deep Dive →</span>
+          <span class="era-nav__label">Regulation Tracker</span>
+        </a>
+      </div>
+    </div>
+  </nav>
+</BaseLayout>
+
+<style>
+  /* ============================================
+     ERA 3: THE FUTURE — SCOPED STYLES
+     ============================================ */
+
+  /* ---------- Hero Section ---------- */
+  .hero {
+    position: relative;
+    padding: 6rem 0 4rem;
+    background: linear-gradient(
+      135deg,
+      #0d1117 0%,
+      #0a192f 25%,
+      #1a0a2e 50%,
+      #0f2027 75%,
+      #0d1117 100%
+    );
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse at 20% 50%, rgba(88, 166, 255, 0.08) 0%, transparent 60%),
+      radial-gradient(ellipse at 80% 20%, rgba(210, 168, 255, 0.06) 0%, transparent 50%),
+      radial-gradient(ellipse at 60% 80%, rgba(63, 185, 80, 0.05) 0%, transparent 50%);
+    pointer-events: none;
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--accent-primary), var(--accent-tertiary), transparent);
+  }
+
+  .hero__inner {
+    position: relative;
+    max-width: var(--content-width);
+    z-index: 1;
+  }
+
+  .hero__era-tag {
+    display: inline-block;
+    padding: 0.35em 0.9em;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent-tertiary);
+    border: 1px solid var(--accent-tertiary);
+    border-radius: 999px;
+    margin-bottom: 1.5rem;
+    background: rgba(210, 168, 255, 0.08);
+  }
+
+  .hero__title {
+    font-size: clamp(2rem, 5vw, 3.25rem);
+    font-weight: 800;
+    line-height: 1.15;
+    margin-bottom: 1.5rem;
+    background: linear-gradient(135deg, var(--text-primary) 40%, var(--accent-primary) 70%, var(--accent-tertiary));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .hero__subtitle {
+    font-size: 1.15rem;
+    line-height: 1.7;
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
+    max-width: 680px;
+  }
+
+  .hero__subtitle em {
+    color: var(--accent-primary);
+    font-style: italic;
+  }
+
+  .hero__caveat {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: var(--text-tertiary);
+    border-left: 3px solid var(--accent-tertiary);
+    padding-left: 1.25rem;
+    margin-top: 1rem;
+    max-width: 680px;
+  }
+
+  /* ---------- Content Sections ---------- */
+  .section h2 {
+    margin-bottom: 1rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 2px solid var(--border-color);
+  }
+
+  .section h3 {
+    margin-top: 2.5rem;
+    margin-bottom: 0.75rem;
+    color: var(--accent-primary);
+  }
+
+  .section ul {
+    list-style: none;
+    padding: 0;
+    margin: 1rem 0 1.5rem;
+  }
+
+  .section ul li {
+    position: relative;
+    padding-left: 1.5rem;
+    margin-bottom: 0.75rem;
+    color: var(--text-secondary);
+    line-height: 1.7;
+  }
+
+  .section ul li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--accent-primary);
+    font-weight: 700;
+  }
+
+  .section ul li strong {
+    color: var(--text-primary);
+  }
+
+  /* ---------- Scenario Cards ---------- */
+  .scenarios-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    margin: 2rem 0;
+  }
+
+  @media (min-width: 768px) {
+    .scenarios-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  .scenario-card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    transition: box-shadow var(--transition-base), border-color var(--transition-base);
+  }
+
+  .scenario-card:hover {
+    box-shadow: var(--shadow-md);
+  }
+
+  .scenario-card__header {
+    padding: 1.25rem 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    border-bottom: 1px solid var(--card-border);
+  }
+
+  .scenario-card__header--btc {
+    background: linear-gradient(135deg, rgba(247, 147, 26, 0.12), rgba(247, 147, 26, 0.03));
+    border-bottom-color: rgba(247, 147, 26, 0.2);
+  }
+
+  .scenario-card__header--cbdc {
+    background: linear-gradient(135deg, rgba(88, 166, 255, 0.12), rgba(88, 166, 255, 0.03));
+    border-bottom-color: rgba(88, 166, 255, 0.2);
+  }
+
+  .scenario-card__header--stable {
+    background: linear-gradient(135deg, rgba(63, 185, 80, 0.12), rgba(63, 185, 80, 0.03));
+    border-bottom-color: rgba(63, 185, 80, 0.2);
+  }
+
+  .scenario-card__icon {
+    font-size: 1.5rem;
+  }
+
+  .scenario-card__title {
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 0;
+  }
+
+  .scenario-card__body {
+    padding: 1.25rem 1.5rem;
+  }
+
+  .scenario-card__body p {
+    font-size: 0.9rem;
+    line-height: 1.6;
+  }
+
+  .scenario-card__body p:last-child {
+    margin-bottom: 0;
+    font-size: 0.85rem;
+    color: var(--text-tertiary);
+  }
+
+  /* ---------- Predictions Table ---------- */
+  .predictions-table-wrapper {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    margin: 2rem 0;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    background: var(--card-bg);
+  }
+
+  .predictions-table {
+    margin: 0;
+    min-width: 800px;
+    border-collapse: collapse;
+  }
+
+  .predictions-table thead {
+    background: var(--bg-tertiary);
+  }
+
+  .predictions-table th {
+    padding: 1rem 1.25rem;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--text-secondary);
+    border-bottom: 2px solid var(--border-color);
+    white-space: nowrap;
+  }
+
+  .predictions-table td {
+    padding: 1rem 1.25rem;
+    vertical-align: top;
+    border-bottom: 1px solid var(--border-color);
+  }
+
+  .predictions-table tbody tr:last-child td {
+    border-bottom: none;
+  }
+
+  .predictions-table tbody tr:hover td {
+    background: var(--bg-secondary);
+  }
+
+  .predictions-table__prediction {
+    font-weight: 600;
+    color: var(--text-primary);
+    min-width: 180px;
+  }
+
+  .predictions-table__timeframe {
+    white-space: nowrap;
+    color: var(--text-secondary);
+    font-family: var(--font-mono);
+    font-size: 0.875rem;
+  }
+
+  .predictions-table__notes {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    min-width: 250px;
+  }
+
+  /* ---------- Confidence Bar ---------- */
+  .confidence-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    min-width: 130px;
+  }
+
+  .confidence-bar {
+    width: 100%;
+    height: 6px;
+    background: var(--bg-tertiary);
+    border-radius: 999px;
+    overflow: hidden;
+  }
+
+  .confidence-bar__fill {
+    height: 100%;
+    border-radius: 999px;
+    transition: width 0.6s ease;
+  }
+
+  .confidence-bar__fill.confidence--high {
+    background: linear-gradient(90deg, var(--accent-secondary), #2ea043);
+  }
+
+  .confidence-bar__fill.confidence--medium {
+    background: linear-gradient(90deg, var(--warning-border), #e3b341);
+  }
+
+  .confidence-bar__fill.confidence--low {
+    background: linear-gradient(90deg, var(--danger-border), #f0883e);
+  }
+
+  .confidence-label {
+    font-size: 0.8rem;
+    font-weight: 700;
+    font-family: var(--font-mono);
+  }
+
+  .confidence-label.confidence--high {
+    color: var(--accent-secondary);
+  }
+
+  .confidence-label.confidence--medium {
+    color: var(--warning-border);
+  }
+
+  .confidence-label.confidence--low {
+    color: var(--danger-border);
+  }
+
+  .confidence-label__text {
+    font-weight: 400;
+    font-family: var(--font-sans);
+    color: var(--text-tertiary);
+    font-size: 0.75rem;
+  }
+
+  /* ---------- Predictions Disclaimer ---------- */
+  .predictions-disclaimer {
+    margin-top: 2rem;
+    padding: 1.5rem 2rem;
+    background: var(--bg-tertiary);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border-color);
+  }
+
+  .predictions-disclaimer p {
+    font-size: 0.9rem;
+    line-height: 1.7;
+    color: var(--text-secondary);
+  }
+
+  .predictions-disclaimer p:last-child {
+    margin-bottom: 0;
+  }
+
+  .predictions-disclaimer em {
+    color: var(--accent-primary);
+  }
+
+  .predictions-disclaimer strong {
+    color: var(--text-primary);
+  }
+
+  /* ---------- Era Navigation ---------- */
+  .era-nav {
+    padding: 3rem 0;
+    border-top: 1px solid var(--border-color);
+    background: var(--bg-secondary);
+  }
+
+  .era-nav__inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+  }
+
+  .era-nav__link {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    padding: 1.25rem 1.75rem;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    background: var(--card-bg);
+    text-decoration: none;
+    transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+    min-width: 200px;
+  }
+
+  .era-nav__link:hover {
+    border-color: var(--accent-primary);
+    box-shadow: var(--shadow-md);
+    text-decoration: none;
+  }
+
+  .era-nav__link--prev {
+    align-items: flex-start;
+  }
+
+  .era-nav__link--cta {
+    align-items: flex-end;
+    text-align: right;
+    border-color: var(--accent-primary);
+    background: rgba(88, 166, 255, 0.05);
+  }
+
+  .era-nav__link--cta:hover {
+    background: rgba(88, 166, 255, 0.1);
+  }
+
+  .era-nav__direction {
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--accent-primary);
+  }
+
+  .era-nav__label {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--text-primary);
+  }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 640px) {
+    .hero {
+      padding: 4rem 0 3rem;
+    }
+
+    .era-nav__inner {
+      flex-direction: column;
+    }
+
+    .era-nav__link {
+      min-width: 100%;
+    }
+
+    .era-nav__link--cta {
+      align-items: flex-start;
+      text-align: left;
+    }
+
+    .scenarios-grid {
+      gap: 1rem;
+    }
+
+    .scenario-card__body {
+      padding: 1rem;
+    }
+
+    .predictions-disclaimer {
+      padding: 1.25rem;
+    }
+  }
+
+  /* ---------- Print ---------- */
+  @media print {
+    .hero {
+      background: none;
+      padding: 2rem 0;
+    }
+
+    .hero__title {
+      -webkit-text-fill-color: initial;
+      background: none;
+      color: #000;
+    }
+
+    .hero::before,
+    .hero::after {
+      display: none;
+    }
+
+    .era-nav {
+      display: none;
+    }
+
+    .scenario-card {
+      break-inside: avoid;
+      border: 1px solid #ccc;
+    }
+
+    .predictions-table-wrapper {
+      overflow: visible;
+    }
+
+    .predictions-table {
+      min-width: auto;
+    }
+
+    .confidence-bar__fill {
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+  }
+</style>

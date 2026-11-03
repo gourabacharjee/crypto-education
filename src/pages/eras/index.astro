@@ -1,0 +1,217 @@
+---
+// eras/index.astro — Era overview/timeline page
+import BaseLayout from '../../layouts/BaseLayout.astro';
+const base = import.meta.env.BASE_URL;
+---
+
+<BaseLayout title="Eras of Cryptocurrency" description="Explore the complete history and future of cryptocurrency across three pivotal eras.">
+  <section class="eras-hero">
+    <div class="container">
+      <h1>The Three Eras of Cryptocurrency</h1>
+      <p class="subtitle">Two decades of innovation, disruption, and revolution — told by someone who lived through all of it.</p>
+    </div>
+  </section>
+
+  <section class="timeline-section section">
+    <div class="container">
+      <div class="timeline">
+        <!-- Era 1 -->
+        <div class="timeline-era">
+          <div class="timeline-marker era-1"></div>
+          <div class="timeline-content">
+            <span class="timeline-years">2008 – 2016</span>
+            <h2>🏛️ How It All Started</h2>
+            <p>From the cypherpunk mailing lists to Satoshi's whitepaper. The Genesis Block, Silk Road, Mt. Gox, and the birth of Ethereum. The era when crypto was an experiment known only to technologists, libertarians, and the deeply curious.</p>
+            <div class="timeline-highlights">
+              <span class="highlight">Bitcoin Whitepaper</span>
+              <span class="highlight">Genesis Block</span>
+              <span class="highlight">First Pizza Transaction</span>
+              <span class="highlight">Mt. Gox</span>
+              <span class="highlight">Ethereum Launch</span>
+              <span class="highlight">The DAO</span>
+            </div>
+            <a href={`${base}/eras/how-it-started/`} class="btn btn-primary">Explore Origins →</a>
+          </div>
+        </div>
+
+        <!-- Era 2 -->
+        <div class="timeline-era">
+          <div class="timeline-marker era-2"></div>
+          <div class="timeline-content">
+            <span class="timeline-years">2017 – Present</span>
+            <h2>⚡ Where We Are Now</h2>
+            <p>The ICO boom and bust, DeFi summer, the NFT explosion, and institutional adoption at scale. This era brought crypto to Wall Street, Washington, and the world stage — along with catastrophic collapses that tested the industry's resilience.</p>
+            <div class="timeline-highlights">
+              <span class="highlight">ICO Mania</span>
+              <span class="highlight">DeFi Summer</span>
+              <span class="highlight">NFT Boom</span>
+              <span class="highlight">Bitcoin ETFs</span>
+              <span class="highlight">FTX Collapse</span>
+              <span class="highlight">Layer 2 Scaling</span>
+            </div>
+            <a href={`${base}/eras/where-we-are/`} class="btn btn-primary">Explore Present →</a>
+          </div>
+        </div>
+
+        <!-- Era 3 -->
+        <div class="timeline-era">
+          <div class="timeline-marker era-3"></div>
+          <div class="timeline-content">
+            <span class="timeline-years">2025+</span>
+            <h2>🔮 The Future</h2>
+            <p>AI-powered agent economies, quantum-resistant cryptography, nation-state adoption, and the regulatory endgame. The frameworks, technologies, and political dynamics that will shape the next decade of crypto.</p>
+            <div class="timeline-highlights">
+              <span class="highlight">AI + Crypto</span>
+              <span class="highlight">Quantum Resistance</span>
+              <span class="highlight">ZK Everything</span>
+              <span class="highlight">Account Abstraction</span>
+              <span class="highlight">Strategic Reserves</span>
+              <span class="highlight">Regulatory Clarity</span>
+            </div>
+            <a href={`${base}/eras/the-future/`} class="btn btn-primary">Explore Future →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .eras-hero {
+    background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
+    padding: 4rem 0 3rem;
+    text-align: center;
+    border-bottom: 1px solid var(--border-color);
+  }
+
+  .eras-hero h1 {
+    font-size: clamp(1.75rem, 4vw, 2.75rem);
+    margin-bottom: 0.75rem;
+  }
+
+  .subtitle {
+    font-size: 1.125rem;
+    color: var(--text-secondary);
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .timeline {
+    position: relative;
+    padding-left: 3rem;
+  }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 1rem;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: linear-gradient(
+      to bottom,
+      var(--accent-primary),
+      var(--accent-secondary),
+      var(--accent-tertiary)
+    );
+    border-radius: 3px;
+  }
+
+  .timeline-era {
+    position: relative;
+    margin-bottom: 4rem;
+  }
+
+  .timeline-era:last-child {
+    margin-bottom: 0;
+  }
+
+  .timeline-marker {
+    position: absolute;
+    left: -2.35rem;
+    top: 0.5rem;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 3px solid var(--bg-primary);
+    z-index: 1;
+  }
+
+  .timeline-marker.era-1 { background: var(--accent-primary); }
+  .timeline-marker.era-2 { background: var(--accent-secondary); }
+  .timeline-marker.era-3 { background: var(--accent-tertiary); }
+
+  .timeline-content {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: var(--radius-lg);
+    padding: 2rem;
+    transition: border-color var(--transition-base), box-shadow var(--transition-base);
+  }
+
+  .timeline-content:hover {
+    border-color: var(--accent-primary);
+    box-shadow: var(--shadow-md);
+  }
+
+  .timeline-years {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 0.8125rem;
+    color: var(--accent-primary);
+    background: var(--info-bg);
+    border: 1px solid var(--info-border);
+    padding: 0.2em 0.6em;
+    border-radius: var(--radius-sm);
+    margin-bottom: 0.75rem;
+    font-weight: 600;
+  }
+
+  .timeline-content h2 {
+    font-size: 1.5rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .timeline-content p {
+    font-size: 1rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .timeline-highlights {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .highlight {
+    display: inline-block;
+    padding: 0.25em 0.75em;
+    font-size: 0.8125rem;
+    border-radius: 999px;
+    background: var(--bg-tertiary);
+    color: var(--text-secondary);
+    font-weight: 500;
+  }
+
+  @media (max-width: 640px) {
+    .timeline {
+      padding-left: 2rem;
+    }
+
+    .timeline::before {
+      left: 0.5rem;
+    }
+
+    .timeline-marker {
+      left: -1.85rem;
+      width: 16px;
+      height: 16px;
+    }
+
+    .timeline-content {
+      padding: 1.25rem;
+    }
+  }
+</style>
+

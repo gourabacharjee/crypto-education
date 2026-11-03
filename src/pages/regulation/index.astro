@@ -1,0 +1,868 @@
+---
+// regulation/index.astro — Global Regulation Tracker
+import BaseLayout from '../../layouts/BaseLayout.astro';
+const base = import.meta.env.BASE_URL;
+
+const jurisdictions = [
+  {
+    id: "us",
+    name: "United States",
+    flag: "🇺🇸",
+    status: "Developing / Contested",
+    statusType: "yellow",
+    region: "Americas",
+    legalStatus: "Legal for trading & holding; intense regulatory enforcement on issuance, staking, and exchange operations.",
+    taxation: "Capital gains tax (10% - 37% short-term, 0% - 20% long-term). IRS Form 1040 crypto question required. 1099-DA broker rules taking effect.",
+    licensing: "State-level Money Transmitter Licenses (BitLicense in NY), FinCEN MSB registration, SEC broker-dealer for securities, CFTC FCM.",
+    enforcement: "SEC landmark suits against Binance, Coinbase, Kraken, Ripple. FIT21 bill passed House seeking CFTC-first jurisdictional boundary. Spot BTC & ETH ETFs approved 2024.",
+    cbdc: "Extremely contentious; FedNow real-time payment live (not a CBDC). Congressional resistance to retail Fed CBDC."
+  },
+  {
+    id: "eu",
+    name: "European Union",
+    flag: "🇪🇺",
+    status: "Friendly / Comprehensive Framework",
+    statusType: "green",
+    region: "Europe",
+    legalStatus: "Fully legal under MiCA (Markets in Crypto-Assets Regulation), establishing unified rules across 27 member states.",
+    taxation: "Varies by country (e.g. Germany: 0% if held >1 year; France: 30% flat tax; Portugal: 28% under 365 days).",
+    licensing: "Crypto-Asset Service Provider (CASP) passportable license. Strict reserve backing for EMT (e-money tokens) and ART (asset-referenced tokens).",
+    enforcement: "ESMA and EBA supervision. Strict Travel Rule implementation (transfer threshold €0 for unhosted wallets with AML flags).",
+    cbdc: "Digital Euro preparation phase underway (ECB target rollout testing 2026-2028)."
+  },
+  {
+    id: "uk",
+    name: "United Kingdom",
+    flag: "🇬🇧",
+    status: "Friendly / Regulated",
+    statusType: "green",
+    region: "Europe",
+    legalStatus: "Legal. Financial Services and Markets Act 2023 officially recognizes crypto as regulated financial activity.",
+    taxation: "Capital Gains Tax (10% - 20% depending on income tax band) subject to annual exempt allowance.",
+    licensing: "FCA (Financial Conduct Authority) AML/CTF registration. Extremely tough financial promotions regime enforced in late 2023.",
+    enforcement: "Dozens of foreign unregistered exchanges blocked/restricted from advertising to UK consumers.",
+    cbdc: "Bank of England exploring 'Digital Pound' / 'Britcoin'; decision phase ongoing."
+  },
+  {
+    id: "uae",
+    name: "United Arab Emirates",
+    flag: "🇦🇪",
+    status: "Very Friendly / Innovation Hub",
+    statusType: "green",
+    region: "Middle East",
+    legalStatus: "Fully legal and actively promoted as a national economic pillar across Dubai and Abu Dhabi.",
+    taxation: "0% personal income tax, 0% capital gains tax for individuals. Corporate tax (9%) applies to commercial entities above AED 375k.",
+    licensing: "Dubai VARA (Virtual Assets Regulatory Authority), ADGM (Abu Dhabi Global Market FSRA), and federal SCA licensing.",
+    enforcement: "VARA actively fines unlicensed brokers while providing fast-track sandboxes and bespoke rules for staking, lending, and custody.",
+    cbdc: "CBUAE 'Digital Dirham' strategy active with wholesale cross-border Project mBridge."
+  },
+  {
+    id: "sg",
+    name: "Singapore",
+    flag: "🇸🇬",
+    status: "Pragmatic / Institutional Focus",
+    statusType: "green",
+    region: "Asia-Pacific",
+    legalStatus: "Legal. Strong institutional focus; retail trading face-to-face marketing and credit-funded trading strictly curtailed.",
+    taxation: "0% capital gains tax on individual long-term crypto investments. Corporate income tax applies to trading firms.",
+    licensing: "Payment Services Act (PSA) Major Payment Institution (MPI) license via MAS (Monetary Authority of Singapore).",
+    enforcement: "Tightened consumer protection rules (no lending/staking yield marketing for retail users since 2024).",
+    cbdc: "Project Orchid exploring Purpose-Bound Money (PBM) and wholesale settlement (Project Ubin)."
+  },
+  {
+    id: "hk",
+    name: "Hong Kong",
+    flag: "🇭🇰",
+    status: "Friendly / Strategic Gateway",
+    statusType: "green",
+    region: "Asia-Pacific",
+    legalStatus: "Legal. New regulatory regime launched June 2023 allowing licensed exchanges to offer top tokens to retail investors.",
+    taxation: "0% capital gains tax for individual investors. Corporate profits tax applies to corporate crypto trading operations.",
+    licensing: "SFC (Securities and Futures Commission) VATP (Virtual Asset Trading Platform) dual-licensing framework.",
+    enforcement: "Crackdown on JPEX unlicensed exchange ($200M fraud) led to heightened disclosure of applicant registries.",
+    cbdc: "e-HKD pilot program testing offline payments, tokenized deposits, and cross-boundary retail transactions."
+  },
+  {
+    id: "jp",
+    name: "Japan",
+    flag: "🇯🇵",
+    status: "Strictly Regulated / High Security",
+    statusType: "green",
+    region: "Asia-Pacific",
+    legalStatus: "Legal tender property (Payment Services Act). Japan pioneered exchange licensing after early Mt. Gox lessons.",
+    taxation: "Miscellaneous income up to 55% combined rate (tax reform lobbying actively pushing for 20% flat tax).",
+    licensing: "JVCEA and FSA (Financial Services Agency) registration. Exchanges must segregate 95%+ client funds in cold storage.",
+    enforcement: "When FTX collapsed, Japanese customers recovered 100% of their funds promptly due to strict FSA custodial segregation laws.",
+    cbdc: "Bank of Japan pilot ongoing with private financial institutions testing technical architecture."
+  },
+  {
+    id: "ch",
+    name: "Switzerland",
+    flag: "🇨🇭",
+    status: "Pioneer / Highly Favorable",
+    statusType: "green",
+    region: "Europe",
+    legalStatus: "Legal. Home to 'Crypto Valley' (Zug) and world-renowned foundation structures (Ethereum, Solana, Cardano foundations).",
+    taxation: "Wealth tax applies to total crypto assets (very low, ~0.1-0.3%). Capital gains tax is 0% for private individuals investing.",
+    licensing: "FINMA DLT Act (2021) established specialized DLT trading facilities and institutional banking licenses (Sygnum, SEBA/AMINA).",
+    enforcement: "Clear categorization into Payment, Utility, and Asset tokens since 2018.",
+    cbdc: "Swiss National Bank running Project Helvetia with live wholesale CBDC for settlement on SIX Digital Exchange."
+  },
+  {
+    id: "sv",
+    name: "El Salvador",
+    flag: "🇸🇻",
+    status: "Legal Tender / Sovereign Adoption",
+    statusType: "green",
+    region: "Americas",
+    legalStatus: "Bitcoin made legal tender alongside the US Dollar via the Bitcoin Law in September 2021.",
+    taxation: "0% capital gains tax on Bitcoin gains. Tax incentives for international tech companies and crypto builders.",
+    licensing: "CNPV (National Commission of Digital Assets) supervises digital asset service providers and Volcano Bonds framework.",
+    enforcement: "State buys 1 BTC per day for sovereign reserve; created National Bitcoin Office (AONB).",
+    cbdc: "No sovereign CBDC — Bitcoin fulfills monetary freedom role alongside USD."
+  },
+  {
+    id: "cn",
+    name: "China",
+    flag: "🇨🇳",
+    status: "Hostile / Blanket Ban",
+    statusType: "red",
+    region: "Asia-Pacific",
+    legalStatus: "Trading, token issuance (ICOs), and crypto mining banned outright since September 2021 joint agency decree.",
+    taxation: "Courts recognize crypto as civil property for dispute resolution, but transactions are legally void & unenforceable.",
+    licensing: "No private cryptocurrency licensing permitted. Only state-approved blockchain (BSN) without public tokens.",
+    enforcement: "Arrests for OTC desks, closure of domestic mining farms (though subterranean ASIC activity persists).",
+    cbdc: "e-CNY is the world's most advanced retail CBDC with over $250B+ in cumulative pilot transaction volume."
+  },
+  {
+    id: "in",
+    name: "India",
+    flag: "🇮🇳",
+    status: "Restrictive Taxation / High Friction",
+    statusType: "yellow",
+    region: "Asia-Pacific",
+    legalStatus: "Not banned, but penalized with high taxes and stringent AML registration through FIU-IND (Financial Intelligence Unit).",
+    taxation: "Flat 30% tax on all crypto profits with NO loss offsetting. 1% TDS (Tax Deducted at Source) on every transaction over ₹10k/₹50k.",
+    licensing: "FIU-IND mandatory reporting entity registration. International exchanges (Binance, KuCoin) blocked until paying fines & registering.",
+    enforcement: "Enforcement Directorate (ED) actions on illicit gaming/money laundering platforms.",
+    cbdc: "RBI Digital Rupee (e₹) in multi-bank retail and wholesale pilot with millions of users."
+  },
+  {
+    id: "br",
+    name: "Brazil",
+    flag: "🇧🇷",
+    status: "Friendly / Clear Law",
+    statusType: "green",
+    region: "Americas",
+    legalStatus: "Legal. Framework Law No. 14.478 enacted in 2023 with Banco Central designated as primary market regulator.",
+    taxation: "Monthly sales under R$ 35k exempt; 15% - 22.5% progressive capital gains above threshold. Foreign assets subject to 15% flat.",
+    licensing: "Central Bank of Brazil (BCB) VASPs regulation. Fast adoption among institutional banks (Itaú, Nubank offering crypto).",
+    enforcement: "Regulatory perimeter focused on protecting consumers from pyramid schemes while enabling tokenized credit.",
+    cbdc: "Drex (digital Brazilian Real) pilot actively testing smart contract privacy and bond tokenization."
+  },
+  {
+    id: "ca",
+    name: "Canada",
+    flag: "🇨🇦",
+    status: "Regulated / Stringent Custody",
+    statusType: "green",
+    region: "Americas",
+    legalStatus: "Legal. Approved the world's first spot Bitcoin ETF (Purpose Bitcoin ETF, BTCC) in February 2021.",
+    taxation: "50% of capital gains included in taxable income at personal marginal rate (or 66.7% for high amounts under recent budget).",
+    licensing: "CSA (Canadian Securities Administrators) Pre-Registration Undertakings (PRUs) with strict prohibition on stablecoin lending & leverage.",
+    enforcement: "Several prominent foreign exchanges (e.g., Binance, Bybit) exited Canada due to stringent custodial rules.",
+    cbdc: "Bank of Canada conducted research; currently deprioritizing retail CBDC development."
+  },
+  {
+    id: "au",
+    name: "Australia",
+    flag: "🇦🇺",
+    status: "Pragmatic / Updating Rules",
+    statusType: "green",
+    region: "Asia-Pacific",
+    legalStatus: "Legal. Regulated under existing financial services law, with Treasury 'Token Mapping' and licensing reforms unfolding.",
+    taxation: "Capital Gains Tax applies with 50% discount for assets held over 12 months by individuals.",
+    licensing: "AUSTRAC registration for Digital Currency Exchanges (DCE). New Australian Financial Services License (AFSL) regime planned.",
+    enforcement: "ASIC enforcement actions against unhedged yield offerings and misleading crypto financial advice.",
+    cbdc: "Reserve Bank of Australia (RBA) completed Project Atom and Project Acacia examining wholesale tokenization."
+  }
+];
+
+const timelineEvents = [
+  { year: "2014", month: "Feb", title: "Mt. Gox Hack & Regulatory Wake-Up Call", region: "Asia-Pacific", desc: "Collapse of Tokyo-based Mt. Gox (850,000 BTC lost) sparked Japan's FSA to introduce the world's first formal crypto licensing laws in 2017." },
+  { year: "2017", month: "Jul", title: "SEC DAO Report on Digital Assets", region: "Americas", desc: "SEC established that tokens issued in ICOs can be securities under the 1946 Howey Test, kicking off an eight-year enforcement era." },
+  { year: "2019", month: "Jun", title: "FATF Issues Crypto Travel Rule", region: "Global", desc: "Financial Action Task Force mandated VASPs transmit sender and receiver identity data for transfers over $1,000/€1,000." },
+  { year: "2021", month: "Feb", title: "World's First Spot Bitcoin ETF (Canada)", region: "Americas", desc: "Ontario Securities Commission approved Purpose Bitcoin ETF, trading years before the US approved similar vehicles." },
+  { year: "2021", month: "Sep", title: "El Salvador Adopts Bitcoin as Legal Tender", region: "Americas", desc: "First sovereign nation to make Bitcoin official currency alongside the US dollar, igniting global macro debate." },
+  { year: "2021", month: "Sep", title: "China Declares All Crypto Activity Illegal", region: "Asia-Pacific", desc: "Ten Chinese state agencies declared all cryptocurrency transactions illicit, leading to an exodus of hash rate and developers." },
+  { year: "2022", month: "Mar", title: "Dubai Establishes VARA", region: "Middle East", desc: "Emirate of Dubai enacted Virtual Assets Law and established the world's first dedicated independent virtual asset regulator." },
+  { year: "2023", month: "Apr", title: "European Parliament Passes MiCA", region: "Europe", desc: "Comprehensive regulation across 27 countries standardizing exchange licenses, stablecoin reserves, and consumer disclosures." },
+  { year: "2023", month: "Jun", title: "Hong Kong Launches Retail Licensing Regime", region: "Asia-Pacific", desc: "SFC launched regulated access for retail traders to large-cap tokens, signaling a bridge between mainland capital and Web3." },
+  { year: "2024", month: "Jan", title: "US SEC Approves 11 Spot Bitcoin ETFs", region: "Americas", desc: "Court ruling in Grayscale v. SEC forced commission approval, unlocking $60B+ in institutional capital from BlackRock, Fidelity, and others." },
+  { year: "2024", month: "May", title: "US House Passes FIT21 Act (Bipartisan)", region: "Americas", desc: "Financial Innovation and Technology for the 21st Century Act sought clear definitions separating CFTC commodities from SEC securities." },
+  { year: "2024", month: "Jun", title: "MiCA Stablecoin Rules Take Effect", region: "Europe", desc: "Strict capital reserve requirements and liquidity caps applied to non-euro denominated stablecoins across the European Economic Area." },
+  { year: "2025", month: "Q1", title: "Global Strategic Bitcoin Reserve Discussions", region: "Americas", desc: "US legislative proposals for sovereign Bitcoin reserves spark reciprocal policy reviews across Latin America, Asia, and Europe." }
+];
+---
+
+<BaseLayout 
+  title="Global Crypto Regulation Tracker" 
+  description="Interactive world regulation tracker: legal status, tax treatment, licensing frameworks, and CBDC status across 14 key jurisdictions."
+>
+  <section class="reg-hero">
+    <div class="container">
+      <div class="hero-badge">Policy & Jurisprudence</div>
+      <h1>Global Crypto Regulation Tracker</h1>
+      <p class="subtitle">
+        Crypto code is permissionless, but physical borders and national jurisdictions are not.
+        Track legal classifications, tax regimes, licensing mandates, and CBDC rollouts worldwide.
+      </p>
+
+      <div class="tracker-stats-bar">
+        <div class="tstat">
+          <span class="tstat-num text-green">14+</span>
+          <span class="tstat-label">Jurisdictions Profiled</span>
+        </div>
+        <div class="tstat">
+          <span class="tstat-num text-blue">MiCA</span>
+          <span class="tstat-label">EU Unified Standard</span>
+        </div>
+        <div class="tstat">
+          <span class="tstat-num text-yellow">FIT21</span>
+          <span class="tstat-label">US Legislative Blueprint</span>
+        </div>
+        <div class="tstat">
+          <span class="tstat-num text-purple">130+</span>
+          <span class="tstat-label">Countries Researching CBDCs</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Map Section -->
+  <section class="section section--alt">
+    <div class="container">
+      <div class="section-header">
+        <h2>Interactive Regulatory Stance Map</h2>
+        <p>Click any colored territory or region to instantly inspect its regulatory profile and policy posture.</p>
+      </div>
+
+      <!-- Color Legend -->
+      <div class="map-legend" role="region" aria-label="Map color legend">
+        <div class="legend-item"><span class="legend-swatch swatch-green"></span> <strong>Friendly / Comprehensive Framework</strong> (EU, UAE, SG, HK, CH, SV, JP, etc.)</div>
+        <div class="legend-item"><span class="legend-swatch swatch-yellow"></span> <strong>Developing / High Friction</strong> (US turf war, India, etc.)</div>
+        <div class="legend-item"><span class="legend-swatch swatch-red"></span> <strong>Hostile / Ban</strong> (China, etc.)</div>
+        <div class="legend-item"><span class="legend-swatch swatch-gray"></span> <strong>Unclear / Incipient Policy</strong></div>
+      </div>
+
+      <!-- Interactive SVG World Canvas -->
+      <div class="map-wrapper">
+        <svg viewBox="0 0 1000 500" class="world-svg" aria-label="World map colored by crypto regulatory status">
+          <defs>
+            <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+              <feGaussianBlur stdDeviation="3" result="blur" />
+              <feComposite in="SourceGraphic" in2="blur" operator="over" />
+            </filter>
+          </defs>
+
+          <!-- Background Oceans -->
+          <rect width="1000" height="500" fill="var(--bg-secondary)" rx="12" />
+
+          <!-- Simplified Continent / Country Geometries -->
+          <!-- North America: Canada -->
+          <path id="map-ca" data-country="ca" class="country-poly status-green" d="M 120 70 L 280 50 L 320 100 L 280 140 L 150 140 Z" />
+          <text x="210" y="95" class="map-label">Canada 🇨🇦</text>
+
+          <!-- North America: United States -->
+          <path id="map-us" data-country="us" class="country-poly status-yellow" d="M 130 145 L 290 145 L 270 215 L 140 215 Z" />
+          <text x="205" y="180" class="map-label">United States 🇺🇸</text>
+
+          <!-- Central America: El Salvador -->
+          <circle id="map-sv" data-country="sv" class="country-poly status-green" cx="210" cy="245" r="14" />
+          <text x="230" y="250" class="map-label text-highlight">El Salvador 🇸🇻</text>
+
+          <!-- South America: Brazil -->
+          <path id="map-br" data-country="br" class="country-poly status-green" d="M 270 270 L 370 280 L 360 380 L 290 390 L 260 320 Z" />
+          <text x="315" y="335" class="map-label">Brazil 🇧🇷</text>
+
+          <!-- Europe: UK -->
+          <path id="map-uk" data-country="uk" class="country-poly status-green" d="M 450 115 L 475 110 L 480 145 L 455 145 Z" />
+          <text x="440" y="105" class="map-label">UK 🇬🇧</text>
+
+          <!-- Europe: European Union (Continental) -->
+          <path id="map-eu" data-country="eu" class="country-poly status-green" d="M 490 115 L 565 115 L 565 180 L 490 190 Z" />
+          <text x="525" y="150" class="map-label">EU (MiCA) 🇪🇺</text>
+
+          <!-- Europe: Switzerland -->
+          <circle id="map-ch" data-country="ch" class="country-poly status-green" cx="515" cy="165" r="12" />
+          <text x="515" y="195" class="map-label text-highlight">CH 🇨🇭</text>
+
+          <!-- Middle East: UAE -->
+          <circle id="map-uae" data-country="uae" class="country-poly status-green" cx="640" cy="225" r="14" />
+          <text x="640" y="215" class="map-label text-highlight">UAE 🇦🇪</text>
+
+          <!-- Asia: China -->
+          <path id="map-cn" data-country="cn" class="country-poly status-red" d="M 680 140 L 840 140 L 830 220 L 730 240 L 680 200 Z" />
+          <text x="760" y="180" class="map-label">China 🇨🇳 (Ban)</text>
+
+          <!-- Asia: Hong Kong -->
+          <circle id="map-hk" data-country="hk" class="country-poly status-green" cx="795" cy="235" r="11" />
+          <text x="815" y="240" class="map-label text-highlight">HK 🇭🇰</text>
+
+          <!-- Asia: Japan -->
+          <path id="map-jp" data-country="jp" class="country-poly status-green" d="M 870 140 L 910 160 L 890 215 L 860 180 Z" />
+          <text x="885" y="235" class="map-label">Japan 🇯🇵</text>
+
+          <!-- Asia: India -->
+          <path id="map-in" data-country="in" class="country-poly status-yellow" d="M 670 210 L 730 225 L 710 300 L 665 260 Z" />
+          <text x="695" y="260" class="map-label">India 🇮🇳 (30%+1% Tax)</text>
+
+          <!-- Asia: Singapore -->
+          <circle id="map-sg" data-country="sg" class="country-poly status-green" cx="770" cy="305" r="12" />
+          <text x="790" y="310" class="map-label text-highlight">SG 🇸🇬</text>
+
+          <!-- Oceania: Australia -->
+          <path id="map-au" data-country="au" class="country-poly status-green" d="M 790 350 L 920 340 L 910 440 L 800 440 Z" />
+          <text x="855" y="395" class="map-label">Australia 🇦🇺</text>
+        </svg>
+
+        <div class="map-help-hint">💡 Click any territory or circle above to quickly highlight its detailed card below</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Country Cards Deep-Dive -->
+  <section class="section" id="jurisdictions">
+    <div class="container">
+      <div class="section-header">
+        <h2>Key Jurisdictions Deep-Dive</h2>
+        <p>Comprehensive regulatory profiles, licensing expectations, tax mechanics, and enforcement histories.</p>
+
+        <!-- Filter pills -->
+        <div class="region-filters" id="country-filters">
+          <button class="filter-btn active" data-filter="all">All Jurisdictions ({jurisdictions.length})</button>
+          <button class="filter-btn" data-filter="Americas">Americas</button>
+          <button class="filter-btn" data-filter="Europe">Europe</button>
+          <button class="filter-btn" data-filter="Asia-Pacific">Asia-Pacific</button>
+          <button class="filter-btn" data-filter="Middle East">Middle East</button>
+        </div>
+      </div>
+
+      <div class="jurisdictions-grid" id="jurisdictions-container">
+        {jurisdictions.map((j) => (
+          <article class="jur-card" id={`card-${j.id}`} data-region={j.region} data-id={j.id}>
+            <div class="jur-header">
+              <div class="jur-title-group">
+                <span class="jur-flag">{j.flag}</span>
+                <div>
+                  <h3 class="jur-name">{j.name}</h3>
+                  <span class="jur-region">{j.region}</span>
+                </div>
+              </div>
+              <span class={`tag tag--${j.statusType}`}>{j.status}</span>
+            </div>
+
+            <div class="jur-body">
+              <div class="jur-field">
+                <span class="jur-field-label">⚖️ Legal Classification</span>
+                <p class="jur-field-text">{j.legalStatus}</p>
+              </div>
+
+              <div class="jur-field">
+                <span class="jur-field-label">💰 Taxation Framework</span>
+                <p class="jur-field-text">{j.taxation}</p>
+              </div>
+
+              <div class="jur-field">
+                <span class="jur-field-label">📜 Licensing & Compliance</span>
+                <p class="jur-field-text">{j.licensing}</p>
+              </div>
+
+              <div class="jur-field">
+                <span class="jur-field-label">🚨 Enforcement & Key Precedents</span>
+                <p class="jur-field-text">{j.enforcement}</p>
+              </div>
+
+              <div class="jur-field jur-field--cbdc">
+                <span class="jur-field-label">🏦 CBDC Posture</span>
+                <p class="jur-field-text">{j.cbdc}</p>
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Regulatory History Timeline -->
+  <section class="section section--alt" id="timeline">
+    <div class="container">
+      <div class="section-header">
+        <h2>Milestones in Global Crypto Jurisprudence</h2>
+        <p>A chronological timeline tracing the evolution from regulatory neglect to comprehensive statutory law.</p>
+      </div>
+
+      <div class="reg-timeline">
+        {timelineEvents.map((ev) => (
+          <div class="reg-timeline-item">
+            <div class="reg-timeline-date">
+              <span class="ev-year">{ev.year}</span>
+              <span class="ev-month">{ev.month}</span>
+            </div>
+            <div class="reg-timeline-dot"></div>
+            <div class="reg-timeline-content">
+              <div class="ev-top">
+                <h4>{ev.title}</h4>
+                <span class="tag tag--blue">{ev.region}</span>
+              </div>
+              <p>{ev.desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <!-- Teacher's Note on Regulatory Arbitrage -->
+      <div class="callout callout--teaching" style="margin-top: 3rem;">
+        <p class="callout-title">🎓 Teacher's Note: The Reality of Regulatory Arbitrage</p>
+        <p>
+          Throughout twenty years of watching governments interact with cryptographic networks, one fundamental law holds:
+          <strong>capital and developers flow to regulatory clarity</strong>. When a jurisdiction bans or stifles innovation through
+          unclear enforcement, activity does not cease; it relocates to jurisdictions like Switzerland, the UAE, or Singapore.
+          The endgame is not the elimination of crypto, but the emergence of international standards (similar to Basel accords in banking)
+          that balance AML and consumer protection with economic competitiveness.
+        </p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .reg-hero {
+    background: linear-gradient(135deg, rgba(13, 29, 48, 0.8) 0%, var(--bg-primary) 100%);
+    padding: 4rem 0 3rem;
+    border-bottom: 1px solid var(--border-color);
+  }
+
+  .hero-badge {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    font-size: 0.8125rem;
+    font-family: var(--font-mono);
+    color: var(--accent-primary);
+    background: var(--info-bg);
+    border: 1px solid var(--info-border);
+    border-radius: 999px;
+    margin-bottom: 1rem;
+    font-weight: 600;
+  }
+
+  .subtitle {
+    font-size: 1.15rem;
+    max-width: 750px;
+    color: var(--text-secondary);
+    margin-bottom: 2rem;
+  }
+
+  .tracker-stats-bar {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1.5rem;
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    padding: 1.25rem 1.5rem;
+  }
+
+  .tstat {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .tstat-num {
+    font-size: 1.75rem;
+    font-weight: 800;
+    font-family: var(--font-mono);
+  }
+
+  .text-green { color: var(--accent-secondary); }
+  .text-blue { color: var(--accent-primary); }
+  .text-yellow { color: var(--warning-border); }
+  .text-purple { color: var(--accent-tertiary); }
+
+  .tstat-label {
+    font-size: 0.8125rem;
+    color: var(--text-tertiary);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+
+  .section-header {
+    margin-bottom: 2.5rem;
+  }
+
+  .section-header h2 {
+    font-size: 1.85rem;
+    margin-bottom: 0.5rem;
+  }
+
+  /* Map Styles */
+  .map-legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.25rem;
+    margin-bottom: 1.5rem;
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+  }
+
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .legend-swatch {
+    width: 14px;
+    height: 14px;
+    border-radius: 3px;
+  }
+
+  .swatch-green { background: #3fb950; }
+  .swatch-yellow { background: #d29922; }
+  .swatch-red { background: #f85149; }
+  .swatch-gray { background: #6e7681; }
+
+  .map-wrapper {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-xl);
+    padding: 1.5rem;
+    box-shadow: var(--shadow-md);
+  }
+
+  .world-svg {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: var(--radius-md);
+  }
+
+  .country-poly {
+    cursor: pointer;
+    transition: all 0.2s ease;
+    stroke-width: 1.5;
+    stroke: var(--bg-primary);
+  }
+
+  .country-poly:hover {
+    filter: brightness(1.3) drop-shadow(0 0 6px rgba(88, 166, 255, 0.6));
+    transform: scale(1.02);
+  }
+
+  .status-green { fill: #238636; }
+  .status-yellow { fill: #9e6a03; }
+  .status-red { fill: #da3633; }
+
+  .map-label {
+    font-family: var(--font-sans);
+    font-size: 11px;
+    font-weight: 700;
+    fill: #ffffff;
+    pointer-events: none;
+    text-anchor: middle;
+  }
+
+  .map-label.text-highlight {
+    font-size: 10px;
+    fill: #e6edf3;
+  }
+
+  .map-help-hint {
+    margin-top: 1rem;
+    text-align: center;
+    font-size: 0.875rem;
+    color: var(--text-tertiary);
+  }
+
+  /* Filter buttons */
+  .region-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1.25rem;
+  }
+
+  .filter-btn {
+    background: var(--bg-tertiary);
+    border: 1px solid var(--border-color);
+    color: var(--text-secondary);
+    padding: 0.4rem 0.85rem;
+    border-radius: 999px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .filter-btn:hover {
+    color: var(--text-primary);
+    border-color: var(--accent-primary);
+  }
+
+  .filter-btn.active {
+    background: var(--accent-primary);
+    color: #ffffff;
+    border-color: var(--accent-primary);
+  }
+
+  /* Jurisdictions Grid */
+  .jurisdictions-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .jur-card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: var(--radius-lg);
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    transition: all 0.25s ease;
+  }
+
+  .jur-card:hover {
+    border-color: var(--accent-primary);
+    box-shadow: var(--shadow-md);
+  }
+
+  .jur-card.highlighted {
+    border-color: var(--accent-primary);
+    box-shadow: 0 0 0 3px rgba(88, 166, 255, 0.35);
+  }
+
+  .jur-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1rem;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 1rem;
+  }
+
+  .jur-title-group {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .jur-flag {
+    font-size: 2rem;
+    line-height: 1;
+  }
+
+  .jur-name {
+    font-size: 1.2rem;
+    margin: 0;
+  }
+
+  .jur-region {
+    font-size: 0.8rem;
+    color: var(--text-tertiary);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .jur-body {
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+  }
+
+  .jur-field-label {
+    display: block;
+    font-size: 0.78rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--text-secondary);
+    margin-bottom: 0.2rem;
+  }
+
+  .jur-field-text {
+    font-size: 0.9rem;
+    color: var(--text-primary);
+    line-height: 1.5;
+    margin: 0;
+  }
+
+  .jur-field--cbdc {
+    background: var(--bg-tertiary);
+    padding: 0.75rem;
+    border-radius: var(--radius-sm);
+  }
+
+  /* Timeline */
+  .reg-timeline {
+    position: relative;
+    padding-left: 2rem;
+  }
+
+  .reg-timeline::before {
+    content: '';
+    position: absolute;
+    left: 0.75rem;
+    top: 1rem;
+    bottom: 1rem;
+    width: 2px;
+    background: var(--border-color);
+  }
+
+  .reg-timeline-item {
+    display: flex;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+    position: relative;
+  }
+
+  .reg-timeline-date {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    width: 60px;
+    flex-shrink: 0;
+    font-family: var(--font-mono);
+  }
+
+  .ev-year {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--accent-primary);
+  }
+
+  .ev-month {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    color: var(--text-tertiary);
+  }
+
+  .reg-timeline-dot {
+    position: absolute;
+    left: -1.55rem;
+    top: 0.35rem;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--accent-primary);
+    border: 2px solid var(--bg-primary);
+    z-index: 1;
+  }
+
+  .reg-timeline-content {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    padding: 1rem 1.25rem;
+    flex-grow: 1;
+  }
+
+  .ev-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .ev-top h4 {
+    margin: 0;
+    font-size: 1.05rem;
+  }
+
+  .reg-timeline-content p {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    margin: 0;
+  }
+
+  @media (max-width: 768px) {
+    .jurisdictions-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .reg-timeline {
+      padding-left: 1.5rem;
+    }
+
+    .reg-timeline-item {
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .reg-timeline-date {
+      flex-direction: row;
+      gap: 0.5rem;
+      align-items: baseline;
+      width: auto;
+    }
+
+    .reg-timeline-dot {
+      display: none;
+    }
+  }
+</style>
+
+<script>
+  // Filter jurisdictions by region
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  const cards = document.querySelectorAll('.jur-card');
+
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      const filter = btn.getAttribute('data-filter');
+
+      cards.forEach(card => {
+        const cardRegion = card.getAttribute('data-region');
+        if (filter === 'all' || cardRegion === filter) {
+          (card as HTMLElement).style.display = 'flex';
+        } else {
+          (card as HTMLElement).style.display = 'none';
+        }
+      });
+    });
+  });
+
+  // SVG Map click to highlight card
+  const mapPolys = document.querySelectorAll('.country-poly');
+  mapPolys.forEach(poly => {
+    poly.addEventListener('click', () => {
+      const code = poly.getAttribute('data-country');
+      if (!code) return;
+
+      const targetCard = document.getElementById(`card-${code}`);
+      if (targetCard) {
+        // Reset filters so it is visible
+        cards.forEach(c => (c as HTMLElement).style.display = 'flex');
+        filterBtns.forEach(b => b.classList.remove('active'));
+        document.querySelector('.filter-btn[data-filter="all"]')?.classList.add('active');
+
+        // Scroll to card
+        targetCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+        // Flash highlight animation
+        cards.forEach(c => c.classList.remove('highlighted'));
+        targetCard.classList.add('highlighted');
+        setTimeout(() => {
+          targetCard.classList.remove('highlighted');
+        }, 3000);
+      }
+    });
+  });
+</script>
+

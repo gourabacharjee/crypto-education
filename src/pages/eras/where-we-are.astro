@@ -1,0 +1,1143 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const base = import.meta.env.BASE_URL;
+---
+
+<BaseLayout
+  title="Era 2: Where We Are Now (2017–Present)"
+  description="From ICO mania to DeFi Summer, NFT hype to institutional adoption — a comprehensive look at crypto's maturation, collapses, and breakthroughs since 2017."
+>
+
+  <!-- ============ HERO ============ -->
+  <section class="era-hero" aria-labelledby="hero-heading">
+    <div class="container">
+      <span class="era-badge">Era 2 of 3</span>
+      <h1 id="hero-heading">Where We Are Now: The Maturation of Crypto <span class="year-range">(2017–Present)</span></h1>
+      <p class="hero-subtitle">
+        If Era 1 was the invention of a new financial language, Era 2 is when billions of people started trying to speak it — some fluently, many badly, and a few with outright criminal intent. This era contains the highest highs and lowest lows in crypto history, often separated by just months. Understanding what happened here is essential for anyone who wants to survive what comes next.
+      </p>
+      <div class="hero-stats" role="list" aria-label="Era 2 key statistics">
+        <div class="hero-stat" role="listitem">
+          <span class="hero-stat__value">$3T</span>
+          <span class="hero-stat__label">Peak market cap (Nov 2021)</span>
+        </div>
+        <div class="hero-stat" role="listitem">
+          <span class="hero-stat__value">$40B+</span>
+          <span class="hero-stat__label">Lost in Terra/Luna alone</span>
+        </div>
+        <div class="hero-stat" role="listitem">
+          <span class="hero-stat__value">11</span>
+          <span class="hero-stat__label">Spot Bitcoin ETFs approved (Jan 2024)</span>
+        </div>
+        <div class="hero-stat" role="listitem">
+          <span class="hero-stat__value">$150B+</span>
+          <span class="hero-stat__label">Stablecoin market today</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ TABLE OF CONTENTS ============ -->
+  <nav class="toc" aria-label="Page sections">
+    <div class="container">
+      <h2 class="toc__title">In This Era</h2>
+      <ol class="toc__list">
+        <li><a href="#ico-boom">The ICO Boom &amp; Bust (2017–2018)</a></li>
+        <li><a href="#defi-summer">DeFi Summer (2020)</a></li>
+        <li><a href="#nft-boom">The NFT Boom (2021)</a></li>
+        <li><a href="#layer-2">Layer 2 &amp; Scaling</a></li>
+        <li><a href="#institutional">Institutional Adoption</a></li>
+        <li><a href="#stablecoins">Stablecoins &amp; CBDCs</a></li>
+        <li><a href="#collapses">Major Collapses &amp; Lessons</a></li>
+        <li><a href="#dashboard">Current Market Dashboard</a></li>
+      </ol>
+    </div>
+  </nav>
+
+  <!-- ============ SECTION 1: ICO BOOM & BUST ============ -->
+  <section class="era-section" id="ico-boom" aria-labelledby="ico-heading">
+    <div class="container">
+      <div class="section-marker">
+        <span class="section-marker__year">2017–2018</span>
+      </div>
+      <h2 id="ico-heading">The ICO Boom &amp; Bust</h2>
+
+      <p>
+        If you weren't around in 2017, it's hard to convey just how insane the Initial Coin Offering (ICO) craze was. Imagine a world where any team with a whitepaper and a website could raise tens of millions of dollars in hours — no SEC filing, no audited financials, no lock-up periods. That was the ICO market.
+      </p>
+
+      <h3>The Mechanics of an ICO</h3>
+      <p>
+        An ICO worked like this: a project would publish a whitepaper describing a blockchain-based product or protocol, create a new ERC-20 token on Ethereum, and sell that token directly to the public in exchange for ETH or BTC. Buyers hoped the token would increase in value once the product launched. The entire process bypassed every traditional securities regulation — and for a brief window, regulators hadn't caught up.
+      </p>
+
+      <h3>Billions Raised, Few Products Delivered</h3>
+      <p>
+        The numbers were staggering. <strong>EOS</strong> raised approximately $4.1 billion over a year-long token sale ending in June 2018 — the largest ICO in history. <strong>Tezos</strong> raised $232 million in July 2017 and was immediately mired in lawsuits and governance disputes. <strong>Filecoin</strong> raised $257 million in September 2017, promising decentralized file storage. <strong>Bancor</strong> raised $153 million in three hours. Hundreds of smaller projects raised $10–50 million each, many with nothing more than a concept.
+      </p>
+      <p>
+        By some estimates, over $20 billion was raised through ICOs in 2017 and 2018 combined. A study by the Satis Group later found that approximately 78% of ICOs were outright scams, and only about 8% made it to trading on an exchange.
+      </p>
+
+      <h3>Bitcoin's Meteoric Rise — and Crash</h3>
+      <p>
+        The ICO mania coincided with — and was partly fueled by — Bitcoin's most dramatic price run to date. Bitcoin started 2017 at around $1,000. By mid-December, it touched $19,783 on the Coinbase exchange (December 17, 2017). The Chicago Board Options Exchange (CBOE) had just launched Bitcoin futures on December 10, and the Chicago Mercantile Exchange (CME) followed on December 18. Media coverage was relentless. Your uncle was asking you about Bitcoin at Thanksgiving.
+      </p>
+      <p>
+        Then it all collapsed. By February 2018, Bitcoin had fallen below $7,000. It bounced around for months before sliding to roughly $3,200 by December 2018. The total crypto market cap fell from a peak of around $830 billion to under $100 billion. The pain was enormous and widespread.
+      </p>
+
+      <div class="callout callout--teaching">
+        <p class="callout-title">🎓 Teaching Moment</p>
+        <p>
+          The 2017 bubble followed a pattern that repeats throughout crypto history — and indeed throughout all speculative markets. Prices rise, media attention follows, new participants flood in buying at the top, and then the cycle reverses. What makes crypto unique is the <em>speed</em> and <em>magnitude</em> of these cycles. Bitcoin has experienced drawdowns of 80%+ four separate times in its history (2011, 2014, 2018, 2022). If you can't stomach that volatility, you need to size your positions accordingly. This isn't a moral failing — it's prudent risk management.
+        </p>
+      </div>
+
+      <h3>The SEC Steps In</h3>
+      <p>
+        In June 2017, the SEC released the "DAO Report," stating that tokens issued through The DAO in 2016 were securities and should have been registered. This was the opening shot. SEC Chairman Jay Clayton stated publicly in December 2017 that he believed most ICO tokens were securities. Throughout 2018 and 2019, the SEC brought enforcement actions against dozens of ICO projects, including Block.one (the company behind EOS, which settled for $24 million — a rounding error on $4.1 billion raised), Telegram (forced to return $1.2 billion to investors and pay an $18.5 million penalty), and Kik Interactive (fined $5 million for its Kin token sale).
+      </p>
+      <p>
+        The ICO era effectively ended by mid-2018, replaced first by Security Token Offerings (STOs) and later by Initial Exchange Offerings (IEOs), where exchanges like Binance acted as gatekeepers. None of these successors matched the ICO frenzy's scale.
+      </p>
+    </div>
+  </section>
+
+  <!-- ============ SECTION 2: DEFI SUMMER ============ -->
+  <section class="era-section era-section--alt" id="defi-summer" aria-labelledby="defi-heading">
+    <div class="container">
+      <div class="section-marker">
+        <span class="section-marker__year">2020</span>
+      </div>
+      <h2 id="defi-heading">DeFi Summer</h2>
+
+      <p>
+        After the 2018–2019 crypto winter, you could have been forgiven for thinking blockchain was yesterday's hype. But quietly, a new category of applications was being built on Ethereum — one that would fundamentally prove that smart contracts could do something genuinely useful: recreate financial services without intermediaries.
+      </p>
+
+      <h3>The Spark: Compound's COMP Token</h3>
+      <p>
+        On June 15, 2020, <strong>Compound</strong> — a decentralized lending protocol — launched its governance token, COMP, and began distributing it to users who lent or borrowed assets on the platform. This was the birth of "liquidity mining" or "yield farming." Suddenly, you could earn token rewards simply by using a protocol. The COMP token launched at around $60 and quickly surged past $300. Other protocols took notice immediately.
+      </p>
+
+      <h3>Yield Farming and Liquidity Mining Explained</h3>
+      <p>
+        Here's how yield farming worked in practice: You'd deposit assets (say, USDC) into a lending protocol like Compound or Aave. In return, you'd earn interest from borrowers <em>plus</em> governance tokens as an additional incentive. Those governance tokens could be sold for more crypto, or deposited into another protocol for additional yield. Sophisticated farmers chained these strategies across multiple protocols, sometimes achieving annualized returns of 100%, 500%, or even 1,000%+ — though these rates were unstable and fleeting.
+      </p>
+      <p>
+        <strong>Uniswap</strong>, launched in November 2018 by Hayden Adams, became the dominant decentralized exchange (DEX). Its automated market maker (AMM) model eliminated order books entirely — anyone could provide liquidity to a trading pair and earn fees. When Uniswap airdropped 400 UNI tokens to every address that had ever used the protocol in September 2020, the tokens were worth roughly $1,200 at launch. Some active liquidity providers received tens of thousands of dollars worth of UNI.
+      </p>
+      <p>
+        <strong>Aave</strong>, originally launched as ETHLend in 2017 and rebranded in 2020, pioneered flash loans — uncollateralized loans that must be borrowed and repaid within a single blockchain transaction. <strong>MakerDAO</strong>, one of the oldest DeFi protocols (launched in 2017), continued to anchor the ecosystem with DAI, a decentralized stablecoin backed by over-collateralized crypto deposits.
+      </p>
+
+      <h3>The TVL Explosion</h3>
+      <p>
+        The metric that defined DeFi Summer was Total Value Locked (TVL) — the total amount of crypto deposited in DeFi protocols. In January 2020, DeFi TVL sat at roughly $680 million. By December 2020, it had surged past $15 billion. By November 2021, at the peak of the broader bull market, DeFi TVL exceeded $180 billion across hundreds of protocols on multiple chains.
+      </p>
+
+      <div class="callout callout--teaching">
+        <p class="callout-title">🎓 Teaching Moment</p>
+        <p>
+          TVL is a useful but imperfect metric. It can be inflated through "recursive lending" (depositing asset A, borrowing asset B, depositing asset B, etc.) and doesn't account for the quality of assets locked. A protocol with $1 billion in TVL consisting mostly of its own governance token is fundamentally different from one backed by ETH and stablecoins. When evaluating DeFi protocols, always look at <em>what</em> is locked, not just <em>how much</em>.
+        </p>
+      </div>
+
+      <h3>Flash Loan Attacks</h3>
+      <p>
+        DeFi's composability — the ability to chain protocols together like financial Lego blocks — was both its superpower and its Achilles' heel. Flash loans enabled attackers to borrow millions of dollars with no collateral, manipulate token prices on decentralized exchanges, exploit vulnerable smart contracts, and return the loan — all in one transaction. In February 2020, bZx suffered two flash loan attacks in quick succession. In October 2020, Harvest Finance lost $34 million. In 2021 and 2022, hundreds of millions more were lost to similar exploits.
+      </p>
+      <p>
+        These attacks weren't "hacking" in the traditional sense — attackers were using the protocols exactly as designed. The vulnerability was in the economic logic, not the code's security. This distinction matters: it showed that smart contracts needed not just code audits, but economic audits too.
+      </p>
+
+      <div class="callout callout--misconception">
+        <p class="callout-title">❌ Common Misconception</p>
+        <p>
+          <strong>"DeFi is just gambling for crypto bros."</strong> While speculation absolutely drives much of DeFi's volume, the underlying innovation is real and significant. Programmable, permissionless financial infrastructure — lending, borrowing, trading, insurance — that operates 24/7 without intermediaries is a genuine technological advancement. Traditional finance is already adopting these concepts: JPMorgan has its own private blockchain for interbank settlement, and the World Bank has issued blockchain-based bonds. The speculation is the sideshow; the infrastructure is the story.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SECTION 3: NFT BOOM ============ -->
+  <section class="era-section" id="nft-boom" aria-labelledby="nft-heading">
+    <div class="container">
+      <div class="section-marker">
+        <span class="section-marker__year">2021</span>
+      </div>
+      <h2 id="nft-heading">The NFT Boom</h2>
+
+      <p>
+        Non-fungible tokens (NFTs) had existed since 2017 — CryptoKitties famously clogged the Ethereum network in December of that year. But it wasn't until 2021 that NFTs exploded into mainstream consciousness, driven by a single auction that made global headlines.
+      </p>
+
+      <h3>The Beeple Moment</h3>
+      <p>
+        On March 11, 2021, digital artist <strong>Mike Winkelmann</strong> (known as Beeple) sold his work "Everydays: The First 5000 Days" at Christie's auction house for <strong>$69.3 million</strong>. The buyer, Vignesh Sundaresan (known as MetaKovan), paid in Ether. It was the third-most-expensive work by a living artist ever sold at auction. The sale legitimized NFTs in the eyes of the traditional art world — and triggered a speculative gold rush.
+      </p>
+
+      <h3>Profile Pictures and Status Symbols</h3>
+      <p>
+        <strong>CryptoPunks</strong>, a collection of 10,000 algorithmically generated pixel art characters created by Larva Labs in June 2017 and originally given away for free, became the ultimate crypto status symbol. Individual Punks sold for millions — CryptoPunk #5822 sold for $23.7 million in February 2022. <strong>Bored Ape Yacht Club (BAYC)</strong>, launched by Yuga Labs in April 2021 at a mint price of 0.08 ETH (roughly $190 at the time), saw floor prices rise above 100 ETH ($300,000+) by early 2022. Celebrities including Eminem, Snoop Dogg, Jimmy Fallon, and Steph Curry bought in publicly.
+      </p>
+      <p>
+        Monthly NFT trading volume on OpenSea peaked at over $5 billion in January 2022. Marketplaces like OpenSea, Rarible, and later Blur competed fiercely for market share. Everyone from Coca-Cola to the Associated Press launched NFT collections.
+      </p>
+
+      <h3>The Honest Assessment: Most NFTs Lost 90%+</h3>
+      <p>
+        I'm going to be direct here, because I think honesty serves you better than hype: the vast majority of NFTs purchased during 2021–2022 lost most or all of their value. A September 2023 study by dappGambl analyzed 73,257 NFT collections and found that 69,795 of them — roughly 95% — had a market cap of zero. Many collections that traded at tens of thousands of dollars per token fell to double digits or less.
+      </p>
+      <p>
+        Why? Because most NFT collections had no utility beyond speculation and social signaling. The "community" and "roadmap" promises made by thousands of projects were often vaporware. The market confused novelty with value. For most buyers, NFTs were lottery tickets dressed up as art.
+      </p>
+
+      <div class="callout callout--teaching">
+        <p class="callout-title">🎓 Teaching Moment</p>
+        <p>
+          The NFT crash doesn't mean the underlying technology is useless — it means the <em>speculative application</em> was a bubble. The ERC-721 standard (non-fungible tokens on Ethereum) is genuinely useful for representing unique digital ownership. Practical applications that have lasting value include: <strong>digital event tickets</strong> (fraud-proof, transferable), <strong>credentials and certificates</strong> (verifiable diplomas, professional licenses), <strong>digital provenance</strong> (tracking ownership history of real and digital assets), and <strong>gaming items</strong> (cross-platform interoperable in-game assets). The technology survived; the speculation didn't. That's actually how most technologies mature.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SECTION 4: LAYER 2 & SCALING ============ -->
+  <section class="era-section era-section--alt" id="layer-2" aria-labelledby="l2-heading">
+    <div class="container">
+      <div class="section-marker">
+        <span class="section-marker__year">2021–Present</span>
+      </div>
+      <h2 id="l2-heading">Layer 2 &amp; Scaling</h2>
+
+      <p>
+        By late 2020, Ethereum had a serious problem: it was a victim of its own success. The DeFi boom and NFT craze pushed gas fees — the cost of executing transactions on Ethereum — to absurd levels. A simple token swap on Uniswap could cost $50–200 in gas fees during peak periods. Sending a basic ERC-20 token transfer might cost $20–30. For users with small portfolios, Ethereum had become essentially unusable.
+      </p>
+
+      <h3>The Scalability Trilemma</h3>
+      <p>
+        This problem had been anticipated. Ethereum co-founder Vitalik Buterin had described the "scalability trilemma": a blockchain can optimize for any two of three properties — decentralization, security, and scalability — but achieving all three simultaneously is extremely difficult. Ethereum Layer 1 chose decentralization and security, processing only about 15–30 transactions per second. By comparison, Visa handles roughly 1,700 transactions per second on average, with the capacity for 65,000+.
+      </p>
+
+      <h3>Rollups: The Scaling Solution</h3>
+      <p>
+        The Ethereum community converged on <strong>rollups</strong> as the primary scaling strategy. Rollups execute transactions off the main Ethereum chain (Layer 1) but post compressed transaction data back to it, inheriting Ethereum's security. Two main approaches emerged:
+      </p>
+
+      <div class="comparison-grid" role="table" aria-label="Rollup comparison">
+        <div class="comparison-grid__header">
+          <div class="comparison-grid__cell">Feature</div>
+          <div class="comparison-grid__cell">Optimistic Rollups</div>
+          <div class="comparison-grid__cell">ZK Rollups</div>
+        </div>
+        <div class="comparison-grid__row">
+          <div class="comparison-grid__cell comparison-grid__cell--label">How it works</div>
+          <div class="comparison-grid__cell">Assumes transactions are valid; anyone can challenge within a dispute window (typically 7 days)</div>
+          <div class="comparison-grid__cell">Generates a cryptographic proof (validity proof) that transactions are correct; verified on-chain</div>
+        </div>
+        <div class="comparison-grid__row">
+          <div class="comparison-grid__cell comparison-grid__cell--label">Withdrawal time</div>
+          <div class="comparison-grid__cell">~7 days (dispute period) without a bridge</div>
+          <div class="comparison-grid__cell">Minutes to hours (once proof is verified)</div>
+        </div>
+        <div class="comparison-grid__row">
+          <div class="comparison-grid__cell comparison-grid__cell--label">EVM compatibility</div>
+          <div class="comparison-grid__cell">Generally easier; more EVM-equivalent today</div>
+          <div class="comparison-grid__cell">More complex; zkEVMs are maturing rapidly</div>
+        </div>
+        <div class="comparison-grid__row">
+          <div class="comparison-grid__cell comparison-grid__cell--label">Key projects</div>
+          <div class="comparison-grid__cell"><strong>Arbitrum</strong> (launched Aug 2021), <strong>Optimism</strong> (launched Jan 2021, public Dec 2021)</div>
+          <div class="comparison-grid__cell"><strong>zkSync Era</strong> (launched Mar 2023), <strong>StarkNet</strong> (alpha Nov 2021), <strong>Polygon zkEVM</strong></div>
+        </div>
+        <div class="comparison-grid__row">
+          <div class="comparison-grid__cell comparison-grid__cell--label">Gas cost savings</div>
+          <div class="comparison-grid__cell">~10–100x cheaper than L1</div>
+          <div class="comparison-grid__cell">~10–100x cheaper than L1</div>
+        </div>
+      </div>
+
+      <p>
+        By 2024, Arbitrum alone had more daily active users than Ethereum mainnet on many days. The L2 ecosystem's combined TVL exceeded $40 billion. Ethereum's March 2024 "Dencun" upgrade (which introduced "blobs" via EIP-4844) dramatically reduced L2 transaction costs further — some transactions on Arbitrum and Optimism dropped to fractions of a cent.
+      </p>
+
+      <h3>Bitcoin's Lightning Network</h3>
+      <p>
+        Bitcoin's primary Layer 2 solution is the <strong>Lightning Network</strong>, which enables near-instant, low-cost Bitcoin payments through a network of bilateral payment channels. First proposed in a 2016 whitepaper by Joseph Poon and Thaddeus Dryja, the Lightning Network launched on Bitcoin mainnet in March 2018.
+      </p>
+      <p>
+        Adoption grew slowly but steadily. El Salvador's Chivo wallet, launched alongside the country's Bitcoin legal tender law in September 2021, used Lightning for day-to-day transactions. Strike, Cash App, and other fintech apps integrated Lightning support. By 2024, the Lightning Network's public capacity exceeded 5,000 BTC, though actual usage was difficult to measure since many channels are private.
+      </p>
+
+      <div class="callout callout--misconception">
+        <p class="callout-title">❌ Common Misconception</p>
+        <p>
+          <strong>"Layer 2s make the base layer irrelevant."</strong> This is backwards. Layer 2 solutions derive their security from Layer 1 — they're not replacements, they're extensions. Think of it like highways (L1) and local roads (L2). You need both. The highway provides the security and settlement guarantees; the local roads handle the volume. If the highway disappears, the entire road system breaks. That's why L1 security and decentralization remain critically important even as most user activity migrates to L2.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SECTION 5: INSTITUTIONAL ADOPTION ============ -->
+  <section class="era-section" id="institutional" aria-labelledby="institutional-heading">
+    <div class="container">
+      <div class="section-marker">
+        <span class="section-marker__year">2020–2024</span>
+      </div>
+      <h2 id="institutional-heading">Institutional Adoption</h2>
+
+      <p>
+        For the first decade of Bitcoin's existence, institutional investors largely ignored or mocked it. "Rat poison squared," Warren Buffett called it. JPMorgan CEO Jamie Dimon called it a "fraud" in September 2017. That started changing in 2020 — not because Wall Street suddenly had an epiphany about decentralization, but because they recognized demand from their clients and saw an emerging asset class they couldn't afford to ignore.
+      </p>
+
+      <h3>MicroStrategy: The Corporate Bitcoin Treasury Pioneer</h3>
+      <p>
+        On August 11, 2020, <strong>MicroStrategy</strong>, a business intelligence company led by CEO Michael Saylor, announced it had purchased 21,454 BTC for $250 million as a "treasury reserve asset." Saylor argued publicly that holding cash was a losing strategy due to monetary inflation, and that Bitcoin was the best store of value available. The company continued buying aggressively throughout 2021, 2022, 2023, and 2024, accumulating over 214,000 BTC by late 2024 — worth over $14 billion. MicroStrategy's stock (MSTR) essentially became a leveraged Bitcoin proxy.
+      </p>
+
+      <h3>Tesla Shocks the Market</h3>
+      <p>
+        On February 8, 2021, <strong>Tesla</strong> disclosed in an SEC filing that it had purchased $1.5 billion in Bitcoin and would begin accepting it as payment for vehicles. The announcement sent Bitcoin surging past $44,000. Tesla briefly accepted Bitcoin payments in March 2021, then reversed course in May, with Elon Musk citing environmental concerns about Bitcoin mining's energy consumption. Tesla eventually sold roughly 75% of its holdings by mid-2022, but the signal had been sent: the world's most valuable automaker had held Bitcoin on its balance sheet.
+      </p>
+
+      <h3>The ETF Saga: Years of Rejection, Then Breakthrough</h3>
+      <p>
+        The holy grail of institutional Bitcoin adoption was a spot Bitcoin Exchange-Traded Fund (ETF) — a regulated investment product that would allow anyone with a brokerage account to gain Bitcoin exposure without dealing with wallets, private keys, or crypto exchanges. The Winklevoss twins first applied for a Bitcoin ETF in July 2013. The SEC rejected it. Over the next decade, the SEC rejected every single spot Bitcoin ETF application, citing concerns about market manipulation and investor protection.
+      </p>
+      <p>
+        In June 2023, <strong>BlackRock</strong> — the world's largest asset manager with over $10 trillion in assets under management — filed its own spot Bitcoin ETF application. When BlackRock files for an ETF, the market pays attention: the firm had a 575-1 approval track record with the SEC. Other major firms quickly followed: Fidelity, Invesco, WisdomTree, ARK Invest, and more.
+      </p>
+      <p>
+        On January 10, 2024, the SEC simultaneously approved <strong>11 spot Bitcoin ETFs</strong>. Trading began the next day. Within the first month, these ETFs attracted over $10 billion in net inflows. BlackRock's iShares Bitcoin Trust (IBIT) alone became the fastest ETF in history to reach $10 billion in assets under management — doing so in just 49 days. By comparison, the previous record holder (JEPQ) took 647 days.
+      </p>
+
+      <div class="callout callout--teaching">
+        <p class="callout-title">🎓 Teaching Moment</p>
+        <p>
+          The Bitcoin ETF approval was a landmark moment, but it's worth understanding <em>why</em> it matters beyond just price impact. ETFs are the delivery mechanism through which pension funds, endowments, registered investment advisors, and retirement accounts access asset classes. Before the ETF, a financial advisor who wanted to allocate 1% of a client's portfolio to Bitcoin had to navigate crypto exchanges, custody solutions, and compliance headaches. After the ETF, they simply buy a ticker symbol like any other stock. This reduced friction for trillions of dollars in potential allocation. It didn't change Bitcoin's technology — it changed Bitcoin's addressable market.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SECTION 6: STABLECOINS & CBDCs ============ -->
+  <section class="era-section era-section--alt" id="stablecoins" aria-labelledby="stablecoins-heading">
+    <div class="container">
+      <div class="section-marker">
+        <span class="section-marker__year">2018–Present</span>
+      </div>
+      <h2 id="stablecoins-heading">Stablecoins &amp; CBDCs</h2>
+
+      <p>
+        One of the most consequential — and underappreciated — developments of this era is the rise of stablecoins. While Bitcoin and Ethereum grab headlines, stablecoins quietly became the backbone of the crypto economy and, arguably, one of the most important innovations in digital payments.
+      </p>
+
+      <h3>The Big Three Stablecoins</h3>
+
+      <div class="stablecoin-cards">
+        <article class="stablecoin-card">
+          <h4>Tether (USDT)</h4>
+          <p class="stablecoin-card__meta">Launched 2014 · Market cap: ~$90B+ · Centralized</p>
+          <p>
+            The oldest and largest stablecoin, issued by Tether Limited. Each USDT is supposed to be backed 1:1 by reserves, though the composition of those reserves has been a persistent controversy. Tether has faced multiple lawsuits and investigations — the New York Attorney General found in 2021 that Tether had misrepresented its reserves and fined it $18.5 million. Despite the controversy, USDT remains the most traded crypto asset by volume, dominant especially in Asian markets and on offshore exchanges.
+          </p>
+        </article>
+
+        <article class="stablecoin-card">
+          <h4>USD Coin (USDC)</h4>
+          <p class="stablecoin-card__meta">Launched 2018 · Market cap: ~$25B+ · Centralized</p>
+          <p>
+            Created by Circle and Coinbase through the Centre consortium. USDC emphasizes regulatory compliance and transparency, publishing monthly reserve attestations from accounting firms. Reserves are held in cash and short-term U.S. Treasuries. In March 2023, USDC briefly lost its peg, dropping to $0.87, after Circle disclosed that $3.3 billion of its reserves were held at Silicon Valley Bank, which had just collapsed. The peg restored within days after the FDIC backstopped SVB depositors.
+          </p>
+        </article>
+
+        <article class="stablecoin-card">
+          <h4>DAI</h4>
+          <p class="stablecoin-card__meta">Launched 2017 · Market cap: ~$5B+ · Decentralized</p>
+          <p>
+            The flagship product of MakerDAO and the most successful decentralized stablecoin. DAI is minted when users deposit collateral (ETH, USDC, real-world assets, etc.) into Maker Vaults — always over-collateralized (typically 150%+ collateral ratio). If your collateral value drops below the threshold, it's automatically liquidated. DAI maintains its peg through economic incentives rather than trust in a central issuer. In 2023, MakerDAO rebranded to Sky Protocol and renamed DAI to USDS, though the original DAI continued to circulate.
+          </p>
+        </article>
+      </div>
+
+      <h3>The $150 Billion Market</h3>
+      <p>
+        By 2024, the total stablecoin market capitalization exceeded $150 billion. Stablecoins settled over $10 trillion in on-chain transaction volume annually — approaching Visa's total payment volume. They became the primary unit of account in DeFi, the dominant trading pair on exchanges, and an increasingly important tool for cross-border remittances, especially in countries with unstable local currencies.
+      </p>
+
+      <h3>Central Bank Digital Currencies (CBDCs)</h3>
+      <p>
+        The rise of stablecoins — particularly Facebook's 2019 announcement of "Libra" (later renamed Diem), a stablecoin backed by a basket of currencies — alarmed central banks worldwide. If private companies could create digital money used by billions, central banks feared losing control over monetary policy.
+      </p>
+      <p>
+        <strong>China</strong> was the first major economy to pilot a CBDC. The <strong>e-CNY</strong> (digital yuan) began pilot testing in Shenzhen, Suzhou, and Chengdu in late 2020, expanding to dozens of cities by 2024. As of early 2024, cumulative e-CNY transaction volume exceeded $250 billion, though daily usage remains a tiny fraction of China's total payments.
+      </p>
+      <p>
+        The <strong>European Central Bank</strong> advanced its digital euro project to the "preparation phase" in October 2023, with a potential launch no earlier than 2027–2028. Over 130 countries, representing 98% of global GDP, were exploring CBDCs by 2024, according to the Atlantic Council's CBDC tracker.
+      </p>
+
+      <h3>Real-World Asset Tokenization (RWA)</h3>
+      <p>
+        One of the most significant emerging trends is the tokenization of real-world assets — representing traditional financial instruments (Treasury bonds, real estate, private credit, commodities) as tokens on blockchain networks. BlackRock launched its tokenized U.S. Treasury fund (BUIDL) on Ethereum in March 2024, accumulating over $500 million in assets within months. Franklin Templeton's tokenized fund had been operating on Stellar and Polygon since 2021. By mid-2024, the tokenized treasury market alone exceeded $1.5 billion. This is still tiny relative to traditional finance, but the direction is clear: TradFi is coming on-chain.
+      </p>
+
+      <div class="callout callout--misconception">
+        <p class="callout-title">❌ Common Misconception</p>
+        <p>
+          <strong>"CBDCs are the same as Bitcoin or stablecoins."</strong> They're fundamentally different. Bitcoin is decentralized and permissionless — no one controls it. Stablecoins like USDT and USDC are issued by private companies but operate on public blockchains. CBDCs are <em>government-issued and government-controlled</em> digital currencies. A CBDC gives the central bank unprecedented visibility into — and potentially control over — how money is spent. Whether that's a feature or a bug depends entirely on your trust in your government. Privacy advocates have raised serious concerns, particularly about China's e-CNY, which is fully traceable by the People's Bank of China.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SECTION 7: MAJOR COLLAPSES ============ -->
+  <section class="era-section" id="collapses" aria-labelledby="collapses-heading">
+    <div class="container">
+      <div class="section-marker">
+        <span class="section-marker__year">2022</span>
+      </div>
+      <h2 id="collapses-heading">Major Collapses &amp; Lessons</h2>
+
+      <p>
+        The year 2022 will be remembered as crypto's year of reckoning — when the excesses, fraud, and structural fragilities of the 2021 bull market were brutally exposed. The total crypto market cap fell from roughly $2.2 trillion at the start of 2022 to under $800 billion by December. But the price decline was only part of the story. What really shook the industry were the collapses — cascading failures that destroyed companies, wiped out savings, and sent people to prison.
+      </p>
+
+      <h3>Terra/Luna: The $40 Billion Implosion</h3>
+      <p>
+        <strong>Terra</strong> was a blockchain built around an algorithmic stablecoin called UST (TerraUSD). Unlike USDT or USDC, UST wasn't backed by dollar reserves. Instead, it maintained its $1 peg through an arbitrage mechanism with its sister token, LUNA. If UST fell below $1, holders could burn UST for $1 worth of LUNA, theoretically restoring the peg. The system was reinforced by <strong>Anchor Protocol</strong>, which offered a 19.5% annual yield on UST deposits — a rate that attracted billions of dollars but was fundamentally unsustainable.
+      </p>
+      <p>
+        In May 2022, a large UST sell-off triggered a "death spiral." As UST lost its peg, holders rushed to redeem for LUNA, massively inflating LUNA's supply and crashing its price. This made LUNA even less valuable as collateral for UST, accelerating the peg failure. Within five days (May 7–12, 2022), UST fell from $1 to near zero, and LUNA's price collapsed from over $80 to fractions of a cent. Approximately <strong>$40 billion</strong> in combined market value was destroyed. Founder <strong>Do Kwon</strong> was arrested in Montenegro in March 2023 while attempting to flee with falsified documents.
+      </p>
+
+      <h3>Three Arrows Capital: Overleveraged and Overexposed</h3>
+      <p>
+        <strong>Three Arrows Capital (3AC)</strong>, a prominent crypto hedge fund founded by Su Zhu and Kyle Davies, had made massive leveraged bets on crypto assets — including a significant position in LUNA. When Terra collapsed, 3AC was fatally wounded. The fund had borrowed heavily from multiple crypto lenders and couldn't meet margin calls. 3AC filed for bankruptcy in June 2022 (BVI) and July 2022 (New York), with creditors claiming over $3.5 billion owed. Zhu and Davies initially fled, with Zhu eventually arrested in Singapore in September 2023.
+      </p>
+
+      <h3>Celsius and Voyager: "Your Money Is Safe" — It Wasn't</h3>
+      <p>
+        <strong>Celsius Network</strong>, a centralized crypto lending platform, had attracted depositors by offering yields of 12–18% on crypto deposits. CEO Alex Mashinsky repeatedly assured customers their funds were safe. On June 12, 2022, Celsius froze all withdrawals. It filed for bankruptcy on July 13, 2022, revealing a $1.2 billion hole in its balance sheet. Celsius had been taking customer deposits and making risky, illiquid investments — including locked staking positions and DeFi strategies — without adequate risk management. Mashinsky was arrested in July 2023 on fraud charges.
+      </p>
+      <p>
+        <strong>Voyager Digital</strong> followed a similar pattern: high-yield promises, exposure to 3AC's bad debt (Voyager had lent 3AC approximately $650 million), and an inevitable bankruptcy filing in July 2022.
+      </p>
+
+      <h3>FTX: The Biggest Fraud in Crypto History</h3>
+      <p>
+        And then there was <strong>FTX</strong>. Founded in 2019 by <strong>Sam Bankman-Fried (SBF)</strong>, FTX rapidly grew into the third-largest crypto exchange globally. SBF became the public face of "responsible crypto" — meeting with regulators, donating millions to political campaigns, appearing on magazine covers, and testifying before Congress. FTX's valuation reached $32 billion in January 2022. It bought naming rights to the Miami Heat's arena for $135 million. It ran Super Bowl ads. It seemed untouchable.
+      </p>
+      <p>
+        On November 2, 2022, CoinDesk published a report revealing that Alameda Research — SBF's trading firm, supposedly independent from FTX — held billions of dollars in FTT (FTX's own exchange token) on its balance sheet. On November 6, Binance CEO Changpeng Zhao announced Binance would sell its FTT holdings. This triggered a bank run. Within three days, FTX faced approximately $6 billion in withdrawal requests and couldn't meet them. On November 11, 2022, FTX filed for bankruptcy.
+      </p>
+      <p>
+        The subsequent investigation revealed breathtaking fraud. FTX had secretly funneled approximately <strong>$8 billion</strong> in customer funds to Alameda Research, which had lost billions on bad trades, venture investments, real estate, and political donations. There were no proper accounting systems. Customer funds were commingled in a single bank account. SBF was arrested in the Bahamas on December 12, 2022, extradited to the U.S., tried in October–November 2023, and convicted on seven counts of fraud and conspiracy. He was sentenced to <strong>25 years in federal prison</strong> in March 2024.
+      </p>
+
+      <div class="callout callout--teaching">
+        <p class="callout-title">🎓 Teaching Moment</p>
+        <p>
+          The lesson from every single one of these collapses is the same one that cypherpunks articulated in the 1990s: <strong>"Not your keys, not your coins."</strong> When you deposit crypto on a centralized exchange or lending platform, you are trusting a counterparty with your assets. That counterparty might be honest. They might not be. You have no way to verify on-chain what they're doing with your money behind the scenes. Self-custody — holding your own private keys in a hardware wallet or well-secured software wallet — eliminates counterparty risk entirely. It requires more responsibility, but that responsibility is the entire point of why this technology exists.
+        </p>
+      </div>
+
+      <div class="collapse-timeline" role="list" aria-label="2022 collapse timeline">
+        <div class="collapse-timeline__item collapse-timeline__item--danger" role="listitem">
+          <div class="collapse-timeline__date">May 2022</div>
+          <div class="collapse-timeline__content">
+            <strong>Terra/Luna collapse</strong> — $40B wiped out in 5 days
+          </div>
+        </div>
+        <div class="collapse-timeline__item collapse-timeline__item--danger" role="listitem">
+          <div class="collapse-timeline__date">June 2022</div>
+          <div class="collapse-timeline__content">
+            <strong>Celsius freezes withdrawals</strong> — $1.2B hole discovered; <strong>Three Arrows Capital files bankruptcy</strong> — $3.5B in claims
+          </div>
+        </div>
+        <div class="collapse-timeline__item collapse-timeline__item--danger" role="listitem">
+          <div class="collapse-timeline__date">July 2022</div>
+          <div class="collapse-timeline__content">
+            <strong>Voyager Digital bankruptcy</strong> — $650M lent to 3AC
+          </div>
+        </div>
+        <div class="collapse-timeline__item collapse-timeline__item--danger" role="listitem">
+          <div class="collapse-timeline__date">Nov 2022</div>
+          <div class="collapse-timeline__content">
+            <strong>FTX collapse &amp; bankruptcy</strong> — $8B in customer funds misappropriated
+          </div>
+        </div>
+        <div class="collapse-timeline__item" role="listitem">
+          <div class="collapse-timeline__date">Mar 2024</div>
+          <div class="collapse-timeline__content">
+            <strong>SBF sentenced to 25 years</strong> in federal prison
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SECTION 8: CURRENT MARKET DASHBOARD ============ -->
+  <section class="era-section era-section--alt" id="dashboard" aria-labelledby="dashboard-heading">
+    <div class="container">
+      <div class="section-marker">
+        <span class="section-marker__year">Live Data</span>
+      </div>
+      <h2 id="dashboard-heading">Current Market Dashboard</h2>
+      <p>
+        A snapshot of where the crypto market stands today. These figures are updated periodically and represent approximate values — crypto markets move 24/7, so treat these as directional indicators, not exact prices.
+      </p>
+
+      <div class="dashboard-grid" role="table" aria-label="Current crypto market statistics">
+        <div class="dashboard-grid__header" role="row">
+          <div role="columnheader">Metric</div>
+          <div role="columnheader">Value</div>
+          <div role="columnheader">Context</div>
+        </div>
+        <div class="dashboard-grid__row" role="row">
+          <div class="dashboard-grid__label" role="cell">BTC Dominance</div>
+          <div class="dashboard-grid__value" role="cell" data-metric="btc-dominance">~54%</div>
+          <div class="dashboard-grid__context" role="cell">Share of total market cap held by Bitcoin. Above 50% indicates Bitcoin-led market; below 40% historically signals altcoin speculation.</div>
+        </div>
+        <div class="dashboard-grid__row" role="row">
+          <div class="dashboard-grid__label" role="cell">Total Market Cap</div>
+          <div class="dashboard-grid__value" role="cell" data-metric="total-mcap">~$2.5T</div>
+          <div class="dashboard-grid__context" role="cell">Combined value of all cryptocurrencies. Peak was ~$3T in Nov 2021. This metric includes stablecoins.</div>
+        </div>
+        <div class="dashboard-grid__row" role="row">
+          <div class="dashboard-grid__label" role="cell">DeFi TVL</div>
+          <div class="dashboard-grid__value" role="cell" data-metric="defi-tvl">~$90B</div>
+          <div class="dashboard-grid__context" role="cell">Total value locked in DeFi protocols across all chains. Peak was ~$180B in Nov 2021.</div>
+        </div>
+        <div class="dashboard-grid__row" role="row">
+          <div class="dashboard-grid__label" role="cell">Stablecoin Market Cap</div>
+          <div class="dashboard-grid__value" role="cell" data-metric="stablecoin-mcap">~$155B</div>
+          <div class="dashboard-grid__context" role="cell">Total value of all stablecoins. Dominated by USDT (~60%), USDC (~16%), and DAI (~3%). Growing steadily even during bear markets.</div>
+        </div>
+        <div class="dashboard-grid__row" role="row">
+          <div class="dashboard-grid__label" role="cell">Daily Trading Volume</div>
+          <div class="dashboard-grid__value" role="cell" data-metric="daily-volume">~$80B</div>
+          <div class="dashboard-grid__context" role="cell">24-hour trading volume across all centralized and decentralized exchanges. Highly variable; can spike 3–5x during volatile periods.</div>
+        </div>
+      </div>
+
+      <p class="dashboard-note">
+        <em>Last conceptual update: Q3 2024. Values will be connected to live API data in a future update. Treat these as approximations for educational context.</em>
+      </p>
+    </div>
+  </section>
+
+  <!-- ============ ERA NAVIGATION ============ -->
+  <nav class="era-nav" aria-label="Era navigation">
+    <div class="container">
+      <a href={`${base}eras/origins`} class="era-nav__link era-nav__link--prev">
+        <span class="era-nav__direction">← Previous Era</span>
+        <span class="era-nav__title">Origins: The Cypherpunk Dream (Pre-2017)</span>
+      </a>
+      <a href={`${base}eras/future`} class="era-nav__link era-nav__link--next">
+        <span class="era-nav__direction">Next Era →</span>
+        <span class="era-nav__title">The Future: Where Crypto Goes from Here</span>
+      </a>
+    </div>
+  </nav>
+
+</BaseLayout>
+
+<style>
+  /* ============ HERO ============ */
+  .era-hero {
+    background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-primary) 50%, var(--bg-secondary) 100%);
+    border-bottom: 1px solid var(--border-color);
+    padding: 4rem 1.5rem 3rem;
+    text-align: center;
+  }
+
+  .container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+  }
+
+  .era-badge {
+    display: inline-block;
+    background: var(--accent-primary);
+    color: var(--bg-primary);
+    font-size: 0.8rem;
+    font-weight: 700;
+    padding: 0.3rem 1rem;
+    border-radius: var(--radius-xl);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 1.25rem;
+  }
+
+  .era-hero h1 {
+    font-size: clamp(1.8rem, 4vw, 3rem);
+    font-weight: 800;
+    color: var(--text-primary);
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .year-range {
+    color: var(--accent-primary);
+    white-space: nowrap;
+  }
+
+  .hero-subtitle {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    max-width: 760px;
+    margin: 0 auto 2.5rem;
+  }
+
+  .hero-stats {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  .hero-stat {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: var(--radius-md);
+    padding: 1.25rem 1rem;
+  }
+
+  .hero-stat__value {
+    display: block;
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: var(--accent-primary);
+    font-family: var(--font-mono);
+  }
+
+  .hero-stat__label {
+    display: block;
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    margin-top: 0.25rem;
+  }
+
+  @media (min-width: 640px) {
+    .hero-stats {
+      grid-template-columns: repeat(4, 1fr);
+      max-width: 900px;
+    }
+  }
+
+  /* ============ TABLE OF CONTENTS ============ */
+  .toc {
+    background: var(--bg-secondary);
+    border-bottom: 1px solid var(--border-color);
+    padding: 2rem 1.5rem;
+  }
+
+  .toc__title {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: 1rem;
+  }
+
+  .toc__list {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.4rem;
+    list-style: decimal;
+    padding-left: 1.5rem;
+    margin: 0;
+  }
+
+  .toc__list li {
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+
+  .toc__list a {
+    color: var(--accent-primary);
+    text-decoration: none;
+    transition: color var(--transition-fast);
+  }
+
+  .toc__list a:hover,
+  .toc__list a:focus-visible {
+    color: var(--accent-secondary);
+    text-decoration: underline;
+  }
+
+  @media (min-width: 640px) {
+    .toc__list {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  /* ============ SECTIONS ============ */
+  .era-section {
+    padding: 3.5rem 1.5rem;
+  }
+
+  .era-section--alt {
+    background: var(--bg-secondary);
+  }
+
+  .era-section .container {
+    max-width: var(--content-width);
+  }
+
+  .section-marker {
+    margin-bottom: 1rem;
+  }
+
+  .section-marker__year {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--accent-secondary);
+    background: var(--success-bg);
+    border: 1px solid var(--success-border);
+    padding: 0.2rem 0.75rem;
+    border-radius: var(--radius-sm);
+  }
+
+  .era-section h2 {
+    font-size: clamp(1.5rem, 3vw, 2.2rem);
+    font-weight: 800;
+    color: var(--text-primary);
+    margin-bottom: 1.5rem;
+    line-height: 1.25;
+  }
+
+  .era-section h3 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-top: 2.25rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .era-section p {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+  }
+
+  .era-section strong {
+    color: var(--text-primary);
+    font-weight: 700;
+  }
+
+  .era-section em {
+    font-style: italic;
+  }
+
+  /* ============ CALLOUTS ============ */
+  .callout {
+    border-radius: var(--radius-md);
+    padding: 1.5rem;
+    margin: 2rem 0;
+    border-left: 4px solid;
+  }
+
+  .callout--teaching {
+    background: var(--info-bg);
+    border-color: var(--info-border);
+  }
+
+  .callout--misconception {
+    background: var(--warning-bg);
+    border-color: var(--warning-border);
+  }
+
+  .callout-title {
+    font-weight: 700;
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+    color: var(--text-primary);
+  }
+
+  .callout--teaching .callout-title {
+    color: var(--accent-primary);
+  }
+
+  .callout--misconception .callout-title {
+    color: var(--warning-border);
+  }
+
+  .callout p {
+    margin-bottom: 0.5rem;
+  }
+
+  .callout p:last-child {
+    margin-bottom: 0;
+  }
+
+  /* ============ COMPARISON GRID (L2 Table) ============ */
+  .comparison-grid {
+    display: grid;
+    border: 1px solid var(--card-border);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    margin: 1.5rem 0 2rem;
+    font-size: 0.9rem;
+  }
+
+  .comparison-grid__header {
+    display: none;
+  }
+
+  .comparison-grid__row {
+    display: grid;
+    grid-template-columns: 1fr;
+    border-bottom: 1px solid var(--border-color);
+  }
+
+  .comparison-grid__row:last-child {
+    border-bottom: none;
+  }
+
+  .comparison-grid__cell {
+    padding: 0.85rem 1rem;
+    color: var(--text-primary);
+    line-height: 1.5;
+  }
+
+  .comparison-grid__cell--label {
+    background: var(--bg-tertiary);
+    font-weight: 700;
+    font-size: 0.85rem;
+    color: var(--accent-primary);
+    border-bottom: 1px solid var(--border-color);
+  }
+
+  @media (min-width: 768px) {
+    .comparison-grid__header {
+      display: grid;
+      grid-template-columns: 160px 1fr 1fr;
+      background: var(--bg-tertiary);
+      font-weight: 700;
+      font-size: 0.85rem;
+      color: var(--accent-primary);
+    }
+
+    .comparison-grid__header .comparison-grid__cell {
+      border-right: 1px solid var(--border-color);
+    }
+
+    .comparison-grid__header .comparison-grid__cell:last-child {
+      border-right: none;
+    }
+
+    .comparison-grid__row {
+      grid-template-columns: 160px 1fr 1fr;
+    }
+
+    .comparison-grid__cell--label {
+      border-bottom: none;
+      border-right: 1px solid var(--border-color);
+    }
+
+    .comparison-grid__cell:not(.comparison-grid__cell--label) {
+      border-right: 1px solid var(--border-color);
+    }
+
+    .comparison-grid__cell:last-child {
+      border-right: none;
+    }
+  }
+
+  /* ============ STABLECOIN CARDS ============ */
+  .stablecoin-cards {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+    margin: 1.5rem 0 2rem;
+  }
+
+  .stablecoin-card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: var(--radius-md);
+    padding: 1.5rem;
+  }
+
+  .stablecoin-card h4 {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 0.35rem;
+  }
+
+  .stablecoin-card__meta {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: var(--accent-secondary);
+    margin-bottom: 0.75rem;
+  }
+
+  .stablecoin-card p:last-child {
+    margin-bottom: 0;
+  }
+
+  @media (min-width: 768px) {
+    .stablecoin-cards {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  /* ============ COLLAPSE TIMELINE ============ */
+  .collapse-timeline {
+    margin: 2rem 0;
+    padding-left: 0;
+  }
+
+  .collapse-timeline__item {
+    display: flex;
+    gap: 1rem;
+    padding: 1rem;
+    border-left: 3px solid var(--border-color);
+    margin-bottom: 0;
+    position: relative;
+  }
+
+  .collapse-timeline__item--danger {
+    border-left-color: var(--danger-border);
+    background: var(--danger-bg);
+  }
+
+  .collapse-timeline__item:last-child {
+    border-left-color: var(--accent-secondary);
+    background: var(--success-bg);
+  }
+
+  .collapse-timeline__date {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--text-secondary);
+    min-width: 80px;
+    flex-shrink: 0;
+    padding-top: 0.1rem;
+  }
+
+  .collapse-timeline__content {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: var(--text-primary);
+  }
+
+  /* ============ DASHBOARD GRID ============ */
+  .dashboard-grid {
+    border: 1px solid var(--card-border);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    margin: 1.5rem 0 1.5rem;
+  }
+
+  .dashboard-grid__header {
+    display: none;
+  }
+
+  .dashboard-grid__row {
+    display: grid;
+    grid-template-columns: 1fr;
+    border-bottom: 1px solid var(--border-color);
+    padding: 1rem;
+  }
+
+  .dashboard-grid__row:last-child {
+    border-bottom: none;
+  }
+
+  .dashboard-grid__label {
+    font-weight: 700;
+    color: var(--accent-primary);
+    font-size: 0.9rem;
+    margin-bottom: 0.25rem;
+  }
+
+  .dashboard-grid__value {
+    font-family: var(--font-mono);
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: var(--accent-secondary);
+    margin-bottom: 0.35rem;
+  }
+
+  .dashboard-grid__context {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    line-height: 1.5;
+  }
+
+  @media (min-width: 768px) {
+    .dashboard-grid__header {
+      display: grid;
+      grid-template-columns: 180px 120px 1fr;
+      background: var(--bg-tertiary);
+      font-weight: 700;
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .dashboard-grid__header > div {
+      padding: 0.75rem 1rem;
+      border-right: 1px solid var(--border-color);
+    }
+
+    .dashboard-grid__header > div:last-child {
+      border-right: none;
+    }
+
+    .dashboard-grid__row {
+      grid-template-columns: 180px 120px 1fr;
+      padding: 0;
+      align-items: center;
+    }
+
+    .dashboard-grid__label,
+    .dashboard-grid__value,
+    .dashboard-grid__context {
+      padding: 0.85rem 1rem;
+      margin-bottom: 0;
+      border-right: 1px solid var(--border-color);
+    }
+
+    .dashboard-grid__context {
+      border-right: none;
+    }
+
+    .dashboard-grid__value {
+      font-size: 1.1rem;
+    }
+  }
+
+  .dashboard-note {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    text-align: center;
+    margin-top: 1rem;
+  }
+
+  /* ============ ERA NAVIGATION ============ */
+  .era-nav {
+    border-top: 1px solid var(--border-color);
+    padding: 2.5rem 1.5rem;
+    background: var(--bg-primary);
+  }
+
+  .era-nav .container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .era-nav__link {
+    display: block;
+    padding: 1.25rem 1.5rem;
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: var(--radius-md);
+    text-decoration: none;
+    transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+  }
+
+  .era-nav__link:hover,
+  .era-nav__link:focus-visible {
+    border-color: var(--accent-primary);
+    box-shadow: var(--shadow-md);
+  }
+
+  .era-nav__direction {
+    display: block;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--accent-primary);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: 0.25rem;
+  }
+
+  .era-nav__title {
+    display: block;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+  }
+
+  .era-nav__link--next {
+    text-align: right;
+  }
+
+  @media (min-width: 640px) {
+    .era-nav .container {
+      flex-direction: row;
+      justify-content: space-between;
+    }
+
+    .era-nav__link {
+      flex: 0 1 48%;
+    }
+  }
+
+  /* ============ PRINT STYLES ============ */
+  @media print {
+    .era-hero {
+      background: none;
+      padding: 1rem 0;
+    }
+
+    .era-badge {
+      border: 1px solid #000;
+      background: none;
+      color: #000;
+    }
+
+    .hero-stats {
+      display: none;
+    }
+
+    .toc {
+      background: none;
+      border: 1px solid #ccc;
+      page-break-after: always;
+    }
+
+    .era-section,
+    .era-section--alt {
+      background: none;
+      padding: 1.5rem 0;
+    }
+
+    .callout {
+      border: 1px solid #999;
+      background: #f9f9f9;
+      page-break-inside: avoid;
+    }
+
+    .comparison-grid,
+    .dashboard-grid {
+      border: 1px solid #999;
+    }
+
+    .era-nav {
+      display: none;
+    }
+
+    .collapse-timeline__item {
+      background: none !important;
+    }
+  }
+</style>

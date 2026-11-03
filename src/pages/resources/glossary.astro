@@ -1,0 +1,428 @@
+---
+// resources/glossary.astro — Comprehensive Crypto Glossary (100+ Plain English Terms)
+import BaseLayout from '../../layouts/BaseLayout.astro';
+const base = import.meta.env.BASE_URL;
+
+const terms = [
+  // A
+  { term: "Account Abstraction", letter: "A", category: "Architecture", def: "A smart-contract-based wallet design (e.g. ERC-4337) that allows automated payments, social recovery, and gas fee sponsorship without relying on traditional 12-word seed phrases." },
+  { term: "Address", letter: "A", category: "Basics", def: "A public cryptographic identifier (derived from a public key) where tokens and NFTs can be sent or received, analogous to a bank account number." },
+  { term: "Airdrop", letter: "A", category: "Ecosystem", def: "The free distribution of newly minted tokens to wallet addresses of early protocol users or community members to decentralize ownership and incentivize network adoption." },
+  { term: "Algorithm", letter: "A", category: "Technology", def: "A step-by-step mathematical or computational procedure executed deterministically by software or consensus protocols." },
+  { term: "Altcoin", letter: "A", category: "Basics", def: "Any cryptocurrency other than Bitcoin. Early altcoins like Litecoin and Namecoin launched between 2011 and 2013." },
+  { term: "AMM (Automated Market Maker)", letter: "A", category: "DeFi", def: "A decentralized exchange mechanism (pioneered by Uniswap) that prices assets using a mathematical formula (x * y = k) against liquidity pools rather than traditional order books." },
+  { term: "AML (Anti-Money Laundering)", letter: "A", category: "Regulation", def: "Legal frameworks and statutory procedures designed to prevent financial criminals from converting illegally obtained funds into legal assets." },
+  { term: "APY (Annual Percentage Yield)", letter: "A", category: "DeFi", def: "The annualized rate of return earned on staked or lent crypto assets, incorporating the mathematical effect of compounding interest." },
+  { term: "Arbitrage", letter: "A", category: "Trading", def: "The simultaneous purchase and sale of the same asset across different venues or decentralized exchanges to pocket price discrepancies with minimal risk." },
+  { term: "ASIC", letter: "A", category: "Mining", def: "Application-Specific Integrated Circuit: specialized hardware microchips engineered exclusively for a single cryptographic hashing algorithm like Bitcoin's SHA-256." },
+
+  // B
+  { term: "Bear Market", letter: "B", category: "Economics", def: "A prolonged period of declining asset valuations and pervasive negative sentiment, typically featuring 70% to 85% drawdowns across crypto cycles." },
+  { term: "Bitcoin (BTC)", letter: "B", category: "Basics", def: "The world's first decentralized cryptographic currency and ledger, introduced in October 2008 by Satoshi Nakamoto with a hard cap of 21 million units." },
+  { term: "Block", letter: "B", category: "Basics", def: "A cryptographically linked container of verified transactions bundled together by miners or validators and permanently added to the blockchain." },
+  { term: "Block Explorer", letter: "B", category: "Tooling", def: "A search-engine-style web tool (such as Etherscan or Mempool.space) that allows anyone to inspect transaction history, address balances, and smart contracts publicly." },
+  { term: "Block Reward", letter: "B", category: "Mining", def: "The newly minted coins paid to miners or validators for successfully adding a block, coupled with the transaction fees included in that block." },
+  { term: "Blockchain", letter: "B", category: "Basics", def: "An append-only distributed ledger composed of cryptographically chained blocks maintained cooperatively by a peer-to-peer network without centralized coordinators." },
+  { term: "Bridge", letter: "B", category: "Architecture", def: "A smart-contract protocol or relayer system allowing assets and arbitrary data to transfer between two independent blockchain networks." },
+  { term: "Bull Market", letter: "B", category: "Economics", def: "A sustained market expansion characterized by rising prices, institutional inflows, positive investor psychology, and elevated trading volume." },
+  { term: "Burn", letter: "B", category: "Economics", def: "Permanently destroying tokens by sending them to an unspendable address (like 0x000...dead) to reduce the circulating supply, often creating deflationary pressure." },
+  { term: "Byzantine Fault Tolerance (BFT)", letter: "B", category: "Consensus", def: "The mathematical characteristic of a distributed computer network to function correctly and reach consensus even if some nodes fail or act maliciously." },
+
+  // C
+  { term: "CBDC (Central Bank Digital Currency)", letter: "C", category: "Regulation", def: "A digital liability issued directly by a sovereign central bank representing national fiat currency, contrasting with decentralized public cryptocurrencies." },
+  { term: "CEX (Centralized Exchange)", letter: "C", category: "Trading", def: "A privately operated custodial platform (e.g., Coinbase, Binance, Kraken) where users trade digital assets via an internal off-chain order book." },
+  { term: "Cold Wallet", letter: "C", category: "Security", def: "A crypto storage device or paper wallet disconnected from the internet, protecting private keys from online malware and remote hack vectors." },
+  { term: "Collateral", letter: "C", category: "DeFi", def: "Assets pledged by a borrower in a smart contract to secure a crypto loan, automatically liquidated if the loan-to-value ratio exceeds a safety threshold." },
+  { term: "Consensus Mechanism", letter: "C", category: "Consensus", def: "The protocol rule set (e.g., Proof of Work, Proof of Stake) that allows distributed nodes across the globe to agree upon a single canonical ledger state." },
+  { term: "Cross-Chain", letter: "C", category: "Architecture", def: "Interoperability technologies that allow applications, tokens, or arbitrary messages to operate across multiple isolated blockchains." },
+  { term: "Cryptography", letter: "C", category: "Technology", def: "The mathematical science of securing communication and data integrity using mathematical algorithms, public/private keys, and cryptographic hashes." },
+  { term: "Custody", letter: "C", category: "Security", def: "The physical and cryptographic responsibility of safeguarding the private keys that control blockchain assets." },
+
+  // D
+  { term: "DAO (Decentralized Autonomous Organization)", letter: "D", category: "Governance", def: "An entity governed by smart contracts where token holders vote transparently on treasury expenditures, code upgrades, and governance motions." },
+  { term: "DApp (Decentralized Application)", letter: "D", category: "Architecture", def: "An application running on a decentralized peer-to-peer network and smart contract backend rather than centralized cloud servers." },
+  { term: "DCA (Dollar-Cost Averaging)", letter: "D", category: "Economics", def: "An investment discipline where a fixed dollar amount is invested at regular intervals regardless of asset price, reducing emotional timing mistakes." },
+  { term: "DeFi (Decentralized Finance)", letter: "D", category: "DeFi", def: "An open financial ecosystem of lending, trading, borrowing, and insurance built entirely on permissionless smart contracts without banking intermediaries." },
+  { term: "DEX (Decentralized Exchange)", letter: "D", category: "DeFi", def: "A peer-to-peer trading protocol executing orders directly on-chain through smart contracts and liquidity pools without taking custody of user keys." },
+  { term: "Difficulty", letter: "D", category: "Mining", def: "A self-adjusting network parameter in Proof-of-Work systems that regulates how computationally challenging it is to find a valid block hash, maintaining consistent block production rates." },
+  { term: "Double Spend", letter: "D", category: "Basics", def: "The theoretical attack where the same digital token is spent more than once; Bitcoin's blockchain solved this without a central clearinghouse." },
+  { term: "DYOR (Do Your Own Research)", letter: "D", category: "Culture", def: "A community ethos urging participants to independently audit code, tokenomics, whitepapers, and team backgrounds before committing capital." },
+
+  // E
+  { term: "EIP (Ethereum Improvement Proposal)", letter: "E", category: "Governance", def: "A formal design document proposing changes, technical standards, or protocol upgrades to Ethereum (e.g., EIP-1559, EIP-4844)." },
+  { term: "ERC-20", letter: "E", category: "Architecture", def: "The technical standard defining a common list of rules and functions for fungible tokens deployed on Ethereum and EVM-compatible blockchains." },
+  { term: "ERC-721", letter: "E", category: "Architecture", def: "The standard interface for non-fungible tokens (NFTs), allowing each token on the contract to have unique metadata and verifiable provenance." },
+  { term: "Escrow", letter: "E", category: "Basics", def: "A financial or smart contract arrangement in which a third party holds funds until specified contractual conditions are satisfied." },
+  { term: "Ethereum", letter: "E", category: "Basics", def: "A decentralized, open-source blockchain with smart contract capability, launched in July 2015 by Vitalik Buterin and co-founders." },
+  { term: "EVM (Ethereum Virtual Machine)", letter: "E", category: "Architecture", def: "The Turing-complete decentralized computing environment that executes byte-code across all nodes participating in the Ethereum network." },
+
+  // F
+  { term: "Fiat Currency", letter: "F", category: "Economics", def: "Government-issued legal tender (like the US Dollar, Euro, or Yen) not backed by physical commodities, whose value derives from statutory decree and public trust." },
+  { term: "Flash Loan", letter: "F", category: "DeFi", def: "An uncollateralized smart contract loan where borrowing and full repayment must take place within the exact same atomic transaction block." },
+  { term: "Fork (Hard / Soft)", letter: "F", category: "Consensus", def: "A divergence in blockchain protocol rules. A hard fork creates a permanent split incompatible with older nodes; a soft fork remains backward-compatible." },
+  { term: "FUD (Fear, Uncertainty, Doubt)", letter: "F", category: "Culture", def: "Misleading, exaggerated, or inaccurate information spread intentionally to depress asset prices or create negative market sentiment." },
+  { term: "Full Node", letter: "F", category: "Architecture", def: "A computer running software that stores a complete copy of the blockchain and independently validates every block and transaction against network rules." },
+  { term: "Fungible", letter: "F", category: "Basics", def: "A property of an asset whose individual units are interchangeable and indistinguishable from each other (e.g. 1 Bitcoin = 1 Bitcoin)." },
+
+  // G
+  { term: "Gas", letter: "G", category: "Architecture", def: "The computational fee paid by users to network validators to process transactions or execute smart contracts on blockchains like Ethereum." },
+  { term: "Genesis Block", letter: "G", category: "Basics", def: "Block 0: the very first block mined on a blockchain network. Bitcoin's Genesis Block was mined on January 3, 2009." },
+  { term: "Governance Token", letter: "G", category: "Governance", def: "A token conferring voting rights over a protocol's smart contracts, upgrade parameters, and treasury reserves (e.g., UNI, AAVE, MKR)." },
+
+  // H
+  { term: "Halving", letter: "H", category: "Mining", def: "A pre-programmed 50% reduction in Bitcoin's block reward occurring every 210,000 blocks (roughly every 4 years), cutting the rate of new coin issuance." },
+  { term: "Hardware Wallet", letter: "H", category: "Security", def: "A secure physical device (e.g., Ledger, Trezor) that isolates private keys in a tamper-resistant chip, signing transactions offline." },
+  { term: "Hash Function", letter: "H", category: "Technology", def: "A one-way mathematical algorithm (like SHA-256) converting input data of any size into a fixed-length hexadecimal string." },
+  { term: "Hash Rate", letter: "H", category: "Mining", def: "The aggregate computational power dedicated to solving Proof-of-Work cryptographic puzzles across a blockchain network per second." },
+  { term: "HODL", letter: "H", category: "Culture", def: "A popular crypto philosophy originating from a 2013 Bitcoin forum typo ('I AM HODLING'), advocating long-term holding through extreme volatility." },
+  { term: "Hot Wallet", letter: "H", category: "Security", def: "A cryptocurrency wallet connected to the internet (browser extensions, mobile apps), convenient for daily trading but more vulnerable to attacks." },
+
+  // I
+  { term: "ICO (Initial Coin Offering)", letter: "I", category: "Economics", def: "A fundraising mechanism prevalent in 2017 where early project creators sold newly minted tokens directly to public participants." },
+  { term: "Immutable", letter: "I", category: "Basics", def: "The characteristic of blockchain records meaning once written and confirmed by consensus, data cannot be erased, rewritten, or retroactively modified." },
+  { term: "Impermanent Loss", letter: "I", category: "DeFi", def: "The unrealized loss incurred by liquidity providers in an AMM pool when the relative price ratio of the paired tokens diverges from when they deposited." },
+  { term: "Interoperability", letter: "I", category: "Architecture", def: "The capacity of disparate blockchain ecosystems to communicate, exchange data, and swap value without relying on centralized intermediaries." },
+
+  // K & L
+  { term: "KYC (Know Your Customer)", letter: "K", category: "Regulation", def: "Customer identification and anti-fraud verification requirements mandated by financial authorities for crypto exchanges and financial institutions." },
+  { term: "Layer 1 (L1)", letter: "L", category: "Architecture", def: "The base consensus and settlement blockchain network (e.g. Bitcoin, Ethereum, Solana) providing canonical ledger truth and security." },
+  { term: "Layer 2 (L2)", letter: "L", category: "Architecture", def: "A secondary framework built on top of an L1 (e.g. Arbitrum, Optimism, zkSync, Lightning) to handle fast, cheap transactions while inheriting L1 security." },
+  { term: "Lightning Network", letter: "L", category: "Architecture", def: "A Layer-2 payment channel protocol built on Bitcoin enabling near-instant, fractions-of-a-cent microtransactions off-chain." },
+  { term: "Liquidity Pool", letter: "L", category: "DeFi", def: "A crowdsourced pool of tokens locked in a smart contract to facilitate trading on decentralized exchanges, loan borrowing, or yield farming." },
+  { term: "Liquidation", letter: "L", category: "DeFi", def: "The automatic closing or seizing of a leveraged trading position or collateralized loan by a smart contract when asset prices fall below maintenance margins." },
+
+  // M
+  { term: "Mainnet", letter: "M", category: "Basics", def: "The fully deployed, live, production blockchain network where real economic value and authentic transactions occur." },
+  { term: "Market Capitalization", letter: "M", category: "Economics", def: "The total aggregate market value of a cryptocurrency, calculated as Current Price multiplied by Circulating Supply." },
+  { term: "Mempool", letter: "M", category: "Architecture", def: "The memory waiting area where unconfirmed transactions reside on a node before being selected by miners or validators to be included in a block." },
+  { term: "Merkle Tree", letter: "M", category: "Technology", def: "A cryptographic binary hash tree structure that allows efficient and secure verification of vast datasets within blocks using minimal cryptographic proofs." },
+  { term: "MEV (Maximal Extractable Value)", letter: "M", category: "Consensus", def: "The excess profit a block builder or validator can extract by inserting, reordering, or censoring transactions within a block (e.g. sandwich attacks, liquidations)." },
+  { term: "Mining", letter: "M", category: "Mining", def: "The computational process of dedicating hardware resources to solve Proof-of-Work cryptographic puzzles to secure the network and earn newly minted coins." },
+  { term: "Multi-Signature (Multi-Sig)", letter: "M", category: "Security", def: "A cryptographic wallet requirement demanding M of N private key signatures (e.g., 2 of 3) before any outgoing transaction can execute." },
+
+  // N
+  { term: "NFT (Non-Fungible Token)", letter: "N", category: "Ecosystem", def: "A unique cryptographic token on a blockchain verifying ownership and authentic provenance of an individual digital or physical item." },
+  { term: "Node", letter: "N", category: "Architecture", def: "A single computer connected to the blockchain network that stores records, relays transactions, or participates in consensus validation." },
+  { term: "Nonce", letter: "N", category: "Mining", def: "'Number used once': an arbitrary 32-bit number miners repeatedly increment to discover a hash value that satisfies the target network difficulty." },
+  { term: "Non-Custodial", letter: "N", category: "Security", def: "Software or wallets where only the end user possesses and controls the cryptographic private keys, eliminating third-party counterparty risk." },
+
+  // O
+  { term: "Off-Chain", letter: "O", category: "Architecture", def: "Transactions, calculations, or computational activities that occur outside the main blockchain ledger, typically settled periodically on-chain." },
+  { term: "On-Chain", letter: "O", category: "Basics", def: "Transactions verified and permanently recorded directly within the distributed blocks of the public blockchain ledger." },
+  { term: "Oracle", letter: "O", category: "Architecture", def: "A decentralized data service (e.g. Chainlink) that feeds real-world data (like asset prices, weather, sports scores) securely into smart contracts." },
+  { term: "Order Book", letter: "O", category: "Trading", def: "A real-time ledger listing open buy (bid) and sell (ask) orders for a specific financial asset, organized by price level." },
+
+  // P
+  { term: "Peer-to-Peer (P2P)", letter: "P", category: "Basics", def: "Direct interactions between network participants without passing through centralized intermediaries, clearinghouses, or servers." },
+  { term: "Permissionless", letter: "P", category: "Basics", def: "The principle that anyone can join the network, run a node, deploy a contract, or transact without requesting authorization from any authority." },
+  { term: "Proof of Stake (PoS)", letter: "P", category: "Consensus", def: "A consensus algorithm where validators commit economic capital (staked tokens) as collateral to propose and attest to new blocks." },
+  { term: "Proof of Work (PoW)", letter: "P", category: "Consensus", def: "The original consensus mechanism where miners expend real-world thermodynamic energy solving cryptographic hashes to order transactions securely." },
+  { term: "Private Key", letter: "P", category: "Security", def: "A secret 256-bit cryptographic number that allows the holder to digitally sign transactions and authorize the transfer of associated assets." },
+  { term: "Public Key", letter: "P", category: "Security", def: "The cryptographic companion mathematically derived from a private key that can be shared openly to receive funds or verify digital signatures." },
+
+  // R
+  { term: "Rollup", letter: "R", category: "Architecture", def: "A Layer-2 scaling technique that executes transactions off-chain, bundles hundreds of them into a batch, and posts compressed validity or fraud proofs to L1." },
+  { term: "Rug Pull", letter: "R", category: "Security", def: "A malicious scam where dishonest project creators abandon a project and abscond with investor funds, often by draining decentralized liquidity pools." },
+
+  // S
+  { term: "Satoshi (sat)", letter: "S", category: "Basics", def: "The smallest divisible unit of a Bitcoin, named after its creator: 1 satoshi equals 0.00000001 BTC (one hundred-millionth of a coin)." },
+  { term: "Seed Phrase (Recovery Phrase)", letter: "S", category: "Security", def: "A sequence of 12 or 24 human-readable words (BIP-39 standard) from which all cryptographic private keys of a wallet can be deterministically reconstructed." },
+  { term: "Sharding", letter: "S", category: "Architecture", def: "A database partitioning technique that splits a blockchain network into smaller independent sub-chains (shards) to process transactions in parallel." },
+  { term: "Sidechain", letter: "S", category: "Architecture", def: "An independent blockchain running parallel to a parent chain with its own consensus mechanism, linked via a two-way cryptographic peg." },
+  { term: "Slashing", letter: "S", category: "Consensus", def: "A protocol penalty in Proof-of-Stake systems where a validator's staked collateral is automatically destroyed if they double-sign or behave maliciously." },
+  { term: "Smart Contract", letter: "S", category: "Architecture", def: "Self-executing code stored on a blockchain that deterministically carries out agreements when specified conditions are triggered, without intermediaries." },
+  { term: "Stablecoin", letter: "S", category: "Economics", def: "A cryptocurrency whose value is pegged to a stable external asset (typically the US Dollar), backed by fiat reserves, crypto collateral, or algorithmic rules." },
+  { term: "Staking", letter: "S", category: "Consensus", def: "Locking up cryptocurrency tokens in a Proof-of-Stake network to validate transactions and secure the network in exchange for protocol rewards." },
+
+  // T
+  { term: "Testnet", letter: "T", category: "Tooling", def: "An alternative development blockchain environment using valueless test coins where developers can thoroughly test smart contracts before mainnet deployment." },
+  { term: "Tokenomics", letter: "T", category: "Economics", def: "The holistic economic design of a crypto token: its supply cap, inflation rate, vesting schedules, utility incentives, and burn mechanisms." },
+  { term: "TVL (Total Value Locked)", letter: "T", category: "DeFi", def: "The cumulative dollar value of all cryptocurrency assets currently deposited or staked within a decentralized finance protocol." },
+
+  // V & W
+  { term: "Validator", letter: "V", category: "Consensus", def: "A node operator in a Proof-of-Stake network responsible for verifying transactions, creating blocks, and upholding consensus integrity." },
+  { term: "Volatility", letter: "V", category: "Economics", def: "The statistical measurement of asset price fluctuations over time; high volatility characterizes nascent price-discovery markets like crypto." },
+  { term: "Wallet", letter: "W", category: "Basics", def: "A software application or physical device that stores cryptographic private keys, manages addresses, and signs blockchain transactions." },
+  { term: "Web3", letter: "W", category: "Basics", def: "A vision for the next iteration of the internet built on decentralized protocols, verifiable digital ownership, and user sovereignty." },
+  { term: "Whale", letter: "W", category: "Trading", def: "An individual or institution holding a massive quantity of cryptocurrency capable of moving market prices with a single large order." },
+  { term: "Whitepaper", letter: "W", category: "Basics", def: "An authoritative technical and economic manifesto detailing a project's architecture, problem statement, tokenomics, and consensus mechanics." },
+  { term: "Wrapped Token", letter: "W", category: "DeFi", def: "A token pegged to the value of an asset native to another blockchain (e.g. WBTC on Ethereum), allowing foreign assets to be utilized in DeFi." },
+
+  // Y & Z
+  { term: "Yield Farming", letter: "Y", category: "DeFi", def: "The strategic practice of moving crypto capital across various DeFi lending and liquidity protocols to maximize aggregate APY returns." },
+  { term: "Zero-Knowledge Proof (ZKP)", letter: "Z", category: "Cryptography", def: "A cryptographic technique allowing one party (the prover) to prove to another party (the verifier) that a statement is mathematically true without revealing any underlying data." },
+  { term: "zk-Rollup", letter: "Z", category: "Architecture", def: "A Layer-2 scalability solution that aggregates hundreds of off-chain transactions into a single batch accompanied by a succinct cryptographic validity proof." }
+];
+
+const alphabet = ["All", ..."ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("")];
+---
+
+<BaseLayout 
+  title="Comprehensive Crypto Glossary (100+ Plain English Terms)" 
+  description="Over 100 essential cryptocurrency, DeFi, and blockchain terms explained in clear, jargon-free plain English by a 20-year crypto educator."
+>
+  <section class="gloss-hero">
+    <div class="container">
+      <div class="hero-badge">Pedagogical Reference</div>
+      <h1>Cryptocurrency Glossary</h1>
+      <p class="subtitle">
+        Over 100 core cryptographic, economic, and architectural concepts demystified.
+        Clear, plain English definitions crafted to build your intuition without academic obfuscation.
+      </p>
+
+      <!-- Live Search & Counter -->
+      <div class="gloss-search-box">
+        <input 
+          type="search" 
+          id="glossary-search" 
+          placeholder="Search by term name, definition, or concept (e.g. Rollup, Staking, Nonce)..."
+          aria-label="Search glossary terms"
+        />
+        <div class="search-stats">Showing <span id="term-counter">{terms.length}</span> of {terms.length} terms</div>
+      </div>
+
+      <!-- A-Z Letter Navigation Bar -->
+      <div class="alphabet-nav" role="navigation" aria-label="Alphabetical index">
+        {alphabet.map((letter) => (
+          <button class={`alpha-btn ${letter === 'All' ? 'active' : ''}`} data-letter={letter}>
+            {letter}
+          </button>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="terms-grid" id="terms-container">
+        {terms.map((t) => (
+          <article class="term-card" data-letter={t.letter} data-term={t.term.toLowerCase()} data-def={t.def.toLowerCase()} id={t.term.toLowerCase().replace(/[^a-z0-9]/g, '-')}>
+            <div class="term-header">
+              <h3 class="term-title">{t.term}</h3>
+              <span class="term-category">{t.category}</span>
+            </div>
+            <p class="term-def">{t.def}</p>
+          </article>
+        ))}
+      </div>
+
+      <div id="no-results" class="no-results" style="display: none;">
+        <p>🔍 No matching terms found. Try refining your search query or reset the filter.</p>
+      </div>
+
+      <!-- Teacher's Note -->
+      <div class="callout callout--teaching" style="margin-top: 3rem;">
+        <p class="callout-title">🎓 Teacher's Tip: Vocabulary Is The Foundation of Reasoning</p>
+        <p>
+          In 2009, there were only four concepts: Proof of Work, the Genesis block, private keys, and addresses.
+          Today, the cryptographic landscape has blossomed into an entire academic lexicon. When learning a new term,
+          always ask yourself: <em>"What trade-off was this concept invented to solve?"</em> Every tool in crypto is
+          a direct engineering response to a vulnerability, friction, or centralization bottleneck.
+        </p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .gloss-hero {
+    background: linear-gradient(135deg, rgba(13, 29, 48, 0.9) 0%, var(--bg-primary) 100%);
+    padding: 4rem 0 2.5rem;
+    border-bottom: 1px solid var(--border-color);
+  }
+
+  .hero-badge {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    font-size: 0.8125rem;
+    font-family: var(--font-mono);
+    color: var(--accent-primary);
+    background: var(--info-bg);
+    border: 1px solid var(--info-border);
+    border-radius: 999px;
+    margin-bottom: 1rem;
+    font-weight: 600;
+  }
+
+  .subtitle {
+    font-size: 1.15rem;
+    max-width: 750px;
+    color: var(--text-secondary);
+    margin-bottom: 2rem;
+  }
+
+  .gloss-search-box {
+    margin-bottom: 1.5rem;
+    max-width: 750px;
+  }
+
+  .gloss-search-box input {
+    font-size: 1.05rem;
+    padding: 0.85rem 1.25rem;
+    background: var(--card-bg);
+    border: 2px solid var(--border-color);
+    border-radius: var(--radius-lg);
+  }
+
+  .gloss-search-box input:focus {
+    border-color: var(--accent-primary);
+  }
+
+  .search-stats {
+    font-size: 0.85rem;
+    color: var(--text-tertiary);
+    margin-top: 0.5rem;
+    font-family: var(--font-mono);
+  }
+
+  /* Alphabet Nav */
+  .alphabet-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+    padding-top: 0.75rem;
+    border-top: 1px solid var(--border-color);
+  }
+
+  .alpha-btn {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    color: var(--text-secondary);
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    font-weight: 700;
+    width: 34px;
+    height: 34px;
+    border-radius: var(--radius-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.15s ease;
+  }
+
+  .alpha-btn[data-letter="All"] {
+    width: auto;
+    padding: 0 0.85rem;
+  }
+
+  .alpha-btn:hover {
+    color: var(--text-primary);
+    border-color: var(--accent-primary);
+  }
+
+  .alpha-btn.active {
+    background: var(--accent-primary);
+    color: #ffffff;
+    border-color: var(--accent-primary);
+  }
+
+  /* Terms Grid */
+  .terms-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 1.25rem;
+  }
+
+  .term-card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: var(--radius-md);
+    padding: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    transition: all 0.2s ease;
+  }
+
+  .term-card:hover {
+    border-color: var(--accent-primary);
+    box-shadow: var(--shadow-sm);
+  }
+
+  .term-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 0.5rem;
+    margin-bottom: 0.6rem;
+  }
+
+  .term-title {
+    font-size: 1.1rem;
+    margin: 0;
+    color: var(--text-primary);
+  }
+
+  .term-category {
+    font-size: 0.72rem;
+    font-family: var(--font-mono);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 0.15rem 0.5rem;
+    background: var(--bg-tertiary);
+    color: var(--accent-primary);
+    border-radius: 999px;
+    white-space: nowrap;
+    font-weight: 600;
+  }
+
+  .term-def {
+    font-size: 0.92rem;
+    color: var(--text-secondary);
+    line-height: 1.55;
+    margin: 0;
+  }
+
+  .no-results {
+    text-align: center;
+    padding: 3rem 1rem;
+    color: var(--text-tertiary);
+    font-size: 1.1rem;
+  }
+</style>
+
+<script>
+  const searchInput = document.getElementById('glossary-search') as HTMLInputElement;
+  const alphaBtns = document.querySelectorAll('.alpha-btn');
+  const cards = document.querySelectorAll('.term-card');
+  const counter = document.getElementById('term-counter');
+  const noResults = document.getElementById('no-results');
+
+  let activeLetter = 'All';
+
+  function filterTerms() {
+    const query = searchInput.value.toLowerCase().trim();
+    let visibleCount = 0;
+
+    cards.forEach(card => {
+      const letter = card.getAttribute('data-letter');
+      const term = card.getAttribute('data-term') || '';
+      const def = card.getAttribute('data-def') || '';
+
+      const matchesLetter = activeLetter === 'All' || letter === activeLetter;
+      const matchesSearch = query === '' || term.includes(query) || def.includes(query);
+
+      if (matchesLetter && matchesSearch) {
+        (card as HTMLElement).style.display = 'flex';
+        visibleCount++;
+      } else {
+        (card as HTMLElement).style.display = 'none';
+      }
+    });
+
+    if (counter) counter.textContent = String(visibleCount);
+    if (noResults) noResults.style.display = visibleCount === 0 ? 'block' : 'none';
+  }
+
+  searchInput?.addEventListener('input', filterTerms);
+
+  alphaBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      alphaBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      activeLetter = btn.getAttribute('data-letter') || 'All';
+      filterTerms();
+    });
+  });
+</script>
+

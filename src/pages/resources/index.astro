@@ -1,0 +1,804 @@
+---
+// resources/index.astro — Learning Resources Hub with Interactive Calculators & Reading List
+import BaseLayout from '../../layouts/BaseLayout.astro';
+const base = import.meta.env.BASE_URL;
+
+const readingList = {
+  books: [
+    { title: "The Bitcoin Standard", author: "Saifedean Ammous", year: "2018", desc: "The economic theory of sound money, time preference, and why Bitcoin represents a paradigm shift from fiat inflation." },
+    { title: "Mastering Bitcoin (3rd Ed.)", author: "Andreas M. Antonopoulos & David A. Harding", year: "2023", desc: "The definitive technical blueprint: keys, addresses, transactions, P2P network, and script mechanics." },
+    { title: "Mastering Ethereum", author: "Andreas M. Antonopoulos & Gavin Wood", year: "2018", desc: "Foundational guide to the EVM, smart contract development, gas mechanics, and decentralized applications." },
+    { title: "The Infinite Machine", author: "Camila Russo", year: "2020", desc: "The gripping narrative history of how Vitalik Buterin and seven co-founders created Ethereum." },
+    { title: "Digital Gold", author: "Nathaniel Popper", year: "2015", desc: "Remarkable narrative chronicle of Bitcoin's early years, colorful pioneers, Silk Road, and initial Wall Street interest." },
+    { title: "The Cryptopians", author: "Laura Shin", year: "2022", desc: "Investigative deep-dive into idealism, betrayal, and the famous 2016 DAO hack investigation." }
+  ],
+  papers: [
+    { title: "Bitcoin: A Peer-to-Peer Electronic Cash System", author: "Satoshi Nakamoto", year: "2008", url: "https://bitcoin.org/bitcoin.pdf", desc: "The foundational 9-page whitepaper that solved the double-spend problem through proof-of-work timestamps." },
+    { title: "Ethereum: A Next-Generation Smart Contract and Decentralized Application Platform", author: "Vitalik Buterin", year: "2013", url: "https://ethereum.org/en/whitepaper/", desc: "The vision for a Turing-complete world computer enabling stateful programmable contracts." },
+    { title: "Flash Boys 2.0: Frontrunning, Transaction Reordering, and Consensus Instability in Decentralized Exchanges", author: "Daian et al. (Cornell / IC3)", year: "2019", url: "https://arxiv.org/abs/1904.05234", desc: "The landmark academic paper establishing MEV (Maximal Extractable Value) as a systemic crypto phenomenon." },
+    { title: "SoK: Communication Across Distributed Ledgers (Cross-Chain Bridges)", author: "Zamyatin et al.", year: "2021", url: "https://eprint.iacr.org/2021/218", desc: "Systematization of Knowledge classifying relayers, atomic swaps, sidechains, and multi-sig bridges." }
+  ],
+  newsletters: [
+    { name: "Bankless", focus: "DeFi, Ethereum ecosystem, and financial sovereignty" },
+    { name: "Bitcoin Optech", focus: "Bitcoin core protocol developments, BIPs, and scaling solutions" },
+    { name: "The Defiant", focus: "Decentralized finance news, yield analytics, and Web3 trends" },
+    { name: "Cobie's Substack", focus: "In-depth market structure analysis, game theory, and culture" }
+  ]
+};
+---
+
+<BaseLayout 
+  title="Learning Resources & Interactive Calculators" 
+  description="Curated reading list, educational papers, interactive calculators (DCA, Staking, Impermanent Loss, Tax), and monthly Office Hours."
+>
+  <section class="res-hero">
+    <div class="container">
+      <div class="hero-badge">Curated Pedagogy</div>
+      <h1>Learning Resources & Interactive Tools</h1>
+      <p class="subtitle">
+        Curated books, seminal academic papers, hands-on mathematical calculators, and monthly Office Hours
+        to take your understanding from curious observer to mathematically rigorous builder.
+      </p>
+
+      <div class="quick-nav-pills">
+        <a href="#calculators" class="pill-nav">🧮 Interactive Calculators</a>
+        <a href="#reading-list" class="pill-nav">📚 Reading List</a>
+        <a href={`${base}/resources/glossary/`} class="pill-nav highlight">📖 200+ Term Glossary →</a>
+        <a href="#office-hours" class="pill-nav">🎓 Office Hours Q&A</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Calculators Section -->
+  <section class="section section--alt" id="calculators">
+    <div class="container">
+      <div class="section-header">
+        <h2>Interactive Cryptoeconomic Calculators</h2>
+        <p>Run your own financial scenarios with deterministic mathematics — no third-party tracking or wallet connections required.</p>
+      </div>
+
+      <div class="calculator-tabs">
+        <button class="calc-tab-btn active" data-tab="dca">📈 DCA Simulation</button>
+        <button class="calc-tab-btn" data-tab="staking">🥩 Staking Yields</button>
+        <button class="calc-tab-btn" data-tab="il">⚖️ Impermanent Loss</button>
+        <button class="calc-tab-btn" data-tab="tax">🧾 Tax Estimator</button>
+      </div>
+
+      <!-- 1. DCA Calculator -->
+      <div class="calc-panel active" id="panel-dca">
+        <div class="calc-card">
+          <div class="calc-inputs">
+            <h3>Dollar-Cost Averaging (DCA) Simulator</h3>
+            <p class="calc-desc">Calculate how disciplined recurring investments dampen cyclical volatility compared to lump-sum entry.</p>
+
+            <div class="input-group">
+              <label for="dca-monthly">Monthly Investment ($)</label>
+              <input type="number" id="dca-monthly" value="250" min="10" step="10" />
+            </div>
+
+            <div class="input-group">
+              <label for="dca-months">Investment Period (Months)</label>
+              <input type="number" id="dca-months" value="36" min="1" max="120" />
+            </div>
+
+            <div class="input-group">
+              <label for="dca-start-price">Average Entry Asset Price ($)</label>
+              <input type="number" id="dca-start-price" value="35000" min="1" />
+            </div>
+
+            <div class="input-group">
+              <label for="dca-end-price">Projected Exit Asset Price ($)</label>
+              <input type="number" id="dca-end-price" value="95000" min="1" />
+            </div>
+
+            <button type="button" class="btn btn-primary" id="calc-dca-btn">Compute DCA Results</button>
+          </div>
+
+          <div class="calc-results" id="dca-results">
+            <h4>Simulation Output</h4>
+            <div class="result-row">
+              <span>Total Capital Invested:</span>
+              <strong id="dca-res-invested">$9,000.00</strong>
+            </div>
+            <div class="result-row">
+              <span>Accumulated Units:</span>
+              <strong id="dca-res-units">0.2571</strong>
+            </div>
+            <div class="result-row">
+              <span>Projected Portfolio Value:</span>
+              <strong id="dca-res-value" class="text-green">$24,428.57</strong>
+            </div>
+            <div class="result-row highlight-row">
+              <span>Net Profit / ROI:</span>
+              <strong id="dca-res-roi" class="text-green">+$15,428.57 (+171.4%)</strong>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2. Staking Yield Calculator -->
+      <div class="calc-panel" id="panel-staking">
+        <div class="calc-card">
+          <div class="calc-inputs">
+            <h3>Proof-of-Stake Yield & Compounding</h3>
+            <p class="calc-desc">Estimate staking rewards over time with auto-compounding and validator fee deductions.</p>
+
+            <div class="input-group">
+              <label for="stake-amount">Staked Capital ($ or Token Value)</label>
+              <input type="number" id="stake-amount" value="10000" min="100" />
+            </div>
+
+            <div class="input-group">
+              <label for="stake-apy">Gross Network APY (%)</label>
+              <input type="number" id="stake-apy" value="4.8" step="0.1" min="0.1" />
+            </div>
+
+            <div class="input-group">
+              <label for="stake-fee">Validator Commission Fee (%)</label>
+              <input type="number" id="stake-fee" value="5.0" step="0.5" min="0" />
+            </div>
+
+            <div class="input-group">
+              <label for="stake-compounding">Compounding Frequency</label>
+              <select id="stake-compounding">
+                <option value="365">Daily (e.g. Liquid Staking Token)</option>
+                <option value="52">Weekly</option>
+                <option value="12">Monthly</option>
+                <option value="1">Annually</option>
+              </select>
+            </div>
+
+            <button type="button" class="btn btn-primary" id="calc-staking-btn">Compute Staking Yield</button>
+          </div>
+
+          <div class="calc-results" id="staking-results">
+            <h4>Yield Projections</h4>
+            <div class="result-row">
+              <span>Effective Net APY:</span>
+              <strong id="stake-res-netapy">4.56%</strong>
+            </div>
+            <div class="result-row">
+              <span>1-Year Reward:</span>
+              <strong id="stake-res-1y" class="text-green">+$466.48 ($10,466.48 total)</strong>
+            </div>
+            <div class="result-row">
+              <span>3-Year Reward (Compounded):</span>
+              <strong id="stake-res-3y" class="text-green">+$1,464.39 ($11,464.39 total)</strong>
+            </div>
+            <div class="result-row highlight-row">
+              <span>5-Year Reward (Compounded):</span>
+              <strong id="stake-res-5y" class="text-green">+$2,548.87 ($12,548.87 total)</strong>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3. Impermanent Loss Calculator -->
+      <div class="calc-panel" id="panel-il">
+        <div class="calc-card">
+          <div class="calc-inputs">
+            <h3>Uniswap / AMM Impermanent Loss</h3>
+            <p class="calc-desc">Calculate the opportunity cost of providing 50/50 liquidity vs simply holding the tokens in your wallet.</p>
+
+            <div class="input-group">
+              <label for="il-tokenA-change">Token A Price Change (%)</label>
+              <input type="number" id="il-tokenA-change" value="100" step="5" />
+            </div>
+
+            <div class="input-group">
+              <label for="il-tokenB-change">Token B Price Change (%)</label>
+              <input type="number" id="il-tokenB-change" value="0" step="5" />
+            </div>
+
+            <button type="button" class="btn btn-primary" id="calc-il-btn">Calculate Impermanent Loss</button>
+          </div>
+
+          <div class="calc-results" id="il-results">
+            <h4>Impermanent Loss Impact</h4>
+            <div class="result-row">
+              <span>Price Ratio Change (k):</span>
+              <strong id="il-res-ratio">2.00x</strong>
+            </div>
+            <div class="result-row">
+              <span>HODL Portfolio Value:</span>
+              <strong id="il-res-hodl">$150.00 (per $100 baseline)</strong>
+            </div>
+            <div class="result-row">
+              <span>Pool LP Portfolio Value:</span>
+              <strong id="il-res-pool">$141.42</strong>
+            </div>
+            <div class="result-row highlight-row">
+              <span>Impermanent Loss:</span>
+              <strong id="il-res-loss" class="text-red">-5.72%</strong>
+            </div>
+            <p class="calc-hint">⚠️ To break even, your cumulative LP trading fee yield must exceed 5.72% over this holding period.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4. Tax Estimator -->
+      <div class="calc-panel" id="panel-tax">
+        <div class="calc-card">
+          <div class="calc-inputs">
+            <h3>Crypto Capital Gains Tax Estimator</h3>
+            <p class="calc-desc">Quickly estimate short-term vs long-term capital tax liabilities based on your holding period.</p>
+
+            <div class="input-group">
+              <label for="tax-cost-basis">Cost Basis / Total Purchase Price ($)</label>
+              <input type="number" id="tax-cost-basis" value="15000" min="0" />
+            </div>
+
+            <div class="input-group">
+              <label for="tax-sale-price">Gross Sale / Disposition Proceeds ($)</label>
+              <input type="number" id="tax-sale-price" value="45000" min="0" />
+            </div>
+
+            <div class="input-group">
+              <label for="tax-holding-period">Holding Period</label>
+              <select id="tax-holding-period">
+                <option value="long">Long-Term (> 1 Year / 365 Days)</option>
+                <option value="short">Short-Term (≤ 1 Year)</option>
+              </select>
+            </div>
+
+            <div class="input-group">
+              <label for="tax-rate-est">Estimated Tax Bracket (%)</label>
+              <input type="number" id="tax-rate-est" value="15" min="0" max="60" />
+            </div>
+
+            <button type="button" class="btn btn-primary" id="calc-tax-btn">Estimate Tax Liability</button>
+          </div>
+
+          <div class="calc-results" id="tax-results">
+            <h4>Tax Assessment Estimate</h4>
+            <div class="result-row">
+              <span>Realized Capital Gain:</span>
+              <strong id="tax-res-gain" class="text-green">+$30,000.00</strong>
+            </div>
+            <div class="result-row">
+              <span>Classification:</span>
+              <strong id="tax-res-type">Long-Term Capital Gain</strong>
+            </div>
+            <div class="result-row highlight-row">
+              <span>Estimated Tax Owed:</span>
+              <strong id="tax-res-tax" class="text-yellow">$4,500.00</strong>
+            </div>
+            <div class="result-row">
+              <span>Net After-Tax Proceeds:</span>
+              <strong id="tax-res-net">$40,500.00</strong>
+            </div>
+            <p class="calc-hint">📌 Disclaimer: Educational estimate only. Does not account for state taxes, deductions, or wash-sale legislation in your jurisdiction.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Curated Reading List -->
+  <section class="section" id="reading-list">
+    <div class="container">
+      <div class="section-header">
+        <h2>Curated Master Reading List</h2>
+        <p>Over two decades, thousands of crypto books and papers have been published. These are the rare few with enduring signal value.</p>
+      </div>
+
+      <!-- Essential Books -->
+      <h3 class="subsection-title">📖 Essential Books</h3>
+      <div class="resource-grid">
+        {readingList.books.map(b => (
+          <div class="resource-card">
+            <div class="res-badge">Book ({b.year})</div>
+            <h4>{b.title}</h4>
+            <p class="res-author">By <strong>{b.author}</strong></p>
+            <p class="res-desc">{b.desc}</p>
+          </div>
+        ))}
+      </div>
+
+      <!-- Landmark Papers -->
+      <h3 class="subsection-title" style="margin-top: 3.5rem;">📄 Foundational Whitepapers & Academic Literature</h3>
+      <div class="resource-grid">
+        {readingList.papers.map(p => (
+          <div class="resource-card">
+            <div class="res-badge paper-badge">Academic Paper ({p.year})</div>
+            <h4>{p.title}</h4>
+            <p class="res-author">Authors: <strong>{p.author}</strong></p>
+            <p class="res-desc">{p.desc}</p>
+            <a href={p.url} target="_blank" rel="noopener noreferrer" class="paper-link">Read Original Paper ↗</a>
+          </div>
+        ))}
+      </div>
+
+      <!-- Newsletters -->
+      <h3 class="subsection-title" style="margin-top: 3.5rem;">📬 Recommended Signal Publications</h3>
+      <div class="newsletters-grid">
+        {readingList.newsletters.map(n => (
+          <div class="newsletter-card">
+            <h4>{n.name}</h4>
+            <p>{n.focus}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Office Hours Q&A Section -->
+  <section class="section section--alt" id="office-hours">
+    <div class="container">
+      <div class="office-hours-wrapper">
+        <div class="office-hours-content">
+          <div class="hero-badge">Student Interaction</div>
+          <h2>Monthly Office Hours Q&A</h2>
+          <p>
+            Have a difficult question about consensus mechanics, zero-knowledge proofs, DeFi liquidation math,
+            or regulatory trends? Submit your inquiry below. I review and record detailed pedagogical breakdowns
+            answering selected student questions each month.
+          </p>
+
+          <div class="callout callout--teaching">
+            <p class="callout-title">🎓 Student Submission Guidelines</p>
+            <p>
+              Please avoid "Will coin X pump?" or price prediction requests. The best questions explore
+              system architecture, failure modes, economic trade-offs, and historical parallels.
+            </p>
+          </div>
+        </div>
+
+        <div class="office-hours-form-card">
+          <h3>Submit a Question</h3>
+          <form class="office-form" id="office-form" onsubmit="event.preventDefault(); alert('Thank you! Your question has been recorded for the upcoming monthly Office Hours digest.');">
+            <div class="form-group">
+              <label for="q-name">Your Name or Pseudonym</label>
+              <input type="text" id="q-name" required placeholder="e.g. SatoshiScribe" />
+            </div>
+
+            <div class="form-group">
+              <label for="q-email">Email (for notification when answered)</label>
+              <input type="email" id="q-email" required placeholder="you@university.edu" />
+            </div>
+
+            <div class="form-group">
+              <label for="q-topic">Primary Category</label>
+              <select id="q-topic">
+                <option value="cryptoecon">Cryptoeconomics & Game Theory</option>
+                <option value="consensus">Consensus & Layer 1 Architectures</option>
+                <option value="defi">DeFi & Smart Contract Mechanics</option>
+                <option value="zk">Zero-Knowledge & Advanced Cryptography</option>
+                <option value="regulation">Regulation & Macroeconomics</option>
+                <option value="history">Crypto History & Case Studies</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="q-text">Your Question</label>
+              <textarea id="q-text" rows="4" required placeholder="What specific concept, mechanism, or trade-off would you like explained?"></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-block">Submit to Office Hours</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .res-hero {
+    background: linear-gradient(135deg, rgba(26, 31, 39, 0.9) 0%, var(--bg-primary) 100%);
+    padding: 4rem 0 3rem;
+    border-bottom: 1px solid var(--border-color);
+  }
+
+  .hero-badge {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    font-size: 0.8125rem;
+    font-family: var(--font-mono);
+    color: var(--accent-primary);
+    background: var(--info-bg);
+    border: 1px solid var(--info-border);
+    border-radius: 999px;
+    margin-bottom: 1rem;
+    font-weight: 600;
+  }
+
+  .subtitle {
+    font-size: 1.15rem;
+    max-width: 750px;
+    color: var(--text-secondary);
+    margin-bottom: 2rem;
+  }
+
+  .quick-nav-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+
+  .pill-nav {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+    padding: 0.5rem 1rem;
+    border-radius: 999px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition: all 0.2s ease;
+  }
+
+  .pill-nav:hover {
+    border-color: var(--accent-primary);
+    background: var(--bg-tertiary);
+    text-decoration: none;
+  }
+
+  .pill-nav.highlight {
+    background: var(--accent-primary);
+    color: #ffffff;
+    border-color: var(--accent-primary);
+  }
+
+  .section-header {
+    margin-bottom: 2.5rem;
+  }
+
+  .section-header h2 {
+    font-size: 1.85rem;
+    margin-bottom: 0.5rem;
+  }
+
+  /* Calculator Tabs */
+  .calculator-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .calc-tab-btn {
+    background: var(--bg-tertiary);
+    border: 1px solid var(--border-color);
+    color: var(--text-secondary);
+    padding: 0.6rem 1.25rem;
+    border-radius: var(--radius-md);
+    font-weight: 600;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .calc-tab-btn:hover {
+    color: var(--text-primary);
+    border-color: var(--accent-primary);
+  }
+
+  .calc-tab-btn.active {
+    background: var(--accent-primary);
+    color: #ffffff;
+    border-color: var(--accent-primary);
+  }
+
+  .calc-panel {
+    display: none;
+  }
+
+  .calc-panel.active {
+    display: block;
+  }
+
+  .calc-card {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: var(--radius-lg);
+    padding: 2rem;
+  }
+
+  .calc-inputs h3 {
+    margin-bottom: 0.5rem;
+  }
+
+  .calc-desc {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
+  }
+
+  .input-group {
+    margin-bottom: 1.25rem;
+  }
+
+  .input-group label {
+    display: block;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 0.4rem;
+    color: var(--text-primary);
+  }
+
+  .calc-results {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .calc-results h4 {
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 0.75rem;
+    margin-bottom: 1.25rem;
+    font-size: 1.1rem;
+  }
+
+  .result-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.6rem 0;
+    border-bottom: 1px solid var(--bg-tertiary);
+    font-size: 0.95rem;
+  }
+
+  .highlight-row {
+    border-top: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
+    background: rgba(88, 166, 255, 0.05);
+    padding: 0.85rem 0.5rem;
+    margin: 0.75rem 0;
+    border-radius: var(--radius-sm);
+  }
+
+  .text-green { color: var(--accent-secondary); }
+  .text-red { color: var(--danger-border); }
+  .text-yellow { color: var(--warning-border); }
+
+  .calc-hint {
+    font-size: 0.8rem;
+    color: var(--text-tertiary);
+    margin-top: 1rem;
+    line-height: 1.4;
+  }
+
+  /* Reading list styles */
+  .subsection-title {
+    font-size: 1.4rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .resource-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .resource-card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: var(--radius-lg);
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    transition: all 0.2s ease;
+  }
+
+  .resource-card:hover {
+    border-color: var(--accent-primary);
+    box-shadow: var(--shadow-md);
+  }
+
+  .res-badge {
+    align-self: flex-start;
+    padding: 0.2rem 0.6rem;
+    font-size: 0.75rem;
+    font-family: var(--font-mono);
+    border-radius: 999px;
+    background: var(--bg-tertiary);
+    color: var(--accent-primary);
+    margin-bottom: 0.75rem;
+    font-weight: 600;
+  }
+
+  .paper-badge {
+    color: var(--accent-tertiary);
+  }
+
+  .resource-card h4 {
+    font-size: 1.15rem;
+    margin-bottom: 0.4rem;
+  }
+
+  .res-author {
+    font-size: 0.85rem;
+    color: var(--text-tertiary);
+    margin-bottom: 0.75rem;
+  }
+
+  .res-desc {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    line-height: 1.5;
+    flex-grow: 1;
+    margin-bottom: 1rem;
+  }
+
+  .paper-link {
+    font-size: 0.85rem;
+    font-weight: 600;
+  }
+
+  .newsletters-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 1.25rem;
+  }
+
+  .newsletter-card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: var(--radius-md);
+    padding: 1.25rem;
+  }
+
+  .newsletter-card h4 {
+    font-size: 1.1rem;
+    margin-bottom: 0.4rem;
+  }
+
+  .newsletter-card p {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    margin: 0;
+  }
+
+  /* Office Hours */
+  .office-hours-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: start;
+  }
+
+  .office-hours-form-card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: var(--radius-lg);
+    padding: 2rem;
+  }
+
+  .office-hours-form-card h3 {
+    margin-bottom: 1.25rem;
+  }
+
+  .form-group {
+    margin-bottom: 1.25rem;
+  }
+
+  .form-group label {
+    display: block;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 0.4rem;
+  }
+
+  .btn-block {
+    width: 100%;
+    justify-content: center;
+  }
+
+  @media (max-width: 768px) {
+    .calc-card,
+    .office-hours-wrapper {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+
+<script>
+  // Tab Switching
+  const tabBtns = document.querySelectorAll('.calc-tab-btn');
+  const panels = document.querySelectorAll('.calc-panel');
+
+  tabBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      tabBtns.forEach(b => b.classList.remove('active'));
+      panels.forEach(p => p.classList.remove('active'));
+
+      btn.classList.add('active');
+      const tab = btn.getAttribute('data-tab');
+      document.getElementById(`panel-${tab}`)?.classList.add('active');
+    });
+  });
+
+  // 1. DCA Calculation
+  const calcDcaBtn = document.getElementById('calc-dca-btn');
+  calcDcaBtn?.addEventListener('click', () => {
+    const monthly = parseFloat((document.getElementById('dca-monthly') as HTMLInputElement).value) || 0;
+    const months = parseFloat((document.getElementById('dca-months') as HTMLInputElement).value) || 0;
+    const startP = parseFloat((document.getElementById('dca-start-price') as HTMLInputElement).value) || 1;
+    const endP = parseFloat((document.getElementById('dca-end-price') as HTMLInputElement).value) || 1;
+
+    const totalInvested = monthly * months;
+    // Model average purchase price as mean of start and end
+    const avgPrice = (startP + endP) / 2;
+    const accumulatedUnits = totalInvested / avgPrice;
+    const finalValue = accumulatedUnits * endP;
+    const profit = finalValue - totalInvested;
+    const roi = (profit / totalInvested) * 100;
+
+    const investedEl = document.getElementById('dca-res-invested');
+    const unitsEl = document.getElementById('dca-res-units');
+    const valueEl = document.getElementById('dca-res-value');
+    const roiEl = document.getElementById('dca-res-roi');
+
+    if (investedEl) investedEl.textContent = `$${totalInvested.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+    if (unitsEl) unitsEl.textContent = accumulatedUnits.toFixed(4);
+    if (valueEl) valueEl.textContent = `$${finalValue.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+    if (roiEl) roiEl.textContent = `${profit >= 0 ? '+' : ''}$${profit.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })} (${roi.toFixed(1)}%)`;
+  });
+
+  // 2. Staking Yield Calculation
+  const calcStakingBtn = document.getElementById('calc-staking-btn');
+  calcStakingBtn?.addEventListener('click', () => {
+    const principal = parseFloat((document.getElementById('stake-amount') as HTMLInputElement).value) || 0;
+    const grossApy = parseFloat((document.getElementById('stake-apy') as HTMLInputElement).value) || 0;
+    const fee = parseFloat((document.getElementById('stake-fee') as HTMLInputElement).value) || 0;
+    const n = parseFloat((document.getElementById('stake-compounding') as HTMLSelectElement).value) || 365;
+
+    const netRate = (grossApy * (1 - fee / 100)) / 100;
+    const val1 = principal * Math.pow(1 + netRate / n, n * 1);
+    const val3 = principal * Math.pow(1 + netRate / n, n * 3);
+    const val5 = principal * Math.pow(1 + netRate / n, n * 5);
+
+    document.getElementById('stake-res-netapy')!.textContent = `${(netRate * 100).toFixed(2)}%`;
+    document.getElementById('stake-res-1y')!.textContent = `+$${(val1 - principal).toFixed(2)} ($${val1.toFixed(2)} total)`;
+    document.getElementById('stake-res-3y')!.textContent = `+$${(val3 - principal).toFixed(2)} ($${val3.toFixed(2)} total)`;
+    document.getElementById('stake-res-5y')!.textContent = `+$${(val5 - principal).toFixed(2)} ($${val5.toFixed(2)} total)`;
+  });
+
+  // 3. Impermanent Loss Calculation
+  const calcIlBtn = document.getElementById('calc-il-btn');
+  calcIlBtn?.addEventListener('click', () => {
+    const changeA = parseFloat((document.getElementById('il-tokenA-change') as HTMLInputElement).value) || 0;
+    const changeB = parseFloat((document.getElementById('il-tokenB-change') as HTMLInputElement).value) || 0;
+
+    const priceRatioA = 1 + changeA / 100;
+    const priceRatioB = 1 + changeB / 100;
+    const k = priceRatioA / priceRatioB;
+
+    // Standard IL formula: 2 * sqrt(k) / (1 + k) - 1
+    const il = (2 * Math.sqrt(k)) / (1 + k) - 1;
+    const ilPct = il * 100;
+
+    const hodlVal = 50 * priceRatioA + 50 * priceRatioB;
+    const poolVal = hodlVal * (1 + il);
+
+    document.getElementById('il-res-ratio')!.textContent = `${k.toFixed(2)}x`;
+    document.getElementById('il-res-hodl')!.textContent = `$${hodlVal.toFixed(2)} (per $100 baseline)`;
+    document.getElementById('il-res-pool')!.textContent = `$${poolVal.toFixed(2)}`;
+    document.getElementById('il-res-loss')!.textContent = `${ilPct.toFixed(2)}%`;
+  });
+
+  // 4. Tax Calculation
+  const calcTaxBtn = document.getElementById('calc-tax-btn');
+  calcTaxBtn?.addEventListener('click', () => {
+    const basis = parseFloat((document.getElementById('tax-cost-basis') as HTMLInputElement).value) || 0;
+    const sale = parseFloat((document.getElementById('tax-sale-price') as HTMLInputElement).value) || 0;
+    const period = (document.getElementById('tax-holding-period') as HTMLSelectElement).value;
+    const rate = parseFloat((document.getElementById('tax-rate-est') as HTMLInputElement).value) || 0;
+
+    const gain = sale - basis;
+    const tax = gain > 0 ? gain * (rate / 100) : 0;
+    const net = sale - tax;
+
+    document.getElementById('tax-res-gain')!.textContent = `${gain >= 0 ? '+' : ''}$${gain.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+    document.getElementById('tax-res-type')!.textContent = period === 'long' ? 'Long-Term Capital Gain' : 'Short-Term Ordinary Income';
+    document.getElementById('tax-res-tax')!.textContent = `$${tax.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+    document.getElementById('tax-res-net')!.textContent = `$${net.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+  });
+</script>
+
