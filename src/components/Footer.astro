@@ -37,13 +37,18 @@ const year = new Date().getFullYear();
       <div class="footer-links">
         <h4>Connect</h4>
         <ul>
-          <li><a href="https://github.com" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+          <li><a href="https://github.com/gourabacharjee" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+          <li><a href="https://www.linkedin.com/in/gourabacharjee" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
           <li><a href={`${base}/rss.xml`}>RSS Feed</a></li>
         </ul>
       </div>
     </div>
 
     <div class="footer-bottom">
+      <p class="footer-author">
+        Prepared by <strong>Gourab Acharjee</strong> &bull; 
+        <a href="https://www.linkedin.com/in/gourabacharjee" target="_blank" rel="noopener noreferrer" class="footer-linkedin-link">Connect on LinkedIn ↗</a>
+      </p>
       <p>
         &copy; {year} CryptoEd. Code licensed under
         <a href="https://opensource.org/licenses/MIT" target="_blank" rel="noopener noreferrer">MIT</a>.
@@ -140,6 +145,24 @@ const year = new Date().getFullYear();
     font-size: 0.8125rem;
     color: var(--text-tertiary);
     margin-bottom: 0.25rem;
+  }
+
+  .footer-author {
+    font-size: 0.95rem !important;
+    color: var(--text-primary) !important;
+    margin-bottom: 0.6rem !important;
+  }
+
+  .footer-linkedin-link {
+    color: var(--accent-primary) !important;
+    font-weight: 600;
+    margin-left: 0.25rem;
+    transition: color var(--transition-fast);
+  }
+
+  .footer-linkedin-link:hover {
+    text-decoration: underline;
+    color: var(--accent-secondary) !important;
   }
 
   .footer-disclaimer {
