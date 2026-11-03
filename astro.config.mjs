@@ -1,7 +1,7 @@
 import { defineConfig } from 'astro/config';
 
 export default defineConfig({
-  site: 'https://github.com/gourabacharjee/crypto-education.git',
+  site: 'https://gourabacharjee.github.io',
   base: '/crypto-education',
   build: {
     format: 'directory',
